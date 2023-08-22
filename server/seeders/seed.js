@@ -8,6 +8,7 @@ db.once('open', async () => {
   try {
     await cleanDB('Project', 'projects');
     await cleanDB('TeamMember', 'teammembers');
+    await cleanDB('Task', 'tasks');
 
     await TeamMember.create(teamMemberSeeds);
     await Project.create(projectSeeds);

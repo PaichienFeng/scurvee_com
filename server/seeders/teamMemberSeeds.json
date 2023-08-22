@@ -1,66 +1,65 @@
 [
   {
-    "username": "John_Doe",
-    "email": "john@example.com",
-    "password": "securepass",
-    "rate": 30,
-    "backgroud_color": "#F0F0F0",
-    "image_link": "https://example.com/john.jpg"
-  },
-  {
     "username": "Jane_Smith",
+    "title": "Project Manager",
     "email": "jane@example.com",
     "password": "strongpass",
-    "rate": 25,
+    "rate": 60,
     "backgroud_color": "#D9D9D9",
     "image_link": "https://example.com/jane.jpg"
   },
   {
-    "username": "Alex_Johnson",
-    "email": "alex@example.com",
-    "password": "password123",
-    "rate": 40,
-    "backgroud_color": "#CCCCCC",
-    "image_link": "https://example.com/alex.jpg"
-  },
-  {
     "username": "John_Doe",
+    "title": "Developer",
     "email": "john@example.com",
     "password": "securepass",
-    "rate": 30,
-    "backgroud_color": "#F0F0F0",
+    "rate": 50,
+    "backgroud_color": "#A0A0A0",
     "image_link": "https://example.com/john.jpg"
   },
   {
-    "username": "Jane_Smith",
-    "email": "jane@example.com",
-    "password": "strongpass",
-    "rate": 25,
-    "backgroud_color": "#D9D9D9",
-    "image_link": "https://example.com/jane.jpg"
-  },
-  {
-    "username": "Alex_Johnson",
-    "email": "alex@example.com",
-    "password": "password123",
-    "rate": 40,
-    "backgroud_color": "#CCCCCC",
-    "image_link": "https://example.com/alex.jpg"
-  },
-  {
-    "username": "Emily_Parker",
+    "username": "Emily_Jones",
+    "title": "Designer",
     "email": "emily@example.com",
-    "password": "p@ssw0rd",
-    "rate": 35,
-    "backgroud_color": "#EDEDED",
+    "password": "designpass",
+    "rate": 45,
+    "backgroud_color": "#C0C0C0",
     "image_link": "https://example.com/emily.jpg"
   },
   {
-    "username": "Michael_Lee",
-    "email": "michael@example.com",
-    "password": "mysecret",
-    "rate": 28,
-    "backgroud_color": "#C0C0C0",
-    "image_link": "https://example.com/michael.jpg"
+    "username": "Mike_Brown",
+    "title": "QA Tester",
+    "email": "mike@example.com",
+    "password": "testpass",
+    "rate": 40,
+    "backgroud_color": "#E0E0E0",
+    "image_link": "https://example.com/mike.jpg"
+  },
+  {
+    "username": "Sarah_Wilson",
+    "title": "UI/UX Designer",
+    "email": "sarah@example.com",
+    "password": "uiuxpass",
+    "rate": 50,
+    "backgroud_color": "#F0F0F0",
+    "image_link": "https://example.com/sarah.jpg"
+  },
+  {
+    "username": "Alex_Johnson",
+    "title": "Backend Developer",
+    "email": "alex@example.com",
+    "password": "backendpass",
+    "rate": 45,
+    "backgroud_color": "#B0B0B0",
+    "image_link": "https://example.com/alex.jpg"
+  },
+  {
+    "username": "Ella_Wright",
+    "title": "Frontend Developer",
+    "email": "ella@example.com",
+    "password": "frontendpass",
+    "rate": 40,
+    "backgroud_color": "#909090",
+    "image_link": "https://example.com/ella.jpg"
   }
 ]
