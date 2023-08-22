@@ -1,0 +1,66 @@
+[
+  {
+    "username": "John_Doe",
+    "email": "john@example.com",
+    "password": "securepass",
+    "rate": 30,
+    "backgroud_color": "#F0F0F0",
+    "image_link": "https://example.com/john.jpg"
+  },
+  {
+    "username": "Jane_Smith",
+    "email": "jane@example.com",
+    "password": "strongpass",
+    "rate": 25,
+    "backgroud_color": "#D9D9D9",
+    "image_link": "https://example.com/jane.jpg"
+  },
+  {
+    "username": "Alex_Johnson",
+    "email": "alex@example.com",
+    "password": "password123",
+    "rate": 40,
+    "backgroud_color": "#CCCCCC",
+    "image_link": "https://example.com/alex.jpg"
+  },
+  {
+    "username": "John_Doe",
+    "email": "john@example.com",
+    "password": "securepass",
+    "rate": 30,
+    "backgroud_color": "#F0F0F0",
+    "image_link": "https://example.com/john.jpg"
+  },
+  {
+    "username": "Jane_Smith",
+    "email": "jane@example.com",
+    "password": "strongpass",
+    "rate": 25,
+    "backgroud_color": "#D9D9D9",
+    "image_link": "https://example.com/jane.jpg"
+  },
+  {
+    "username": "Alex_Johnson",
+    "email": "alex@example.com",
+    "password": "password123",
+    "rate": 40,
+    "backgroud_color": "#CCCCCC",
+    "image_link": "https://example.com/alex.jpg"
+  },
+  {
+    "username": "Emily_Parker",
+    "email": "emily@example.com",
+    "password": "p@ssw0rd",
+    "rate": 35,
+    "backgroud_color": "#EDEDED",
+    "image_link": "https://example.com/emily.jpg"
+  },
+  {
+    "username": "Michael_Lee",
+    "email": "michael@example.com",
+    "password": "mysecret",
+    "rate": 28,
+    "backgroud_color": "#C0C0C0",
+    "image_link": "https://example.com/michael.jpg"
+  }
+]
