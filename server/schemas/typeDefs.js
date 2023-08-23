@@ -1,25 +1,36 @@
 const typeDefs = `
-  type User {
+  type TeamMember {
     _id: ID
     username: String
+    title: String
     email: String
     password: String
-    thoughts: [Thought]!
+    rate: Float
+    background_color: String
+    image_link: String
+    projects: [Project]!
   }
 
-  type Thought {
+  type Project {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    name: String
+    client: String
+    budget: Float
+    sow_title: String
+    sow_detail: String
+    background_color: String
+    createdAt: DateTime  
+    teamMembers: [TeamMember]!
   }
 
-  type Comment {
+  type Task {
     _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    teamMembers: TeamMember
+    projects: Project
+    description: String
+    planned_duration: Float
+    acutal_duration: Float
+    task_date: DateTime  
   }
 
   type Auth {
@@ -28,11 +39,10 @@ const typeDefs = `
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
-    me: User
+    teamMembers: [TeamMember]
+    teamMember(teamMemberId: String!): TeamMember
+    projects: [Project]
+    project(projectId: ID!): Project
   }
 
   type Mutation {

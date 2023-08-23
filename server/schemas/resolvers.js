@@ -1,24 +1,29 @@
-const { User, Thought } = require('../models');
+const { TeamMember, Project, Task } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find().populate('thoughts');
+    teamMembers: async (parent, args, context) => {
+      if (context.user) {  
+        return TeamMember.find().populate('projects');
+      }
+      throw AuthenticationError;
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
-    },
-    thoughts: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
-    },
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
-    },
-    me: async (parent, args, context) => {
+    teamMember: async (parent, { teamMemberId }, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return TeamMember.findById(teamMemberId).populate('projects');
+      }
+      throw AuthenticationError;
+    },
+    projects: async (parent, args, context) => {
+      if (context.user) {
+        return Project.find().populate('teamMembers');
+      }
+      throw AuthenticationError;
+    },
+    project: async (parent, { projectId }, context) => {
+      if (context.user) {
+        return Thought.findById(projectId).populate('teamMembers');
       }
       throw AuthenticationError;
     },
