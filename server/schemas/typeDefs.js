@@ -35,7 +35,7 @@ const typeDefs = `
 
   type Auth {
     token: ID!
-    user: User
+    teamMember: TeamMember
   }
 
   type Query {
@@ -46,9 +46,9 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addTeamMember(username: String!, title: String!, email: String!, password: String!, rate: Float!, background_color: String!, image_link: String!, ): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
+    addProject(name: String!, client: String!, budget: Float!, sow_title: String!, sow_detail: String!, background_color: String!): Project
     addComment(thoughtId: ID!, commentText: String!): Thought
     removeThought(thoughtId: ID!): Thought
     removeComment(thoughtId: ID!, commentId: ID!): Thought

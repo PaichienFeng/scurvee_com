@@ -30,41 +30,49 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user);
-      return { token, user };
+    addTeamMember: async (parent, { username, title, email, password, rate, background_color, image_link }) => {
+      const teamMember = await TeamMember.create(
+        {
+         username, 
+         title,
+         email, 
+         password,
+         rate,
+         background_color,
+         image_link
+        });
+      const token = signToken(teamMember);
+      return { token, teamMember };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const teamMember = await TeamMember.findOne({ email });
 
-      if (!user) {
+      if (!teamMember) {
         throw AuthenticationError;
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await teamMember.isCorrectPassword(password);
 
       if (!correctPw) {
         throw AuthenticationError;
       }
 
-      const token = signToken(user);
+      const token = signToken(teamMember);
 
-      return { token, user };
+      return { token, teamMember };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addProject: async (parent, {name, client, budget, sow_title, sow_detail, background_color}, context) => {
       if (context.user) {
-        const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+        const project = await Project.create({
+          name,
+          client,
+          budget,
+          sow_title,
+          sow_detail,
+          background_color,
         });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
-        );
-
-        return thought;
+        return project;
       }
       throw AuthenticationError;
     },
