@@ -4,10 +4,10 @@ import './index.css'
 
 import App from './App.jsx'
 import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
+// import AddTeamMember from './pages/AddTeamMember.jsx';
+// import Login from './pages/Login';
+// import ProjectDetail from './pages/ProjectDetail';
+// import ProjectList from './pages/ProjectList';
 import Error from './pages/Error';
 
 const router = createBrowserRouter([
@@ -18,23 +18,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
-      }, {
-        path: '/login',
-        element: <Login />
-      }, {
-        path: '/signup',
-        element: <Signup />
-      }, {
-        path: '/me',
-        element: <Profile />
-      }, {
-        path: '/profiles/:profileId',
-        element: <Profile />
-      }, {
-        path: '/thoughts/:thoughtId',
-        element: <SingleThought />
-      }
+        element: <Home />}
+      // }, {
+      //   path: '/login',
+      //   element: <Login />
+      // }, {
+      //   path: '/signup',
+      //   element: <AddTeamMember />
+      // }, {
+      //   path: '/me',
+      //   element: <ProjectList />
+      // }, {
+      //   path: '/profiles/:profileId',
+      //   element: <Profile />
+      // }, {
+      //   path: '/thoughts/:thoughtId',
+      //   element: <ProjectDetail />
+      // }
     ]
   }
 ])
