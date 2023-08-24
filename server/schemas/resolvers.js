@@ -13,7 +13,7 @@ const resolvers = {
       if (context.user) {
         return TeamMember.findById(teamMemberId).populate('projects');
       }
-      throw AuthenticationError;
+      throw AuthenticationError; 
     },
     projects: async (parent, args, context) => {
       if (context.user) {

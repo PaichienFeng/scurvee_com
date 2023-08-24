@@ -1,43 +1,72 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+export const QUERY_TEAMMEMBERS = gql`
+  query teamMembers {
+    teamMembers {
       _id
       username
+      title
       email
-      thoughts {
+      password
+      rate
+      background_color
+      image_link
+      projects {
         _id
-        thoughtText
-        createdAt
+        name
+        client
+        budget
+        sow_title
+        sow_detail
+        background_color
       }
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_PROJECTS = gql`
+  query projects {
+    projects {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
+      name
+      client
+      budget
+      sow_title
+      sow_detail
+      background_color
+      teamMembers {
+      _id
+      username
+      title
+      email
+      password
+      rate
+      background_color
+      image_link
+      }
     }
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_TEAMMEMBER = gql`
+  query teamMember($teamMemberId: ID!) {
+    teamMember(teamMemberId: $teamMemberId) {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
+      username
+      title
+      email
+      password
+      rate
+      background_color
+      image_link
+      projects {
         _id
-        commentText
-        commentAuthor
-        createdAt
+        name
+        client
+        budget
+        sow_title
+        sow_detail
+        background_color
       }
     }
   }
