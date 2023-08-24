@@ -27,6 +27,16 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    today_tasks: async (parent, {teamMemberId, task_date}, context) => {
+      if (context.user){
+        return Task.find({
+          teamMember: teamMemberId,
+          task_date,
+        })
+      }
+      throw AuthenticationError;
+
+    }
   },
 
   Mutation: {
@@ -76,13 +86,13 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addComment: async (parent, { thoughtId, commentText }, context) => {
+    addProjectTeam: async (parent, { projectId, teamMemberId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        const project = await Project.findOneAndUpdate(
+          { _id: projectId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
+              teamMembers: teamMemberId,
             },
           },
           {
@@ -90,36 +100,49 @@ const resolvers = {
             runValidators: true,
           }
         );
-      }
-      throw AuthenticationError;
-    },
-    removeThought: async (parent, { thoughtId }, context) => {
-      if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
-        });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+        await TeamMember.findOneAndUpdate(
+          {_id: teamMemberId},
+          {
+            $addToSet:{
+              projects: projectId,
+            }
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
         );
 
-        return thought;
+        return project;
+
       }
       throw AuthenticationError;
     },
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
+    addTeamAssignment: async (parent, {teamMemberId, projectId, description, planned_duration, acutal_duration, task_date }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        const task = await Task.create({
+          teamMember: teamMemberId,
+          project: projectId,
+          description,
+          planned_duration,
+          acutal_duration,
+          task_date,
+        });
+
+        return task;
+      }
+      throw AuthenticationError;
+    },
+    addTeamTask: async (parent, { teamMemberId, projectId, task_date, acutal_duration}, context) => {
+      if (context.user) {
+        return Task.findOneAndUpdate(
+          { teamMember: teamMemberId,
+            project: projectId,
+            task_date,
+          },
           {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
+            $set: {acutal_duration,}
           },
           { new: true }
         );

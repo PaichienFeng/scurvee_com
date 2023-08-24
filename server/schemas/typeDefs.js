@@ -25,8 +25,8 @@ const typeDefs = `
 
   type Task {
     _id: ID
-    teamMembers: TeamMember
-    projects: Project
+    teamMember: TeamMember
+    project: Project
     description: String
     planned_duration: Float
     acutal_duration: Float
@@ -40,18 +40,19 @@ const typeDefs = `
 
   type Query {
     teamMembers: [TeamMember]
-    teamMember(teamMemberId: String!): TeamMember
+    teamMember(teamMemberId: ID!): TeamMember
     projects: [Project]
     project(projectId: ID!): Project
+    today_tasks(teamMemberId: ID!, task_date: DateTime!)
   }
 
   type Mutation {
     addTeamMember(username: String!, title: String!, email: String!, password: String!, rate: Float!, background_color: String!, image_link: String!, ): Auth
     login(email: String!, password: String!): Auth
     addProject(name: String!, client: String!, budget: Float!, sow_title: String!, sow_detail: String!, background_color: String!): Project
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addProjectTeam(projectId: ID!, teamMemberId: ID!): Project
+    addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, acutal_duration: Float!, task_date: DateTime! ): Task
+    addTeamTask(teamMemberId: ID!, projectId: ID!, task_date: DateTime!, acutal_duration: Float!): Task
   }
 `;
 
