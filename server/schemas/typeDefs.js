@@ -1,4 +1,7 @@
 const typeDefs = `
+
+  scalar DateTime
+
   type TeamMember {
     _id: ID
     username: String
@@ -8,7 +11,7 @@ const typeDefs = `
     rate: Float
     background_color: String
     image_link: String
-    projects: [Project]!
+    projects: [Project]
   }
 
   type Project {
@@ -19,8 +22,8 @@ const typeDefs = `
     sow_title: String
     sow_detail: String
     background_color: String
-    createdAt: DateTime  
-    teamMembers: [TeamMember]!
+    createdAt: String  
+    teamMembers: [TeamMember]
   }
 
   type Task {
@@ -30,7 +33,7 @@ const typeDefs = `
     description: String
     planned_duration: Float
     acutal_duration: Float
-    task_date: DateTime  
+    task_date: String  
   }
 
   type Auth {
@@ -43,7 +46,7 @@ const typeDefs = `
     teamMember(teamMemberId: ID!): TeamMember
     projects: [Project]
     project(projectId: ID!): Project
-    today_tasks(teamMemberId: ID!, task_date: DateTime!)
+    today_tasks(teamMemberId: ID!, task_date: String!): Task
   }
 
   type Mutation {
@@ -51,8 +54,8 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addProject(name: String!, client: String!, budget: Float!, sow_title: String!, sow_detail: String!, background_color: String!): Project
     addProjectTeam(projectId: ID!, teamMemberId: ID!): Project
-    addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, acutal_duration: Float!, task_date: DateTime! ): Task
-    addTeamTask(teamMemberId: ID!, projectId: ID!, task_date: DateTime!, acutal_duration: Float!): Task
+    addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, acutal_duration: Float!, task_date: String! ): Task
+    addTeamTask(teamMemberId: ID!, projectId: ID!, task_date: String!, acutal_duration: Float!): Task
   }
 `;
 
