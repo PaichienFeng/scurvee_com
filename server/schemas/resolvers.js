@@ -29,9 +29,11 @@ const resolvers = {
     },
     today_tasks: async (parent, {teamMemberId, task_date}, context) => {
       if (context.user){
+
+        const parsedTaskDate = new Date(task_date);
         return Task.find({
           teamMember: teamMemberId,
-          task_date,
+          task_date: parsedTaskDate
         })
       }
       throw AuthenticationError;
@@ -121,13 +123,14 @@ const resolvers = {
     },
     addTeamAssignment: async (parent, {teamMemberId, projectId, description, planned_duration, acutal_duration, task_date }, context) => {
       if (context.user) {
+        const parsedTaskDate = new Date(task_date);
         const task = await Task.create({
           teamMember: teamMemberId,
           project: projectId,
           description,
           planned_duration,
           acutal_duration,
-          task_date,
+          task_date: parsedTaskDate
         });
 
         return task;
@@ -136,10 +139,11 @@ const resolvers = {
     },
     addTeamTask: async (parent, { teamMemberId, projectId, task_date, acutal_duration}, context) => {
       if (context.user) {
+        const parsedTaskDate = new Date(task_date);
         return Task.findOneAndUpdate(
           { teamMember: teamMemberId,
             project: projectId,
-            task_date,
+            task_date: parsedTaskDate
           },
           {
             $set: {acutal_duration,}

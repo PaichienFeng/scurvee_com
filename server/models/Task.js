@@ -22,7 +22,8 @@ const taskSchema = new Schema(
         },
         task_date: {
             type: Date,
-        },
+            get: (timestamp) => dateFormat(timestamp),
+          },
     }
 )
 
