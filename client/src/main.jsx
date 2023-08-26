@@ -4,13 +4,9 @@ import './index.css'
 
 import App from './App.jsx'
 
-// TODO rephrase MUI comment addition
-import Home from './pages/Home';
-// import { ThemeProvider, createTheme } from "@mui/material";
-// import { createRoot } from "react-dom/client";
-// import { StrictMode } from "react";
-// import { blue } from "@mui/material/colors";
-// TODO rephrase MUI Close comment addition
+// TODO MUI addition
+import Test from './pages/Test';
+// TODO MUI Close addition
 
 // import AddTeamMember from './pages/AddTeamMember.jsx';
 // import Login from './pages/Login';
@@ -26,9 +22,15 @@ const router = createBrowserRouter([
     error: <Error />,
     children: [
       {
+// TODO MUI addition        
         index: true,
-        element: <Home />}
+        element: <Test />}
+// TODO MUI Close addition        
       // }, {
+      // {
+      //   index: true,
+      //   element: <Home />}
+      // }, {        
       //   path: '/login',
       //   element: <Login />
       // }, {

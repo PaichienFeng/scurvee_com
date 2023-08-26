@@ -1,5 +1,4 @@
 import { ThemeProvider, Typography, Box } from "@mui/material"
-import {blue} from "@mui/material/colors"
 import theme from '../../theme';
 
 
@@ -13,14 +12,12 @@ const Footer = () => {
                 bgcolor: "#ffffff", 
                 height: "10vh",
                 display: "flex",
-                color: blue[700],
                 justifyContent: "center",
                 alignItems: "center",
               }}
       >
         <Typography 
-            variant="h4"
-            fontWeight="bold" 
+            variant="logo"
         >Scurvee.com</Typography>
       </Box>
   </ThemeProvider>
