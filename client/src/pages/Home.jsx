@@ -1,8 +1,9 @@
-import {Container, ThemeProvider, Button, Typography, Box, Divider} from "@mui/material"
+import {Container, ThemeProvider, Button, Typography, Box, Divider, Fab} from "@mui/material"
 import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
+import AddIcon from "@mui/icons-material/Add";
 
 const Home = () => {
 
@@ -40,7 +41,7 @@ const Home = () => {
                 justifyContent: 'space-between',
             }}
             >
-            {[...Array(8)].map((_, index) => (
+            {[...Array(9)].map((_, index) => (
                 <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
             ))}
             </Box>
@@ -59,7 +60,7 @@ const Home = () => {
                 justifyContent: 'space-between',                
             }}
             >
-            {[...Array(8)].map((_, index) => (
+            {[...Array(9)].map((_, index) => (
                 <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
             ))}                
             </Box>
@@ -73,9 +74,24 @@ const Home = () => {
         <br></br>
         <br></br>
 
+        <Container 
+        sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: 'space-between',  
+        }}
+        >
         <Button 
         variant="contained"
         > Log All </ Button>
+
+{/* //TODO onClick={handleFabClick} */}
+        <Fab 
+        color="primary"
+        >
+            <AddIcon />
+        </Fab>
+        </Container>
       </main>
     </Container>
     <Footer />
