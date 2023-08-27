@@ -3,13 +3,14 @@ import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-// import CardMemberBin from '../components/CardMemberBin/index';
-import CardMemberBin1 from '../components/CardMemberBin/z1';
-import CardMemberBin2 from '../components/CardMemberBin/z2';
-import CardMemberBin3 from '../components/CardMemberBin/z3';
+// import CardMember from '../components/CardMember/index';
+// import CardProjectDetail from '../components/CardProjectDetail/index';
+import CardProjectDetail2 from '../components/CardProjectDetail/p2';
+import CardMember2 from '../components/CardMember/z2';
+import CardMember3 from '../components/CardMember/z3';
 import AddIcon from "@mui/icons-material/Add";
 
-const TeamList = () => {
+const ProjectDetail = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -28,22 +29,16 @@ const TeamList = () => {
 
         <br></br>
         <br></br>
-        <CardMemberBin1 />
+        <CardProjectDetail2 />
         <br></br>
-        <CardMemberBin2 />
+        <CardMember2 />
         <br></br>
-        <CardMemberBin3 />
+        <CardMember3 />
         <br></br>
         <br></br>
         <br></br>
         <br></br>
         <br></br>        
-        <br></br>
-        <br></br>        
-        <br></br>
-        <br></br>     
-        <br></br>
-        <br></br>
         <br></br>
         <br></br>        
         <br></br>
@@ -78,4 +73,4 @@ const TeamList = () => {
 };
 
 
-export default TeamList;
+export default ProjectDetail;
