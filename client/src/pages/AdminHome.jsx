@@ -5,7 +5,7 @@ import FooterNavBar from '../components/FooterNavBar/index';
 import Header from '../components/Header/index';
 import AddIcon from "@mui/icons-material/Add";
 
-const Test = () => {
+const AdminHome = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -101,4 +101,4 @@ const Test = () => {
 };
 
 
-export default Test;
+export default AdminHome;

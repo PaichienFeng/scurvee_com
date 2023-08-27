@@ -32,7 +32,7 @@ const Header = () => {
         <Avatar
             variant="memberPic"
             alt=""
-            src="../../src/assets/avatar/04.png"
+            src="../../src/assets/avatar/02.png"
             sx={{ 
                 width: 60, 
                 height: 60,
