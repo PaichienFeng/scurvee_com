@@ -3,8 +3,13 @@ import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
+// import CardMember from '../components/CardMember/index';
+// import CardMember1 from '../components/CardMember/z1';
+import CardProjectTitle2 from '../components/CardProjectTitle/p2';
+import CardMember3 from '../components/CardMember/z3';
 
-const AddProject = () => {
+
+const TeamAssignment = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -20,49 +25,42 @@ const AddProject = () => {
     >
       <main>
       <TitleHeader />
-      <Typography 
-        >Project Name:</Typography>
-        <TextField 
-          label="Enter Project Name" 
-        ></TextField>
+
+        {/* <br></br>
         <br></br>
+        <CardMember1 /> */}
         <br></br>
-        <Typography 
-        >Client:</Typography>
-        <TextField 
-        label="Enter Client" 
-        ></TextField>    
+        <CardProjectTitle2 />
         <br></br>
+        <CardMember3 />
         <br></br>
         <Typography 
-        >Budget:</Typography>
+        >Date:</Typography>
         <TextField 
-        label="Enter Budget" 
+        label="Enter Date" 
         ></TextField>   
         <br></br>
         <br></br>
         <Typography 
-        >Avatar Link:</Typography>
+        >Task:</Typography>
         <TextField 
-        label="Enter Avatar Link" 
+        label="Enter Task" 
         ></TextField>   
         <br></br>
         <br></br>
         <Typography 
-        >SOW Title:</Typography>
+        >Duration:</Typography>
         <TextField 
-        label="Enter SOW Title" 
+        label="Enter Duration" 
         ></TextField>   
         <br></br>
         <br></br>
-        <Typography 
-        >SOW Detail:</Typography>
-        <TextField 
-        label="Enter SOW Detail" 
-        ></TextField>   
         <br></br>
+        <br></br>        
         <br></br>
-        <br></br>                     
+        <br></br>        
+        <br></br>
+        <br></br>                             
         <Container 
         sx={{
             display: "flex",
@@ -86,4 +84,4 @@ const AddProject = () => {
 };
 
 
-export default AddProject;
+export default TeamAssignment;
