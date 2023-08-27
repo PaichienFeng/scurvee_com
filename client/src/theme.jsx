@@ -11,6 +11,9 @@ const theme = createTheme({
     secondary: {
       main: blue[900],
     },
+    // inputBackground: {
+    //     main: "#ffffff",
+    //   },    
   },
   typography: {
     logo: {
@@ -39,13 +42,10 @@ const theme = createTheme({
         justifyContent: "center",        
     },
   },
-//   avatar: {
-//     memberPic:{
-//         display: "flex",
-//         justifyContent: "flex-end",
-//         width: 35, 
-//         height: 35,
-//         px: 5,
+//   MuiInputBase-input: {
+//     customWidth:{
+//         background: "#ffffff",
+//         width: "300px",
 //     },
 //   },
 

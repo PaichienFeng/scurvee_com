@@ -1,9 +1,8 @@
-import {Container, ThemeProvider, Button, Typography, Box, Divider, Fab} from "@mui/material"
+import {Container, ThemeProvider, Button, Typography, TextField} from "@mui/material"
 import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
-import AddIcon from "@mui/icons-material/Add";
 
 const Test = () => {
 
@@ -21,59 +20,44 @@ const Test = () => {
     >
       <main>
       <Header />
-      <Container
-        sx={{
-            width: "100%",
-            bgcolor: blue[50], 
-            height: "65vh",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",            
-        }}>
-        <div> 
-            <Box 
-            sx={{
-                width: "30vw",
-                bgcolor: blue[50], 
-                height: "65vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: 'space-between',
-            }}
-            >
-            {[...Array(9)].map((_, index) => (
-                <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
-            ))}
-            </Box>
-            <Typography
-            variant="columnChartTitle"
-            >Planned</Typography>            
-        </div>    
-        <div> 
-            <Box 
-            sx={{
-                width: "30vw",
-                bgcolor: blue[50], 
-                height: "65vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: 'space-between',                
-            }}
-            >
-            {[...Array(9)].map((_, index) => (
-                <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
-            ))}                
-            </Box>
-            <Typography
-            variant="columnChartTitle"
-            >Actual</Typography>            
-        </div> 
-
-        </Container>   
+      <Typography 
+        >Date:</Typography>
+        <TextField 
+          label="Enter Date" 
+        ></TextField>
+        <br></br>
+        <br></br>
+        <Typography 
+        >Project Name:</Typography>
+        <TextField 
+        label="Enter Project Name" 
+        ></TextField>    
+        <br></br>
+        <br></br>
+        <Typography 
+        >Duration:</Typography>
+        <TextField 
+        label="Enter Duration" 
+        ></TextField>   
         <br></br>
         <br></br>
         <br></br>
-
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>                  
         <Container 
         sx={{
             display: "flex",
@@ -83,14 +67,10 @@ const Test = () => {
         >
         <Button 
         variant="contained"
-        > Log All </ Button>
-
-{/* //TODO onClick={handleFabClick} */}
-        <Fab 
-        color="primary"
-        >
-            <AddIcon />
-        </Fab>
+        > Save </ Button>
+        <Button 
+        variant="contained"
+        > Cancel </ Button>
         </Container>
       </main>
     </Container>
