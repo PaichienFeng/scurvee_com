@@ -1,15 +1,15 @@
-import {Container, ThemeProvider, Button} from "@mui/material"
+import {Container, ThemeProvider, Fab} from "@mui/material"
 import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-// import CardMember from '../components/CardMember/index';
-import CardMember1 from '../components/CardMemberBin/z1';
-import CardMember2 from '../components/CardMemberBin/z2';
-import CardMember3 from '../components/CardMemberBin/z3';
+// import CardMemberBin from '../components/CardMemberBin/index';
+import CardMemberBin1 from '../components/CardMemberBin/z1';
+import CardMemberBin2 from '../components/CardMemberBin/z2';
+import CardMemberBin3 from '../components/CardMemberBin/z3';
+import AddIcon from "@mui/icons-material/Add";
 
-
-const AddProjectTeam = () => {
+const TeamList = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -28,11 +28,11 @@ const AddProjectTeam = () => {
 
         <br></br>
         <br></br>
-        <CardMember1 />
+        <CardMemberBin1 />
         <br></br>
-        <CardMember2 />
+        <CardMemberBin2 />
         <br></br>
-        <CardMember3 />
+        <CardMemberBin3 />
         <br></br>
         <br></br>
         <br></br>
@@ -48,21 +48,26 @@ const AddProjectTeam = () => {
         <br></br>        
         <br></br>
         <br></br>        
-        <br></br>
-        <br></br>                             
+        <br></br>                          
         <Container 
         sx={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: 'space-between',  
+            justifyContent: 'right',  
         }}
         >
-        <Button 
+        {/* <Button 
         variant="contained"
         > Add </ Button>
         <Button 
         variant="contained"
-        > Cancel </ Button>
+        > Cancel </ Button> */}
+        {/* //TODO onClick={handleFabClick} */}
+        <Fab 
+        color="primary"
+        >
+            <AddIcon />
+        </Fab>        
         </Container>
       </main>
     </Container>
@@ -73,4 +78,4 @@ const AddProjectTeam = () => {
 };
 
 
-export default AddProjectTeam;
+export default TeamList;
