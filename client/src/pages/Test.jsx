@@ -1,15 +1,15 @@
-import {Container, ThemeProvider, Button, Typography, TextField} from "@mui/material"
+import {Container, ThemeProvider, Button} from "@mui/material"
 import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
 // import CardMember from '../components/CardMember/index';
-// import CardMember1 from '../components/CardMember/z1';
-import CardProjectTitle2 from '../components/CardProjectTitle/p2';
-import CardMember3 from '../components/CardMember/z3';
+import CardMember1 from '../components/CardMemberBin/z1';
+import CardMember2 from '../components/CardMemberBin/z2';
+import CardMember3 from '../components/CardMemberBin/z3';
 
 
-const TeamAssignment = () => {
+const AddProjectTeam = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -26,33 +26,22 @@ const TeamAssignment = () => {
       <main>
       <TitleHeader />
 
-        {/* <br></br>
         <br></br>
-        <CardMember1 /> */}
         <br></br>
-        <CardProjectTitle2 />
+        <CardMember1 />
+        <br></br>
+        <CardMember2 />
         <br></br>
         <CardMember3 />
         <br></br>
-        <Typography 
-        >Date:</Typography>
-        <TextField 
-        label="Enter Date" 
-        ></TextField>   
         <br></br>
         <br></br>
-        <Typography 
-        >Task:</Typography>
-        <TextField 
-        label="Enter Task" 
-        ></TextField>   
         <br></br>
+        <br></br>        
         <br></br>
-        <Typography 
-        >Duration:</Typography>
-        <TextField 
-        label="Enter Duration" 
-        ></TextField>   
+        <br></br>        
+        <br></br>
+        <br></br>     
         <br></br>
         <br></br>
         <br></br>
@@ -84,4 +73,4 @@ const TeamAssignment = () => {
 };
 
 
-export default TeamAssignment;
+export default AddProjectTeam;

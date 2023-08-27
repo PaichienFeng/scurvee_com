@@ -1,5 +1,5 @@
 import { ThemeProvider, Typography, Avatar, Box, Fab } from "@mui/material"
-import {grey} from "@mui/material/colors"
+import {blueGrey} from "@mui/material/colors"
 import theme from '../../theme';
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -12,7 +12,7 @@ const CardMemberBin1
 <Box
             sx={{ 
                 width: { xs: 400, md: 960, lg: 1280, xl: 1920},
-                bgcolor: grey[700], 
+                bgcolor: blueGrey[700], 
                 maxWidth: "100%",
                 display: "flex",
                 justifyContent: "space-between",
