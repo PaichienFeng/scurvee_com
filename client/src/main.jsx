@@ -3,12 +3,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
 import './index.css'
 
 import App from './App.jsx'
-import Home from './pages/Home';
+
+// TODO MUI addition
+import Test from './pages/Test';
+// TODO MUI Close addition
+
 // import AddTeamMember from './pages/AddTeamMember.jsx';
 // import Login from './pages/Login';
 // import ProjectDetail from './pages/ProjectDetail';
 // import ProjectList from './pages/ProjectList';
 import Error from './pages/Error';
+
 
 const router = createBrowserRouter([
   {
@@ -17,9 +22,15 @@ const router = createBrowserRouter([
     error: <Error />,
     children: [
       {
+// TODO MUI addition        
         index: true,
-        element: <Home />}
+        element: <Test />}
+// TODO MUI Close addition        
       // }, {
+      // {
+      //   index: true,
+      //   element: <Home />}
+      // }, {        
       //   path: '/login',
       //   element: <Login />
       // }, {
