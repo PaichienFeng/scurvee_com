@@ -4,7 +4,7 @@ import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
 
-const AddProject = () => {
+const AddTeamMember = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -21,23 +21,30 @@ const AddProject = () => {
       <main>
       <TitleHeader />
       <Typography 
-        >Project Name:</Typography>
+        >Username:</Typography>
         <TextField 
-          label="Enter Project Name" 
+          label="Enter Username" 
         ></TextField>
         <br></br>
         <br></br>
         <Typography 
-        >Client:</Typography>
+        >Title:</Typography>
         <TextField 
-        label="Enter Client" 
+        label="Enter Title" 
         ></TextField>    
         <br></br>
         <br></br>
         <Typography 
-        >Budget:</Typography>
+        >Password:</Typography>
         <TextField 
-        label="Enter Budget" 
+        label="Assign Password" 
+        ></TextField>   
+        <br></br>
+        <br></br>
+        <Typography 
+        >Rate $/Hr:</Typography>
+        <TextField 
+        label="Enter Rate $/Hr" 
         ></TextField>   
         <br></br>
         <br></br>
@@ -48,21 +55,11 @@ const AddProject = () => {
         ></TextField>   
         <br></br>
         <br></br>
-        <Typography 
-        >SOW Title:</Typography>
-        <TextField 
-        label="Enter SOW Title" 
-        ></TextField>   
         <br></br>
         <br></br>
-        <Typography 
-        >SOW Detail:</Typography>
-        <TextField 
-        label="Enter SOW Detail" 
-        ></TextField>   
         <br></br>
         <br></br>
-        <br></br>                     
+        <br></br>                            
         <Container 
         sx={{
             display: "flex",
@@ -86,4 +83,4 @@ const AddProject = () => {
 };
 
 
-export default AddProject;
+export default AddTeamMember;

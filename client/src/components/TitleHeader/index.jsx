@@ -3,7 +3,7 @@ import {blue} from "@mui/material/colors"
 import theme from '../../theme';
 // import defaultDate from './defaultDate';
 
-const Header = () => {
+const TitleHeader = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -21,7 +21,7 @@ const Header = () => {
         <div>
             <Typography 
                 variant="pageTitle"
-            >Member Name
+            >Page Title
             </Typography>
             <Typography 
                 variant="date"       
@@ -32,7 +32,7 @@ const Header = () => {
         <Avatar
             variant="memberPic"
             alt=""
-            src="../../src/assets/avatar/04.png"
+            src="../../src/assets/avatar/02.png"
             sx={{ 
                 width: 60, 
                 height: 60,
@@ -50,4 +50,4 @@ const Header = () => {
 
 
 
-export default Header;
+export default TitleHeader;
