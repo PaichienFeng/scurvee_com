@@ -3,13 +3,8 @@ import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-// import CardMember from '../components/CardMember/index';
-// import CardMember1 from '../components/CardMember/z1';
-import CardProjectTitle2 from '../components/CardProjectTitle/p2';
-import CardMember3 from '../components/CardMember/z3';
 
-
-const TeamAssignment = () => {
+const AddTeamMember = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -25,42 +20,46 @@ const TeamAssignment = () => {
     >
       <main>
       <TitleHeader />
-
-        {/* <br></br>
+      <Typography 
+        >Username:</Typography>
+        <TextField 
+          label="Enter Username" 
+        ></TextField>
         <br></br>
-        <CardMember1 /> */}
-        <br></br>
-        <CardProjectTitle2 />
-        <br></br>
-        <CardMember3 />
         <br></br>
         <Typography 
-        >Date:</Typography>
+        >Title:</Typography>
         <TextField 
-        label="Enter Date" 
+        label="Enter Title" 
+        ></TextField>    
+        <br></br>
+        <br></br>
+        <Typography 
+        >Password:</Typography>
+        <TextField 
+        label="Assign Password" 
         ></TextField>   
         <br></br>
         <br></br>
         <Typography 
-        >Task:</Typography>
+        >Rate $/Hr:</Typography>
         <TextField 
-        label="Enter Task" 
+        label="Enter Rate $/Hr" 
         ></TextField>   
         <br></br>
         <br></br>
         <Typography 
-        >Duration:</Typography>
+        >Avatar Link:</Typography>
         <TextField 
-        label="Enter Duration" 
+        label="Enter Avatar Link" 
         ></TextField>   
         <br></br>
         <br></br>
         <br></br>
-        <br></br>        
         <br></br>
-        <br></br>        
         <br></br>
-        <br></br>                             
+        <br></br>
+        <br></br>                            
         <Container 
         sx={{
             display: "flex",
@@ -84,4 +83,4 @@ const TeamAssignment = () => {
 };
 
 
-export default TeamAssignment;
+export default AddTeamMember;

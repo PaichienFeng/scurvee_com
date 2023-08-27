@@ -1,11 +1,15 @@
-import {Container, ThemeProvider, Button, Typography, Box, Divider, Fab} from "@mui/material"
+import {Container, ThemeProvider, Button} from "@mui/material"
 import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
-import Header from '../components/Header/index';
-import AddIcon from "@mui/icons-material/Add";
+import TitleHeader from '../components/TitleHeader/index';
+// import CardMember from '../components/CardMember/index';
+import CardMember1 from '../components/CardMemberBin/z1';
+import CardMember2 from '../components/CardMemberBin/z2';
+import CardMember3 from '../components/CardMemberBin/z3';
 
-const Test = () => {
+
+const AddProjectTeam = () => {
 
   return (
   <ThemeProvider theme={theme}>
@@ -20,60 +24,32 @@ const Test = () => {
       }}
     >
       <main>
-      <Header />
-      <Container
-        sx={{
-            width: "100%",
-            bgcolor: blue[50], 
-            height: "65vh",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",            
-        }}>
-        <div> 
-            <Box 
-            sx={{
-                width: "30vw",
-                bgcolor: blue[50], 
-                height: "65vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: 'space-between',
-            }}
-            >
-            {[...Array(9)].map((_, index) => (
-                <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
-            ))}
-            </Box>
-            <Typography
-            variant="columnChartTitle"
-            >Planned</Typography>            
-        </div>    
-        <div> 
-            <Box 
-            sx={{
-                width: "30vw",
-                bgcolor: blue[50], 
-                height: "65vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: 'space-between',                
-            }}
-            >
-            {[...Array(9)].map((_, index) => (
-                <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
-            ))}                
-            </Box>
-            <Typography
-            variant="columnChartTitle"
-            >Actual</Typography>            
-        </div> 
+      <TitleHeader />
 
-        </Container>   
+        <br></br>
+        <br></br>
+        <CardMember1 />
+        <br></br>
+        <CardMember2 />
+        <br></br>
+        <CardMember3 />
         <br></br>
         <br></br>
         <br></br>
-
+        <br></br>
+        <br></br>        
+        <br></br>
+        <br></br>        
+        <br></br>
+        <br></br>     
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>        
+        <br></br>
+        <br></br>        
+        <br></br>
+        <br></br>                             
         <Container 
         sx={{
             display: "flex",
@@ -83,14 +59,10 @@ const Test = () => {
         >
         <Button 
         variant="contained"
-        > Log All </ Button>
-
-{/* //TODO onClick={handleFabClick} */}
-        <Fab 
-        color="primary"
-        >
-            <AddIcon />
-        </Fab>
+        > Add </ Button>
+        <Button 
+        variant="contained"
+        > Cancel </ Button>
         </Container>
       </main>
     </Container>
@@ -101,4 +73,4 @@ const Test = () => {
 };
 
 
-export default Test;
+export default AddProjectTeam;

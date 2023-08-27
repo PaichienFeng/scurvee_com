@@ -2,7 +2,7 @@ import {Container, ThemeProvider, Button, Typography, Box, Divider, Fab} from "@
 import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
-import Header from '../components/Header/index';
+import TitleHeader from '../components/TitleHeader/index';
 import AddIcon from "@mui/icons-material/Add";
 
 const AdminHome = () => {
@@ -20,7 +20,7 @@ const AdminHome = () => {
       }}
     >
       <main>
-      <Header />
+      <TitleHeader />
       <Container
         sx={{
             width: "100%",

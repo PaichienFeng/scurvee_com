@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { blue, red } from "@mui/material/colors";
 import './App.css';
 
 const theme = createTheme({
@@ -9,7 +9,7 @@ const theme = createTheme({
       main: blue[500],
     },
     secondary: {
-      main: blue[900],
+      main: red[700],
     },
     // inputBackground: {
     //     main: "#ffffff",
@@ -41,6 +41,34 @@ const theme = createTheme({
         color: blue[700],
         justifyContent: "center",        
     },
+    cardDarkTitle: {
+        fontSize: "1.1rem",
+        fontWeight: "bold",
+        color: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
+        paddingLeft: 18,
+    },
+    cardDarkSubtitle: {
+        fontSize: "0.8rem",
+        color: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
+        paddingLeft: 18,
+    },
+    cardLightTitle: {
+        fontSize: "1.1rem",
+        fontWeight: "bold",
+        display: "flex",
+        flexDirection: "column",
+        paddingLeft: 18,
+    },
+    cardLightSubtitle: {
+        fontSize: "0.8rem",
+        display: "flex",
+        flexDirection: "column",
+        paddingLeft: 18,
+    },                
   },
 //   MuiInputBase-input: {
 //     customWidth:{
