@@ -7,11 +7,13 @@ import App from './App.jsx'
 // TODO MUI addition
 import Test from './pages/Test';
 // TODO MUI Close addition
-
-// import AddTeamMember from './pages/AddTeamMember.jsx';
-// import Login from './pages/Login';
-// import ProjectDetail from './pages/ProjectDetail';
-// import ProjectList from './pages/ProjectList';
+import AddProject from './pages/AddProject';
+import AddProjectTeam from './pages/AddProjectTeam';
+import AddTeamMember from './pages/AddTeamMember';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import TeamAssignment from './pages/TeamAssignment';
+import TeamTask from './pages/TeamTask'
 import Error from './pages/Error';
 
 
@@ -21,31 +23,32 @@ const router = createBrowserRouter([
     element: <App />,
     error: <Error />,
     children: [
-      {
-// TODO MUI addition        
-        index: true,
-        element: <Test />}
-// TODO MUI Close addition        
-      // }, {
       // {
       //   index: true,
-      //   element: <Home />}
-      // }, {        
-      //   path: '/login',
-      //   element: <Login />
-      // }, {
-      //   path: '/signup',
-      //   element: <AddTeamMember />
-      // }, {
-      //   path: '/me',
-      //   element: <ProjectList />
-      // }, {
-      //   path: '/profiles/:profileId',
-      //   element: <Profile />
-      // }, {
-      //   path: '/thoughts/:thoughtId',
-      //   element: <ProjectDetail />
-      // }
+      //   element: <Test />
+      // },
+      {
+        index: true,
+        element: <Home />
+      }, {        
+        path: '/login',
+        element: <Login />
+      }, {
+        path: '/teammembers/addteammember',
+        element: <AddTeamMember />
+      }, {
+        path: '/projects/addproject',
+        element: <AddProject />
+      }, {
+        path: '/projects/:projectId/addprojectteam',
+        element: <AddProjectTeam />
+      }, {
+        path: '/projects/:projectId/teamassignment',
+        element: <TeamAssignment />
+      }, {
+        path: '/summary/teamtask',
+        element: <TeamTask />
+      }
     ]
   }
 ])
