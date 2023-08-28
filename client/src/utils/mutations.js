@@ -21,6 +21,7 @@ export const LOGIN_USER = gql`
         sow_title
         sow_detail
         background_color
+        image_link
       }
     }
     }
@@ -31,6 +32,8 @@ export const ADD_TEAMMEMBER = gql`
   mutation addTeamMember($username: String!, $title: String!, $email: String!, $password: String!, $rate: Float!, $background_color: String!, $image_link: String!, ) {
     addTeamMember(username: $username, title: $title, email: $email, password: $password, rate: $rate, background_color: $background_color, image_link: $image_link) 
     {
+      token
+      teamMember {
       _id
       username
       title
@@ -47,14 +50,16 @@ export const ADD_TEAMMEMBER = gql`
         sow_title
         sow_detail
         background_color
+        image_link
+      }
       }
     }
   }
 `;
 
 export const ADD_PROJECT = gql`
-  mutation addProject($name: String!, $client: String!, $budget: Float!, $sow_title: String!, $sow_detail: String!, $background_color: String!) {
-    addProject(name: $name, client: $client, budget: $budget, sow_title: $sow_title, sow_detail: $sow_detail, background_color: $background_color) {
+  mutation addProject($name: String!, $client: String!, $budget: Float!, $sow_title: String!, $sow_detail: String!, $background_color: String!, $image_link: String!) {
+    addProject(name: $name, client: $client, budget: $budget, sow_title: $sow_title, sow_detail: $sow_detail, background_color: $background_color, image_link: $image_link) {
       _id
       name
       client
@@ -62,6 +67,7 @@ export const ADD_PROJECT = gql`
       sow_title
       sow_detail
       background_color
+      image_link
       teamMembers {
       _id
       username
@@ -86,6 +92,7 @@ export const ADD_PROJECTTEAM = gql`
       sow_title
       sow_detail
       background_color
+      image_link
       teamMembers {
       _id
       username

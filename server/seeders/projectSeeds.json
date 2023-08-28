@@ -1,27 +1,30 @@
 [
   {
-    "name": "Website Redesign",
-    "client": "ABC Corporation",
-    "budget": 25000,
-    "sow_title": "Website Redesign SOW",
-    "sow_detail": "Redesigning the company website for a modern look and improved user experience.",
-    "backgroud_color": "#E5F2FF"
+    "name": "CRYPTO CON",
+    "client": "Sam Bankman-Fried",
+    "budget": 125000,
+    "sow_title": "iOS Implementation",
+    "sow_detail": "-Virtual Tours \n -Mini Game \n -Social Media Integration \n -Photo Booth Feature",
+    "background_color": "#E5F2FF",
+    "image_link": "../../src/assets/logo/conman.png"
   },
   {
-    "name": "Mobile App Development",
-    "client": "XYZ Tech",
-    "budget": 35000,
-    "sow_title": "Mobile App Development SOW",
-    "sow_detail": "Creating a mobile app for Android and iOS platforms to enhance customer engagement.",
-    "backgroud_color": "#FCE5CD"
+    "name": "Dud Submarine",
+    "client": "Anthony Albanese",
+    "budget": 150000,
+    "sow_title": "Web Development",
+    "sow_detail": "-Virtual Tours \n -Mini Game \n -Social Media Integration \n -Photo Booth Feature",
+    "background_color": "#FCE5CD",
+    "image_link": "../../src/assets/logo/submarine.png"
   },
   {
-    "name": "Marketing Campaign",
-    "client": "Acme Corp",
-    "budget": 15000,
-    "sow_title": "Marketing Campaign SOW",
-    "sow_detail": "Planning and executing a comprehensive marketing campaign to boost product sales.",
-    "backgroud_color": "#DFF2BF"
+    "name": "Deaf Dude",
+    "client": "Ludwig Van Beethoven",
+    "budget": 65000,
+    "sow_title": "Web Maintenance",
+    "sow_detail": "-Virtual Tours \n -Mini Game \n -Social Media Integration \n -Photo Booth Feature",
+    "background_color": "#DFF2BF",
+    "image_link": "../../src/assets/logo/headphones.png"
   },
   {
     "name": "E-commerce Platform",
@@ -29,7 +32,8 @@
     "budget": 50000,
     "sow_title": "E-commerce Platform SOW",
     "sow_detail": "Building an online store for Fashionista Boutique to showcase and sell their products.",
-    "backgroud_color": "#FFD700"
+    "background_color": "#FFD700",
+    "image_link": "../../src/assets/logo/headphones.png"
   },
   {
     "name": "Product Launch",
@@ -37,7 +41,8 @@
     "budget": 20000,
     "sow_title": "Product Launch SOW",
     "sow_detail": "Planning and executing a successful product launch event for InnovateTech's latest innovation.",
-    "backgroud_color": "#A9A9A9"
+    "background_color": "#A9A9A9",
+    "image_link": "../../src/assets/logo/submarine.png"
   },
   {
     "name": "Community Outreach",
@@ -45,7 +50,8 @@
     "budget": 10000,
     "sow_title": "Community Outreach SOW",
     "sow_detail": "Engaging in community initiatives and events to support the local charity's mission.",
-    "backgroud_color": "#90EE90"
+    "background_color": "#90EE90",
+    "image_link": "../../src/assets/logo/conman.png"
   },
   {
     "name": "Data Analytics Dashboard",
@@ -53,6 +59,7 @@
     "budget": 30000,
     "sow_title": "Data Analytics Dashboard SOW",
     "sow_detail": "Developing a data analytics dashboard to visualize and analyze business performance.",
-    "backgroud_color": "#ADD8E6"
+    "background_color": "#ADD8E6",
+    "image_link": "../../src/assets/logo/conman.png"
   }
 ]

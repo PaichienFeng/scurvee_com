@@ -19,6 +19,7 @@ export const QUERY_TEAMMEMBERS = gql`
         sow_title
         sow_detail
         background_color
+        image_link
       }
     }
   }
@@ -34,6 +35,7 @@ export const QUERY_PROJECTS = gql`
       sow_title
       sow_detail
       background_color
+      image_link
       teamMembers {
       _id
       username
@@ -67,6 +69,7 @@ export const QUERY_TEAMMEMBER = gql`
         sow_title
         sow_detail
         background_color
+        image_link
       }
     }
   }
@@ -83,6 +86,7 @@ export const QUERY_PROJECT = gql`
     sow_title
     sow_detail
     background_color
+    image_link
     teamMembers {
       _id
       username
@@ -101,7 +105,7 @@ export const QUERY_PROJECT = gql`
 
 export const QUERY_TODAY_TASK = gql`
   query today_tasks ($teamMemberId: ID!, $task_date: DateTime!){
-    today_tasks (teamMemberId: $teamMemberId, task_date: $$task_date) {
+    today_tasks (teamMemberId: $teamMemberId, task_date: $task_date) {
       _id
       teamMember
       project
