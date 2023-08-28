@@ -1,65 +1,65 @@
 [
   {
-    "username": "Jane_Smith",
+    "username": "IL Capo",
     "title": "Project Manager",
-    "email": "jane@example.com",
-    "password": "strongpass",
+    "email": "ilcapo@gmail.com",
+    "password": "password12345",
     "rate": 60,
-    "backgroud_color": "#D9D9D9",
-    "image_link": "https://example.com/jane.jpg"
+    "background_color": "#D9D9D9",
+    "image_link": "assets/avatar/02.png"
   },
   {
-    "username": "John_Doe",
+    "username": "John Doe",
     "title": "Developer",
     "email": "john@example.com",
     "password": "securepass",
     "rate": 50,
-    "backgroud_color": "#A0A0A0",
-    "image_link": "https://example.com/john.jpg"
+    "background_color": "#A0A0A0",
+    "image_link": "assets/avatar/04.png"
   },
   {
-    "username": "Emily_Jones",
+    "username": "Emily Jones",
     "title": "Designer",
     "email": "emily@example.com",
     "password": "designpass",
     "rate": 45,
-    "backgroud_color": "#C0C0C0",
-    "image_link": "https://example.com/emily.jpg"
+    "background_color": "#C0C0C0",
+    "image_link": "assets/avatar/03.png"
   },
   {
-    "username": "Mike_Brown",
+    "username": "Mike Brown",
     "title": "QA Tester",
     "email": "mike@example.com",
     "password": "testpass",
     "rate": 40,
-    "backgroud_color": "#E0E0E0",
-    "image_link": "https://example.com/mike.jpg"
+    "background_color": "#E0E0E0",
+    "image_link": "assets/avatar/01.png"
   },
   {
-    "username": "Sarah_Wilson",
+    "username": "Sarah Wilson",
     "title": "UI/UX Designer",
     "email": "sarah@example.com",
     "password": "uiuxpass",
     "rate": 50,
-    "backgroud_color": "#F0F0F0",
-    "image_link": "https://example.com/sarah.jpg"
+    "background_color": "#F0F0F0",
+    "image_link": "assets/avatar/02.png"
   },
   {
-    "username": "Alex_Johnson",
+    "username": "Alex Johnson",
     "title": "Backend Developer",
     "email": "alex@example.com",
     "password": "backendpass",
     "rate": 45,
-    "backgroud_color": "#B0B0B0",
-    "image_link": "https://example.com/alex.jpg"
+    "background_color": "#B0B0B0",
+    "image_link": "assets/avatar/03.png"
   },
   {
-    "username": "Ella_Wright",
+    "username": "Ella Wright",
     "title": "Frontend Developer",
     "email": "ella@example.com",
     "password": "frontendpass",
     "rate": 40,
-    "backgroud_color": "#909090",
-    "image_link": "https://example.com/ella.jpg"
+    "background_color": "#909090",
+    "image_link": "assets/avatar/02.png"
   }
 ]

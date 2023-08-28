@@ -25,9 +25,13 @@ const projectSchema = new Schema({
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 50,
+    maxlength: 200,
   },
   background_color:{
+    type: String,
+    required: true,
+  },
+  image_link:{
     type: String,
     required: true,
   },

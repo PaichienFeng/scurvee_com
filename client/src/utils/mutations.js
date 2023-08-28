@@ -21,6 +21,7 @@ export const LOGIN_USER = gql`
         sow_title
         sow_detail
         background_color
+        image_link
       }
     }
     }
@@ -49,6 +50,7 @@ export const ADD_TEAMMEMBER = gql`
         sow_title
         sow_detail
         background_color
+        image_link
       }
       }
     }
@@ -56,8 +58,8 @@ export const ADD_TEAMMEMBER = gql`
 `;
 
 export const ADD_PROJECT = gql`
-  mutation addProject($name: String!, $client: String!, $budget: Float!, $sow_title: String!, $sow_detail: String!, $background_color: String!) {
-    addProject(name: $name, client: $client, budget: $budget, sow_title: $sow_title, sow_detail: $sow_detail, background_color: $background_color) {
+  mutation addProject($name: String!, $client: String!, $budget: Float!, $sow_title: String!, $sow_detail: String!, $background_color: String!, $image_link: String!) {
+    addProject(name: $name, client: $client, budget: $budget, sow_title: $sow_title, sow_detail: $sow_detail, background_color: $background_color, image_link: $image_link) {
       _id
       name
       client
@@ -65,6 +67,7 @@ export const ADD_PROJECT = gql`
       sow_title
       sow_detail
       background_color
+      image_link
       teamMembers {
       _id
       username
@@ -89,6 +92,7 @@ export const ADD_PROJECTTEAM = gql`
       sow_title
       sow_detail
       background_color
+      image_link
       teamMembers {
       _id
       username
