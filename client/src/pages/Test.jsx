@@ -1,8 +1,8 @@
 import { Container, ThemeProvider, Button, Typography, TextField } from "@mui/material";
 import { blue } from "@mui/material/colors";
 import theme from '../theme';
-import Footer from '../components/Footer/index';
-import Header from '../components/Header/index';
+import FooterNavBar from '../components/FooterNavBar/index';
+import TitleHeader from '../components/TitleHeader/index';
 
 const TeamTask = () => {
   return (
@@ -17,7 +17,7 @@ const TeamTask = () => {
         }}
       >
         <main>
-          <Header />
+          <TitleHeader />
           <Container
             sx={{
               flexGrow: 1,
@@ -51,7 +51,7 @@ const TeamTask = () => {
           </Container>
         </main>
       </Container>
-      <Footer />
+      <FooterNavBar />
     </ThemeProvider>
   );
 };
