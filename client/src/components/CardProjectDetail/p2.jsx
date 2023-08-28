@@ -4,7 +4,7 @@ import theme from '../../theme';
 import InsightsIcon from "@mui/icons-material/Insights";
 
 const CardProjectDetail2
- = () => {
+ = ({project}) => {
 
     return (
     <ThemeProvider theme={theme}>
@@ -24,8 +24,8 @@ const CardProjectDetail2
       >
         <Avatar
             variant="memberPic"
-            alt=""
-            src="../../src/assets/logo/submarine.png"
+            alt={project.name}
+            src={project.image_link}
             sx={{ 
                 width: 60, 
                 height: 60,
@@ -35,18 +35,22 @@ const CardProjectDetail2
         <div>
             <Typography 
                 variant="cardLightTitle"
-            >DUD SUBMARINE
+            >{project.name}
             </Typography>
             <Typography 
                 variant="cardLightTitleL1"
-            >Value: $ 1,250,000.00
+            >{project.budget}
             </Typography>
             <Typography 
                 variant="cardLightSubtitle"       
-            >Web Development
+            >{project.sow_title}
+            </Typography>
+            <Typography 
+                variant="cardLightSubtitle"       
+            >{project.sow_detail}
             </Typography>
 
-            <List>
+            {/* <List>
                 <ListItem
                     sx={{
                         marginY:-2,
@@ -87,7 +91,7 @@ const CardProjectDetail2
                     primaryTypographyProps={{ variant: "cardLightSubtitle"}}                   
                     />
                 </ListItem>
-            </List>
+            </List> */}
 
         </div>
         {/* //TODO onClick={handleFabClick} */}
