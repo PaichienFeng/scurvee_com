@@ -27,7 +27,7 @@ const projectSchema = new Schema({
     minlength: 1,
     maxlength: 50,
   },
-  backgroud_color:{
+  background_color:{
     type: String,
     required: true,
   },
