@@ -5,7 +5,7 @@ import './index.css'
 import App from './App.jsx'
 
 // TODO MUI addition
-import Test from './pages/Test';
+// import Test from './pages/Test';
 // TODO MUI Close addition
 import AddProject from './pages/AddProject';
 import AddProjectTeam from './pages/AddProjectTeam';
@@ -23,10 +23,12 @@ const router = createBrowserRouter([
     element: <App />,
     error: <Error />,
     children: [
+      // TODO MUI
       // {
       //   index: true,
       //   element: <Test />
       // },
+      // // TODO Close MUI
       {
         index: true,
         element: <Home />

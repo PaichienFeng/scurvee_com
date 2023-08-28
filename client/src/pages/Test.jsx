@@ -1,54 +1,112 @@
-import { Container, ThemeProvider, Fab, Grid } from '@mui/material';
-import { blue } from '@mui/material/colors';
-import theme from '../theme';
-import FooterNavBar from '../components/FooterNavBar/index';
-import TitleHeader from '../components/TitleHeader/index';
-import CardProjectDetail2 from '../components/CardProjectDetail/p2';
-import CardMember2 from '../components/CardMember/z2';
-import CardMember3 from '../components/CardMember/z3';
-import AddIcon from '@mui/icons-material/Add';
-
-const ProjectDetail = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Container
-        sx={{
-          width: '100%',
-          bgcolor: blue[50],
-          minHeight: '100vh',
-          position: 'relative',
-        }}
-      >
-        <main>
-          <TitleHeader />
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <CardProjectDetail2 />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <CardMember2 />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <CardMember3 />
-            </Grid>
-          </Grid>
-        </main>
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '16px', 
-            right: '16px',
-            paddingRight: 28,
+import {
+    Container,
+    ThemeProvider,
+    Button,
+    Typography,
+    Box,
+    Divider,
+    Fab,
+  } from '@mui/material';
+  import { blue } from '@mui/material/colors';
+  import theme from '../theme';
+  import Footer from '../components/Footer/index';
+  import Header from '../components/Header/index';
+  import AddIcon from '@mui/icons-material/Add';
+  
+  const Home = () => {
+    return (
+      <ThemeProvider theme={theme}>
+        <Container
+          sx={{
+            width: { xs: '100%', md: 960, lg: 1280, xl: 1920 },
+            bgcolor: blue[50],
+            minHeight: '100vh', 
+            display: 'flex',
+            flexDirection: 'column', 
           }}
         >
-          <Fab color="primary">
-            <AddIcon />
-          </Fab>
-        </div>
-      </Container>
-      <FooterNavBar />
-    </ThemeProvider>
-  );
-};
+          <Header />
+          <Container
+            sx={{
+              flexGrow: 1, 
+              bgcolor: blue[50],
+              display: 'flex',
+              flexDirection: 'column', 
+              alignItems: 'center', 
+              paddingTop: '16px', 
+              paddingBottom: '32px',
+            }}
+          >
+            <Box
+              sx={{
+                width: '100%',
+                bgcolor: blue[50],
+                height: '65vh',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr', 
+                gap: '16px', 
+              }}
+            >
+              <div>
+                <Box
+                  sx={{
+                    width: '100%',
+                    bgcolor: blue[50],
+                    height: '100%', 
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  {[...Array(9)].map((_, index) => (
+                    <Divider key={index} sx={{ backgroundColor: '#CCC' }} />
+                  ))}
+                </Box>
+                <Typography variant="columnChartTitle">Planned</Typography>
+              </div>
+              <div>
+                <Box
+                  sx={{
+                    width: '100%',
+                    bgcolor: blue[50],
+                    height: '100%', 
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  {[...Array(9)].map((_, index) => (
+                    <Divider key={index} sx={{ backgroundColor: '#CCC' }} />
+                  ))}
+                </Box>
+                <Typography variant="columnChartTitle">Actual</Typography>
+              </div>
+            </Box>
+  
+            <Container
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}
+            >
+              <Button variant="contained">Log All</Button>
+              <Fab color="primary">
+                <AddIcon />
+              </Fab>
+            </Container>
+          </Container>
 
-export default ProjectDetail;
+        </Container>
+        <Footer
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          />
+      </ThemeProvider>
+    );
+  };
+  
+  export default Home;
