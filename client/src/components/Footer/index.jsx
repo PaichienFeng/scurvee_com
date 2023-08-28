@@ -11,7 +11,6 @@ const Footer = () => {
                 height: "10vh",
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center",
               }}
       >
         <Typography 

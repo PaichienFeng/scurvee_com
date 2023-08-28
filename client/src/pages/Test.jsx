@@ -1,112 +1,59 @@
-import {
-    Container,
-    ThemeProvider,
-    Button,
-    Typography,
-    Box,
-    Divider,
-    Fab,
-  } from '@mui/material';
-  import { blue } from '@mui/material/colors';
-  import theme from '../theme';
-  import Footer from '../components/Footer/index';
-  import Header from '../components/Header/index';
-  import AddIcon from '@mui/icons-material/Add';
-  
-  const Home = () => {
-    return (
-      <ThemeProvider theme={theme}>
-        <Container
-          sx={{
-            width: { xs: '100%', md: 960, lg: 1280, xl: 1920 },
-            bgcolor: blue[50],
-            minHeight: '100vh', 
-            display: 'flex',
-            flexDirection: 'column', 
-          }}
-        >
+import { Container, ThemeProvider, Button, Typography, TextField } from "@mui/material";
+import { blue } from "@mui/material/colors";
+import theme from '../theme';
+import Footer from '../components/Footer/index';
+import Header from '../components/Header/index';
+
+const TeamTask = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Container
+        sx={{
+          width: "100%",
+          bgcolor: blue[50],
+          minHeight: "90vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <main>
           <Header />
           <Container
             sx={{
-              flexGrow: 1, 
+              flexGrow: 1,
               bgcolor: blue[50],
-              display: 'flex',
-              flexDirection: 'column', 
-              alignItems: 'center', 
-              paddingTop: '16px', 
-              paddingBottom: '32px',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "left",
+              padding: "16px",
             }}
           >
-            <Box
-              sx={{
-                width: '100%',
-                bgcolor: blue[50],
-                height: '65vh',
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr', 
-                gap: '16px', 
-              }}
-            >
-              <div>
-                <Box
-                  sx={{
-                    width: '100%',
-                    bgcolor: blue[50],
-                    height: '100%', 
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  {[...Array(9)].map((_, index) => (
-                    <Divider key={index} sx={{ backgroundColor: '#CCC' }} />
-                  ))}
-                </Box>
-                <Typography variant="columnChartTitle">Planned</Typography>
-              </div>
-              <div>
-                <Box
-                  sx={{
-                    width: '100%',
-                    bgcolor: blue[50],
-                    height: '100%', 
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  {[...Array(9)].map((_, index) => (
-                    <Divider key={index} sx={{ backgroundColor: '#CCC' }} />
-                  ))}
-                </Box>
-                <Typography variant="columnChartTitle">Actual</Typography>
-              </div>
-            </Box>
-  
+            <Typography>Date:</Typography>
+            <TextField label="Enter Date" />
+            <br /><br />
+            <Typography>Project Name:</Typography>
+            <TextField label="Enter Project Name" />
+            <br /><br />
+            <Typography>Duration:</Typography>
+            <TextField label="Enter Duration" />
+            <br /><br />
             <Container
               sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
                 marginTop: 8,
               }}
             >
-              <Button variant="contained">Log All</Button>
-              <Fab color="primary">
-                <AddIcon />
-              </Fab>
+              <Button variant="contained">Save</Button>
+              <Button variant="contained">Cancel</Button>
             </Container>
           </Container>
+        </main>
+      </Container>
+      <Footer />
+    </ThemeProvider>
+  );
+};
 
-        </Container>
-        <Footer
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          />
-      </ThemeProvider>
-    );
-  };
-  
-  export default Home;
+export default TeamTask;
