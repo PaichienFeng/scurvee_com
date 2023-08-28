@@ -27,7 +27,7 @@ const teamMemberSchema = new Schema({
     type: Number,
     required: true,
   },
-  backgroud_color:{
+  background_color:{
     type: String,
     required: true,
   },

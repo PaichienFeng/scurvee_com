@@ -14,6 +14,9 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import TeamAssignment from './pages/TeamAssignment';
 import TeamTask from './pages/TeamTask'
+import ProjectDetail from './pages/ProjectDetail';
+import ProjectList from './pages/ProjectList';
+import TeamList from './pages/TeamList';
 import Error from './pages/Error';
 
 
@@ -35,13 +38,22 @@ const router = createBrowserRouter([
       }, {        
         path: '/login',
         element: <Login />
-      }, {
+      }, {        
+        path: '/teammembers',
+        element: <TeamList />
+      },{
         path: '/teammembers/addteammember',
         element: <AddTeamMember />
-      }, {
+      }, {        
+        path: '/projects',
+        element: <ProjectList />
+      },{
         path: '/projects/addproject',
         element: <AddProject />
-      }, {
+      }, {        
+        path: '/projects/123',
+        element: <ProjectDetail />
+      },{
         path: '/projects/:projectId/addprojectteam',
         element: <AddProjectTeam />
       }, {

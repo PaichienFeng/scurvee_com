@@ -73,7 +73,7 @@ const resolvers = {
 
       return { token, teamMember };
     },
-    addProject: async (parent, {name, client, budget, sow_title, sow_detail, background_color}, context) => {
+    addProject: async (parent, {name, client, budget, sow_title, sow_detail, background_color, image_link}, context) => {
       if (context.user) {
         const project = await Project.create({
           name,
@@ -82,6 +82,7 @@ const resolvers = {
           sow_title,
           sow_detail,
           background_color,
+          image_link
         });
 
         return project;
