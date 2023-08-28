@@ -1,11 +1,55 @@
-import { Container, ThemeProvider, Button, Typography, TextField } from "@mui/material";
-import { blue } from "@mui/material/colors";
-import theme from '../theme';
-import FooterNavBar from '../components/FooterNavBar/index';
-import TitleHeader from '../components/TitleHeader/index';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 
-const TeamTask = () => {
+import Auth from '../utils/auth';
+
+// TODO Material UI
+import { Container, ThemeProvider, Button, Typography, TextField } from "@mui/material"
+import { blue } from "@mui/material/colors"
+import theme from '../theme';
+import Footer from '../components/Footer/index';
+// TODO Material UI End
+
+const Login = (props) => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+      alert('Invalid Email or Password')
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
+
   return (
+    // TODO Material UI 
     <ThemeProvider theme={theme}>
       <Container
         sx={{
@@ -14,46 +58,41 @@ const TeamTask = () => {
           minHeight: "90vh",
           display: "flex",
           flexDirection: "column",
+          justifyContent: "top",
+          paddingTop: 8,
         }}
       >
-        <main>
-          <TitleHeader />
-          <Container
+        <form onSubmit={handleFormSubmit}>
+          <Typography>Email</Typography>
+          <TextField
+            label="Enter email"
+            name="email"
+            type="email"
+            value={formState.email}
+            onChange={handleChange}
+          />
+          <br /><br />
+          <Typography>Password</Typography>
+          <TextField
+            label="Enter password"
+            name="password"
+            type="password"
+            value={formState.password}
+            onChange={handleChange}
+          />
+          <br /><br />
+          <Button
+            variant="contained"
+            type='submit'
             sx={{
-              flexGrow: 1,
-              bgcolor: blue[50],
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "left",
-              padding: "16px",
+                marginTop: 5
             }}
-          >
-            <Typography>Date:</Typography>
-            <TextField label="Enter Date" />
-            <br /><br />
-            <Typography>Project Name:</Typography>
-            <TextField label="Enter Project Name" />
-            <br /><br />
-            <Typography>Duration:</Typography>
-            <TextField label="Enter Duration" />
-            <br /><br />
-            <Container
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginTop: 8,
-              }}
-            >
-              <Button variant="contained">Save</Button>
-              <Button variant="contained">Cancel</Button>
-            </Container>
-          </Container>
-        </main>
+          >Login</Button>
+        </form>
       </Container>
-      <FooterNavBar />
+      <Footer />
     </ThemeProvider>
   );
 };
 
-export default TeamTask;
+export default Login;

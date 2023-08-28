@@ -4,7 +4,7 @@ import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
 
-const TeamTask = () => {
+const AdminTask = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -56,4 +56,4 @@ const TeamTask = () => {
   );
 };
 
-export default TeamTask;
+export default AdminTask;
