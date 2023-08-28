@@ -3,13 +3,11 @@ import { blue } from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-// import CardProjectTitle from '../components/CardProjectTitle/index';
 import CardProjectTitle1 from '../components/CardProjectTitle/p1';
-// import CardProjectTitle2 from '../components/CardProjectTitle/p2';
-// import CardProjectTitle3 from '../components/CardProjectTitle/p3';
 import AddIcon from "@mui/icons-material/Add";
 import { useQuery } from "@apollo/client";
 import { QUERY_PROJECTS } from '../utils/queries'
+import { Link } from "react-router-dom";
 
 const ProjectList = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
@@ -35,28 +33,6 @@ const ProjectList = () => {
           <CardProjectTitle1
             projects={projects}
           />
-
-
-          {/* <br></br>
-        <CardProjectTitle2 />
-        <br></br>
-        <CardProjectTitle3 />
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>        
-        <br></br>
-        <br></br>        
-        <br></br>
-        <br></br>     
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>        
-        <br></br>
-        <br></br>        
-        <br></br>                           */}
           <Container
             sx={{
               display: "flex",
@@ -65,11 +41,13 @@ const ProjectList = () => {
             }}
           >
             {/* //TODO onClick={handleFabClick} */}
+            <Link to="/projects/addproject">
             <Fab
               color="primary"
             >
               <AddIcon />
             </Fab>
+            </Link>
           </Container>
         </main>
       </Container>

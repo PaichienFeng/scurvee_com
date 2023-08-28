@@ -7,8 +7,16 @@ import CardProjectDetail2 from '../components/CardProjectDetail/p2';
 import CardMember2 from '../components/CardMember/z2';
 import CardMember3 from '../components/CardMember/z3';
 import AddIcon from '@mui/icons-material/Add';
+import { useParams } from 'react-router-dom';
+import { QUERY_PROJECT } from '../utils/queries';
 
 const ProjectDetail = () => {
+  const {projectId}= useParams();
+  const { loading, data } = useQuery(QUERY_PROJECT, {
+    variables: { projectId: projectId },
+  });
+  const project = data?.project 
+
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -23,14 +31,16 @@ const ProjectDetail = () => {
           <TitleHeader />
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <CardProjectDetail2 />
+              <CardProjectDetail2 
+              project={project}/>
             </Grid>
             <Grid item xs={12} md={6}>
-              <CardMember2 />
+              <CardMember2 
+              project={project}/>
             </Grid>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <CardMember3 />
-            </Grid>
+            </Grid> */}
           </Grid>
         </main>
         <div
