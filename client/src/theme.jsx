@@ -9,7 +9,7 @@ const theme = createTheme({
       main: blue[500],
     },
     secondary: {
-      main: red[700],
+      main: red[400],
     },
     // inputBackground: {
     //     main: "#ffffff",
@@ -58,6 +58,13 @@ const theme = createTheme({
     },
     cardLightTitle: {
         fontSize: "1.1rem",
+        fontWeight: "bold",
+        display: "flex",
+        flexDirection: "column",
+        paddingLeft: 18,
+    },
+    cardLightTitleL1: {
+        fontSize: "1rem",
         fontWeight: "bold",
         display: "flex",
         flexDirection: "column",

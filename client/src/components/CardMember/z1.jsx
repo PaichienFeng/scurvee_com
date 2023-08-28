@@ -38,7 +38,7 @@ const CardMember1
             </Typography>
             <Typography 
                 variant="cardDarkSubtitle"       
-            >Back End Specialist
+            >Front End Specialist
             </Typography>     
         </div>
 
