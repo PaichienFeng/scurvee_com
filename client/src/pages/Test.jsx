@@ -1,98 +1,63 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-
-import Auth from '../utils/auth';
-
-// TODO Material UI
-import { Container, ThemeProvider, Button, Typography, TextField } from "@mui/material"
-import { blue } from "@mui/material/colors"
+import { Container, ThemeProvider, Fab } from '@mui/material';
+import { blue } from '@mui/material/colors';
 import theme from '../theme';
-import Footer from '../components/Footer/index';
-// TODO Material UI End
+import FooterNavBar from '../components/FooterNavBar/index';
+import TitleHeader from '../components/TitleHeader/index';
+import CardProjectTitle1 from '../components/CardProjectTitle/p1';
+import AddIcon from '@mui/icons-material/Add';
+import { useQuery } from '@apollo/client';
+import { QUERY_PROJECTS } from '../utils/queries';
+import { Link } from 'react-router-dom';
 
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
-
-  // update state based on form input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  // submit form
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-    try {
-      const { data } = await login({
-        variables: { ...formState },
-      });
-
-      Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
-      alert('Invalid Email or Password')
-    }
-
-    // clear form values
-    setFormState({
-      email: '',
-      password: '',
-    });
-  };
+const ProjectList = () => {
+  const { loading, data } = useQuery(QUERY_PROJECTS);
+  const projects = data?.projects || [];
 
   return (
-    // TODO Material UI 
     <ThemeProvider theme={theme}>
       <Container
         sx={{
-          width: "100%",
+          width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
           bgcolor: blue[50],
-          minHeight: "90vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "top",
-          paddingTop: 8,
+          minHeight: '90vh',
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          position: 'relative',
+          overflow: 'hidden',
+          padding: '0 16px',
         }}
       >
-        <form onSubmit={handleFormSubmit}>
-          <Typography>Email</Typography>
-          <TextField
-            label="Enter email"
-            name="email"
-            type="email"
-            value={formState.email}
-            onChange={handleChange}
+        <main>
+          <TitleHeader />
+
+          <br />
+          <br />
+
+          <CardProjectTitle1
+            projects={projects}
+            sx={{ 
+                margin: '16px',
+             }} 
           />
-          <br /><br />
-          <Typography>Password</Typography>
-          <TextField
-            label="Enter password"
-            name="password"
-            type="password"
-            value={formState.password}
-            onChange={handleChange}
-          />
-          <br /><br />
-          <Button
-            variant="contained"
-            type='submit'
-            sx={{
-                marginTop: 5
-            }}
-          >Login</Button>
-        </form>
+        </main>
+
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '30px', 
+            right: '24px', 
+          }}
+        >
+          <Link to="/projects/addproject">
+            <Fab color="primary">
+              <AddIcon />
+            </Fab>
+          </Link>
+        </div>
       </Container>
-      <Footer />
+      <FooterNavBar />
     </ThemeProvider>
   );
 };
 
-export default Login;
+export default ProjectList;
