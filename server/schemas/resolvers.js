@@ -17,13 +17,17 @@ const resolvers = {
     },
     projects: async (parent, args, context) => {
       if (context.user) {
+        console.log('yes');
         return Project.find().populate('teamMembers');
       }
       throw AuthenticationError;
     },
     project: async (parent, { projectId }, context) => {
+      console.log('no');
+
       if (context.user) {
-        return Thought.findById(projectId).populate('teamMembers');
+        console.log('no');
+        return Project.findById(projectId).populate('teamMembers');
       }
       throw AuthenticationError;
     },
