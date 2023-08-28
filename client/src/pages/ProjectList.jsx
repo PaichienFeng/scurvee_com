@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 const ProjectList = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
   const projects = data?.projects || [];
-  console.log(projects);
   return (
     <ThemeProvider theme={theme}>
 

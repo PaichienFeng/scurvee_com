@@ -12,7 +12,7 @@ const CardMember2
                 <Box
                     sx={{
                         width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
-                        bgcolor: brown[700],
+                        bgcolor: teamMember.background_color,
                         maxWidth: "100%",
                         display: "flex",
                         justifyContent: "left",

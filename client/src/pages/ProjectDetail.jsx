@@ -7,7 +7,7 @@ import CardProjectDetail2 from '../components/CardProjectDetail/p2';
 import CardMember2 from '../components/CardMember/z2';
 import CardMember3 from '../components/CardMember/z3';
 import AddIcon from '@mui/icons-material/Add';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { QUERY_PROJECT } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
@@ -18,7 +18,6 @@ const ProjectDetail = () => {
     variables: { projectId: projectId },
   });
   const project = data?.project || {}
-  console.log(project)
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,9 +53,12 @@ const ProjectDetail = () => {
             paddingRight: 28,
           }}
         >
+          <Link
+          to={`/projects/${project._id}/addprojectteam`}>
           <Fab color="primary">
             <AddIcon />
           </Fab>
+          </Link>
         </div>
       </Container>
       <FooterNavBar />

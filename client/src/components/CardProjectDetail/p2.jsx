@@ -38,7 +38,7 @@ const CardProjectDetail2
                         </Typography>
                         <Typography
                             variant="cardLightTitleL1"
-                        >{project.budget}
+                        >Value: ${project.budget}
                         </Typography>
                         <Typography
                             variant="cardLightSubtitle"
