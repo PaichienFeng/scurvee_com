@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBERS } from '../../utils/queries'
 
 const CardMember1
-    = ({ project }) => {
+    = ({ project, onCardClick }) => {
         const { loading, data } = useQuery(QUERY_TEAMMEMBERS);
         const teamMembers = data?.teamMembers || [];
 
@@ -13,14 +13,16 @@ const CardMember1
             return <div>Loading...</div>;
         }
         console.log(project);
-        // const filteredMembers = teamMembers.filter(
-        //     (teamMember)=> !project.teamMembers.find((member)=>member._id === teamMember._id)
-        // )
+        const filteredMembers = teamMembers.filter(
+            (teamMember)=> !project.teamMembers?.find((member)=>member._id === teamMember._id)
+        )
 
         return (
             <ThemeProvider theme={theme}>
-                {teamMembers && teamMembers.map((teamMember)=>(
+                {filteredMembers && filteredMembers.map((teamMember)=>(
                 <Box
+                    key={teamMember._id}
+                    onClick={()=>onCardClick(teamMember._id)}
                     sx={{
                         width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
                         bgcolor: teamMember.background_color,
@@ -31,6 +33,7 @@ const CardMember1
                         alignItems: "center",
                         py: 1,
                         borderRadius: 3,
+                        cursor: "pointer",
                     }}
                 >
                     <Avatar
