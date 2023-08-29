@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TEAMMEMBER } from "../utils/mutations";
 import Auth from '../utils/auth';
+import { Link } from "react-router-dom";
 
 
 const initialForm = {
@@ -154,9 +155,12 @@ const AddTeamMember = () => {
               variant="contained"
               type="submit"
             > Add </ Button>
+            <Link
+            to={'/teammembers'}>
             <Button
               variant="contained"
             > Cancel </ Button>
+            </Link>
           </Container>
         </form>
       </Container>

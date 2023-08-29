@@ -1,6 +1,7 @@
 import { ThemeProvider, Typography, Avatar, Box } from "@mui/material"
 import { brown } from "@mui/material/colors"
 import theme from '../../theme';
+import { Link } from "react-router-dom";
 
 const CardMember2
     = ({ project }) => {
@@ -8,9 +9,11 @@ const CardMember2
         return (
             <ThemeProvider theme={theme}>
                 {project.teamMembers && project.teamMembers.map((teamMember)=>(
-
+                <Link
+                style={{ color: 'white', textDecoration: 'none' }}
+                key={teamMember._id}
+                to={`/projects/${project._id}/teamassignment`}>
                 <Box
-                    key={teamMember._id}
                     sx={{
                         width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
                         bgcolor: teamMember.background_color,
@@ -45,6 +48,7 @@ const CardMember2
                     </div>
 
                 </Box>
+                </Link>
                 ))}
 
             </ThemeProvider>
