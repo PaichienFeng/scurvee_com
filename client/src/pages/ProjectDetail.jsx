@@ -18,7 +18,7 @@ const ProjectDetail = () => {
     variables: { projectId: projectId },
   });
   const project = data?.project || {}
-
+  console.log(project.image_link);
   return (
     <ThemeProvider theme={theme}>
       <Container

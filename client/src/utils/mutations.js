@@ -108,7 +108,7 @@ export const ADD_PROJECTTEAM = gql`
 `;
 
 export const ADD_TEAMASSIGNMENT = gql`
-  mutation addTeamAssignment($teamMemberId: ID!, $projectId: ID!, $description: String!, $planned_duration: Float!, $acutal_duration: Float!, $task_date: String!) {
+  mutation addTeamAssignment($teamMemberId: ID!, $projectId: ID!, $description: String!, $planned_duration: Float!, $acutal_duration: Float, $task_date: String!) {
     addTeamAssignment(teamMemberId: $teamMemberId, projectId: $projectId, description: $description, planned_duration: $planned_duration, acutal_duration: $acutal_duration, task_date: $task_date) {
       _id
       teamMember

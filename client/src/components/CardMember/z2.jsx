@@ -12,7 +12,7 @@ const CardMember2
                 <Link
                 style={{ color: 'white', textDecoration: 'none' }}
                 key={teamMember._id}
-                to={`/projects/${project._id}/teamassignment`}>
+                to={`/projects/${project._id}/teamassignment/${teamMember._id}`}>
                 <Box
                     sx={{
                         width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
