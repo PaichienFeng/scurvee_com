@@ -1,12 +1,12 @@
-import { Container, ThemeProvider, Button, Typography, TextField } from "@mui/material"
-import { blue } from "@mui/material/colors"
+import { Container, ThemeProvider, Button, Typography, TextField, Grid } from '@mui/material';
+import { blue } from '@mui/material/colors';
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { Link, useNavigate } from "react-router-dom";
-import { ADD_PROJECT } from "../utils/mutations";
+import { Link, useNavigate } from 'react-router-dom';
+import { ADD_PROJECT } from '../utils/mutations';
 
 const initialForm = {
   name: '',
@@ -16,14 +16,16 @@ const initialForm = {
   sow_detail: '',
   background_color: '',
   image_link: '',
-}
+};
+
 const AddProject = () => {
   const [formState, setFormState] = useState(initialForm);
   const [addProject, { error, data }] = useMutation(ADD_PROJECT);
   const navigate = useNavigate();
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const newValue = name === "budget" ? parseFloat(value) : value;
+    const newValue = name === 'budget' ? parseFloat(value) : value;
     setFormState({
       ...formState,
       [name]: newValue,
@@ -38,130 +40,119 @@ const AddProject = () => {
       const { data } = await addProject({
         variables: { ...formState },
       });
-
     } catch (e) {
       console.error(e);
-    };
+    }
 
     setFormState(initialForm);
     navigate('/projects');
   };
+
   return (
     <ThemeProvider theme={theme}>
-
       <Container
         sx={{
-          width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
+          width: '100%', // Adjust to your design
           bgcolor: blue[50],
-          height: "90vh",
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          minHeight: '90vh',
         }}
       >
-        <form onSubmit={handleFormSubmit}>
+        <main>
           <TitleHeader />
-          <Typography
-          >Project Name:</Typography>
-          <TextField
-            label="Enter Project Name"
-            name="name"
-            type="text"
-            value={formState.name}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <Typography
-          >Client:</Typography>
-          <TextField
-            label="Enter Client"
-            name="client"
-            type="text"
-            value={formState.client}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <Typography
-          >Budget:</Typography>
-          <TextField
-            label="Enter Budget"
-            name="budget"
-            type="text"
-            value={formState.budget}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <Typography
-          >Image Link:</Typography>
-          <TextField
-            label="Enter Image Link"
-            name="image_link"
-            type="text"
-            value={formState.image_link}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <Typography
-          >SOW Title:</Typography>
-          <TextField
-            label="Enter SOW Title"
-            name="sow_title"
-            type="text"
-            value={formState.sow_title}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <Typography
-          >SOW Detail:</Typography>
-          <TextField
-            label="Enter SOW Detail"
-            name="sow_detail"
-            type="text"
-            value={formState.sow_detail}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <Typography
-          >Background Colour:</Typography>
-          <TextField
-            label="Enter Background Colour"
-            name="background_color"
-            type="text"
-            value={formState.background_color}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <br></br>
+
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <Typography>Project Name:</Typography>
+              <TextField
+                label="Enter Project Name"
+                name="name"
+                type="text"
+                value={formState.name}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography>Client:</Typography>
+              <TextField
+                label="Enter Client"
+                name="client"
+                type="text"
+                value={formState.client}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography>Budget:</Typography>
+              <TextField
+                label="Enter Budget"
+                name="budget"
+                type="text"
+                value={formState.budget}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography>Image Link:</Typography>
+              <TextField
+                label="Enter Image Link"
+                name="image_link"
+                type="text"
+                value={formState.image_link}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography>SOW Title:</Typography>
+              <TextField
+                label="Enter SOW Title"
+                name="sow_title"
+                type="text"
+                value={formState.sow_title}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography>SOW Detail:</Typography>
+              <TextField
+                label="Enter SOW Detail"
+                name="sow_detail"
+                type="text"
+                value={formState.sow_detail}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>Background Colour:</Typography>
+              <TextField
+                label="Enter Background Colour"
+                name="background_color"
+                type="text"
+                value={formState.background_color}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+
           <Container
             sx={{
-              display: "flex",
-              flexDirection: "row",
+              marginTop: 4,
+              display: 'flex',
+              flexDirection: 'row',
               justifyContent: 'space-between',
             }}
           >
-            <Button
-              type="submit"
-              variant="contained"
-            > Add </ Button>
-            <Link to='/projects'>
-              <Button
-                variant="contained"
-              > Cancel </ Button>
+            <Button type="submit" variant="contained">
+              Add
+            </Button>
+            <Link to="/projects">
+              <Button variant="contained">Cancel</Button>
             </Link>
           </Container>
-        </form>
+        </main>
       </Container>
       <FooterNavBar />
     </ThemeProvider>
   );
-
 };
-
 
 export default AddProject;
