@@ -7,7 +7,7 @@ import TitleHeader from '../components/TitleHeader/index';
 import CardMember1 from '../components/CardMember/z1';
 // import CardMember2 from '../components/CardMember/z2';
 // import CardMember3 from '../components/CardMember/z3';
-import { Link, useParams, useNavigate,} from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_PROJECT } from '../utils/queries';
 import {ADD_PROJECTTEAM} from '../utils/mutations';
@@ -20,7 +20,6 @@ const AddProjectTeam = () => {
     variables: { projectId: projectId },
   });
   const project = data?.project || {}
-  const navigate = useNavigate();
 
   const [addProjectTeam, {error}]= useMutation(ADD_PROJECTTEAM);
 

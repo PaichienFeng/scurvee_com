@@ -32,9 +32,9 @@ const typeDefs = `
     teamMember: TeamMember
     project: Project
     description: String
-    planned_duration: Float
-    acutal_duration: Float
-    task_date: String  
+    plannedDuration: Float
+    acutalDuration: Float
+    taskDate: String  
   }
 
   type Auth {

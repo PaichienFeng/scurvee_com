@@ -4,7 +4,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     teamMembers: async (parent, args, context) => {
-      if (context.user) {  
+      if (context.user) {
         return TeamMember.find().populate('projects');
       }
       throw AuthenticationError;
@@ -13,7 +13,7 @@ const resolvers = {
       if (context.user) {
         return TeamMember.findById(teamMemberId).populate('projects');
       }
-      throw AuthenticationError; 
+      throw AuthenticationError;
     },
     projects: async (parent, args, context) => {
       if (context.user) {
@@ -27,8 +27,8 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    today_tasks: async (parent, {teamMemberId, task_date}, context) => {
-      if (context.user){
+    today_tasks: async (parent, { teamMemberId, task_date }, context) => {
+      if (context.user) {
 
         const parsedTaskDate = new Date(task_date);
         return Task.find({
@@ -45,13 +45,13 @@ const resolvers = {
     addTeamMember: async (parent, { username, title, email, password, rate, background_color, image_link }) => {
       const teamMember = await TeamMember.create(
         {
-         username, 
-         title,
-         email, 
-         password,
-         rate,
-         background_color,
-         image_link
+          username,
+          title,
+          email,
+          password,
+          rate,
+          background_color,
+          image_link
         });
       const token = signToken(teamMember);
       return { token, teamMember };
@@ -73,7 +73,7 @@ const resolvers = {
 
       return { token, teamMember };
     },
-    addProject: async (parent, {name, client, budget, sow_title, sow_detail, background_color, image_link}, context) => {
+    addProject: async (parent, { name, client, budget, sow_title, sow_detail, background_color, image_link }, context) => {
       if (context.user) {
         const project = await Project.create({
           name,
@@ -84,7 +84,7 @@ const resolvers = {
           background_color,
           image_link
         });
-
+        // console.log(project);
         return project;
       }
       throw AuthenticationError;
@@ -105,9 +105,9 @@ const resolvers = {
         );
 
         await TeamMember.findOneAndUpdate(
-          {_id: teamMemberId},
+          { _id: teamMemberId },
           {
-            $addToSet:{
+            $addToSet: {
               projects: projectId,
             }
           },
@@ -122,14 +122,14 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addTeamAssignment: async (parent, {teamMemberId, projectId, description, planned_duration, task_date }, context) => {
+    addTeamAssignment: async (parent, args, context) => {
+      const parsedTaskDate = new Date(args.task_date);
       if (context.user) {
-        const parsedTaskDate = new Date(task_date);
         const task = await Task.create({
-          teamMember: teamMemberId,
-          project: projectId,
-          description,
-          planned_duration,
+          teamMember: args.teamMemberId,
+          project: args.projectId,
+          description: args.description,
+          planned_duration: args.plannedDuration,
           task_date: parsedTaskDate
         });
 
@@ -137,16 +137,17 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addTeamTask: async (parent, { teamMemberId, projectId, task_date, acutal_duration}, context) => {
+    addTeamTask: async (parent, { teamMemberId, projectId, task_date, acutal_duration }, context) => {
       if (context.user) {
         const parsedTaskDate = new Date(task_date);
         return Task.findOneAndUpdate(
-          { teamMember: teamMemberId,
+          {
+            teamMember: teamMemberId,
             project: projectId,
             task_date: parsedTaskDate
           },
           {
-            $set: {acutal_duration,}
+            $set: { acutal_duration, }
           },
           { new: true }
         );

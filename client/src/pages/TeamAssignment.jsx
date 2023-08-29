@@ -10,13 +10,13 @@ import CardMember3 from '../components/CardMember/z3';
 import { Link, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_TEAMASSIGNMENT } from '../utils/mutations';
-import { QUERY_PROJECT, QUERY_TEAMMEMBER } from '../utils/queries';
+import { QUERY_PROJECT} from '../utils/queries';
 import { useState } from "react";
 
 const initialForm = {
   description: '',
-  planned_duration: 0,
-  task_date: '',
+  plannedDuration: 0,
+  taskDate: '',
 }
 
 const TeamAssignment = () => {
@@ -27,37 +27,37 @@ const TeamAssignment = () => {
   });
   const project = projectData?.project || {};
 
-  const { loading, data } = useQuery(QUERY_TEAMMEMBER, {
-    variables: { teamMemberId: teamMemberId },
-  });
-  const teamMember = data?.teamMember || {};
+  const teamMember = project.teamMembers?.find(member=>member._id=== teamMemberId) || {}
 
   const [formState, setFormState] = useState(initialForm);
   const [addTeamAssignment, { error }] = useMutation(ADD_TEAMASSIGNMENT);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const newValue = name === "planned_duration" ? parseFloat(value) : value;
+    const newValue = name === "plannedDuration" ? parseFloat(value) : value;
     setFormState({
       ...formState,
       [name]: newValue,
     });
-    console.log(formState)
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-
     try {
       const { data: AssignmentData } = await addTeamAssignment({
         variables: {
-          teamMemberId: teamMemberId,
-          projectId: projectId,
-          ...formState
+          "teamMemberId": teamMemberId,
+          "projectId":projectId,
+          "description": formState.description,
+          "plannedDuration": formState.plannedDuration,
+          "taskDate": formState.taskDate
+
+          // teamMemberId: teamMemberId,
+          // projectId: projectId,
+          // ...formState
         },
       });
-      
+
       if (AssignmentData) {
         alert('You have successfully added the assignment!');
       }
@@ -93,9 +93,9 @@ const TeamAssignment = () => {
           <Typography
           >Date:</Typography>
           <TextField
-            name="task_date"
+            name="taskDate"
             type="date"
-            value={formState.task_date}
+            // value={formState.task_date}
             onChange={handleChange}
           ></TextField>
           <br></br>
@@ -106,7 +106,7 @@ const TeamAssignment = () => {
             label="Enter Task"
             name="description"
             type="text"
-            value={formState.description}
+            // value={formState.description}
             onChange={handleChange}
           ></TextField>
           <br></br>
@@ -115,9 +115,9 @@ const TeamAssignment = () => {
           >Duration:</Typography>
           <TextField
             label="Enter Duration"
-            name="planned_duration"
+            name="plannedDuration"
             type="number"
-            value={formState.planned_duration}
+            // value={formState.plannedDuration}
             onChange={handleChange}
           ></TextField>
           <br></br>
