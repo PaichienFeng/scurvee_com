@@ -21,7 +21,7 @@ const ProjectList = () => {
           bgcolor: blue[50],
           minHeight: '90vh',
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
+          flexDirection: { xs: 'column', md: 'column' },
           position: 'relative',
           overflow: 'hidden',
           padding: '0 16px',
