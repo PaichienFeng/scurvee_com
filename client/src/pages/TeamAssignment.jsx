@@ -50,12 +50,19 @@ const TeamAssignment = () => {
     console.log(formState);
 
     try {
-      const { data } = await addTeamAssignment({
-        variables: { teamMemberId, projectId, ...formState },
+      const { data: AssignmentData } = await addTeamAssignment({
+        variables: {
+          teamMemberId: teamMemberId,
+          projectId: projectId,
+          ...formState
+        },
       });
-
-    } catch (e) {
-      console.error(e);
+      
+      if (AssignmentData) {
+        alert('You have successfully added the assignment!');
+      }
+    } catch (error) {
+      console.error(error);
     };
 
     setFormState(initialForm);

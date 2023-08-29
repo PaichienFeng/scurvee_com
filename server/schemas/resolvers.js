@@ -122,7 +122,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addTeamAssignment: async (parent, {teamMemberId, projectId, description, planned_duration, acutal_duration, task_date }, context) => {
+    addTeamAssignment: async (parent, {teamMemberId, projectId, description, planned_duration, task_date }, context) => {
       if (context.user) {
         const parsedTaskDate = new Date(task_date);
         const task = await Task.create({
@@ -130,7 +130,6 @@ const resolvers = {
           project: projectId,
           description,
           planned_duration,
-          acutal_duration,
           task_date: parsedTaskDate
         });
 

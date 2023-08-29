@@ -55,7 +55,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addProject(name: String!, client: String!, budget: Float!, sow_title: String!, sow_detail: String!, background_color: String!, image_link: String!): Project
     addProjectTeam(projectId: ID!, teamMemberId: ID!): Project
-    addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, acutal_duration: Float, task_date: String! ): Task
+    addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, task_date: String! ): Task
     addTeamTask(teamMemberId: ID!, projectId: ID!, task_date: String!, acutal_duration: Float!): Task
   }
 `;
