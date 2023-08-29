@@ -116,15 +116,10 @@ export const ADD_TEAMASSIGNMENT = gql`
 `;
 
 export const ADD_TEAMTASK = gql`
-  mutation addTeamTask($teamMemberId: ID!, $projectId: ID!, $task_date: String!, $acutal_duration: Float!) {
-    addTeamTask(teamMemberId: $teamMemberId, projectId: $projectId, task_date: $task_date, acutal_duration: $acutal_duration) {
+  mutation addTeamTask($teamMemberId: ID!, $projectId: ID!, $taskDate: String!, $actualDuration: Float!) {
+    addTeamTask(teamMemberId: $teamMemberId, projectId: $projectId, task_date: $taskDate, actual_duration: $actualDuration) {
       _id
-      teamMember
-      project
-      description 
-      planned_duration
-      acutal_duration
-      task_date
+ 
     }
   }
 `;

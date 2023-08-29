@@ -10,7 +10,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     teamMember: async (parent, { teamMemberId }, context) => {
-      console.log('haha');
+      // console.log('haha');
       if (context.user) {
         return TeamMember.findById(teamMemberId).populate('projects');
       }
@@ -138,7 +138,8 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addTeamTask: async (parent, { teamMemberId, projectId, task_date, acutal_duration }, context) => {
+    addTeamTask: async (parent, { teamMemberId, projectId, task_date, actualDuration }, context) => {
+      console.log(teamMemberId, projectId, task_date, actualDuration);
       if (context.user) {
         const parsedTaskDate = new Date(task_date);
         return Task.findOneAndUpdate(
@@ -148,7 +149,7 @@ const resolvers = {
             task_date: parsedTaskDate
           },
           {
-            $set: { acutal_duration, }
+            $set: {actual_duration: actualDuration}
           },
           { new: true }
         );
