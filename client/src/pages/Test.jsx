@@ -52,7 +52,7 @@ const AddProject = () => {
     <ThemeProvider theme={theme}>
       <Container
         sx={{
-          width: '100%', // Adjust to your design
+          width: '100%',
           bgcolor: blue[50],
           minHeight: '90vh',
         }}
@@ -135,7 +135,7 @@ const AddProject = () => {
 
           <Container
             sx={{
-              marginTop: 4,
+              marginTop: 6,
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'space-between',
