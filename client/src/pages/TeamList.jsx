@@ -9,10 +9,17 @@ import CardMemberBin2 from '../components/CardMemberBin/z2';
 import CardMemberBin3 from '../components/CardMemberBin/z3';
 import AddIcon from "@mui/icons-material/Add";
 import { useQuery } from "@apollo/client";
-import { QUERY_TEAMMEMBERS } from '../utils/queries';
+import { QUERY_TEAMMEMBERS, QUERY_TEAMMEMBER } from '../utils/queries';
 import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
 const TeamList = () => {
+  const teamMemberId = Auth.getProfile().authenticatedPerson._id;
+  const {data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: teamMemberId}
+  })
+  const teamMember= teamMemberData?.teamMember||{}
+
 
   const { loading, data } = useQuery(QUERY_TEAMMEMBERS);
   const teamMembers = data?.teamMembers || []
@@ -30,7 +37,7 @@ const TeamList = () => {
         }}
       >
         <main>
-          <TitleHeader />
+          <TitleHeader teamMember={teamMember} title="TEAM LIST"/>
 
           <br></br>
           <br></br>

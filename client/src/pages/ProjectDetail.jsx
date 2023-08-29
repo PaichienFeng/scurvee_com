@@ -8,10 +8,17 @@ import CardMember2 from '../components/CardMember/z2';
 import CardMember3 from '../components/CardMember/z3';
 import AddIcon from '@mui/icons-material/Add';
 import { Link, useParams } from 'react-router-dom';
-import { QUERY_PROJECT } from '../utils/queries';
+import { QUERY_PROJECT, QUERY_TEAMMEMBER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
+import Auth from '../utils/auth';
 
 const ProjectDetail = () => {
+  const teamMemberId = Auth.getProfile().authenticatedPerson._id;
+  const {data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: teamMemberId}
+  })
+  const teamMember= teamMemberData?.teamMember||{}
+
   const {projectId}= useParams();
 
   const { loading, data } = useQuery(QUERY_PROJECT, {
@@ -30,7 +37,7 @@ const ProjectDetail = () => {
         }}
       >
         <main>
-          <TitleHeader />
+          <TitleHeader teamMember={teamMember} title="PROJECT DETAIL"/>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <CardProjectDetail2 

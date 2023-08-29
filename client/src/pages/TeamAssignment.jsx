@@ -10,8 +10,9 @@ import CardMember3 from '../components/CardMember/z3';
 import { Link, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_TEAMASSIGNMENT } from '../utils/mutations';
-import { QUERY_PROJECT} from '../utils/queries';
+import { QUERY_PROJECT, QUERY_TEAMMEMBER} from '../utils/queries';
 import { useState } from "react";
+import Auth from "../utils/auth";
 
 const initialForm = {
   description: '',
@@ -20,6 +21,12 @@ const initialForm = {
 }
 
 const TeamAssignment = () => {
+  const userId = Auth.getProfile().authenticatedPerson._id;
+  const {data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: userId}
+  })
+  const user= teamMemberData?.teamMember||{}
+
   const { teamMemberId } = useParams();
   const { projectId } = useParams();
   const { loading: projectLoading, data: projectData } = useQuery(QUERY_PROJECT, {
@@ -51,10 +58,6 @@ const TeamAssignment = () => {
           "description": formState.description,
           "plannedDuration": formState.plannedDuration,
           "taskDate": formState.taskDate
-
-          // teamMemberId: teamMemberId,
-          // projectId: projectId,
-          // ...formState
         },
       });
 
@@ -80,7 +83,7 @@ const TeamAssignment = () => {
         }}
       >
         <form onSubmit={handleFormSubmit}>
-          <TitleHeader />
+          <TitleHeader teamMember={user} title="TEAM ASSIGNMENT"/>
 
           {/* <br></br>
         <br></br>

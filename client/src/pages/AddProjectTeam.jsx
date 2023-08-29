@@ -9,11 +9,18 @@ import CardMember1 from '../components/CardMember/z1';
 // import CardMember3 from '../components/CardMember/z3';
 import { Link, useParams} from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_PROJECT } from '../utils/queries';
+import { QUERY_PROJECT, QUERY_TEAMMEMBER } from '../utils/queries';
 import {ADD_PROJECTTEAM} from '../utils/mutations';
+import Auth from "../utils/auth";
 
 
 const AddProjectTeam = () => {
+  const teamMemberId = Auth.getProfile().authenticatedPerson._id;
+  const {data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: teamMemberId}
+  })
+  const teamMember= teamMemberData?.teamMember||{}
+
   const {projectId}= useParams();
 
   const { loading, data } = useQuery(QUERY_PROJECT, {
@@ -53,7 +60,7 @@ const AddProjectTeam = () => {
       }}
     >
       <main>
-      <TitleHeader />
+      <TitleHeader teamMember={teamMember} title="ADD PROJECT TEAM"/>
 
         <br></br>
         <br></br>

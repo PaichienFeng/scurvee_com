@@ -10,6 +10,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     teamMember: async (parent, { teamMemberId }, context) => {
+      console.log('haha');
       if (context.user) {
         return TeamMember.findById(teamMemberId).populate('projects');
       }

@@ -61,7 +61,6 @@ export const QUERY_TEAMMEMBER = gql`
       rate
       background_color
       image_link
-      createdAt
       projects {
         _id
         name
