@@ -23,7 +23,7 @@ const resolvers = {
     },
     project: async (parent, { projectId }, context) => {
       if (context.user) {
-        return Thought.findById(projectId).populate('teamMembers');
+        return Project.findById(projectId).populate('teamMembers');
       }
       throw AuthenticationError;
     },

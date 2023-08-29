@@ -4,7 +4,7 @@
     "client": "Sam Bankman-Fried",
     "budget": 125000,
     "sow_title": "iOS Implementation",
-    "sow_detail": "-Virtual Tours \n -Mini Game \n -Social Media Integration \n -Photo Booth Feature",
+    "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
     "background_color": "#E5F2FF",
     "image_link": "../../src/assets/logo/conman.png"
   },
@@ -13,7 +13,7 @@
     "client": "Anthony Albanese",
     "budget": 150000,
     "sow_title": "Web Development",
-    "sow_detail": "-Virtual Tours \n -Mini Game \n -Social Media Integration \n -Photo Booth Feature",
+    "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
     "background_color": "#FCE5CD",
     "image_link": "../../src/assets/logo/submarine.png"
   },
@@ -22,7 +22,7 @@
     "client": "Ludwig Van Beethoven",
     "budget": 65000,
     "sow_title": "Web Maintenance",
-    "sow_detail": "-Virtual Tours \n -Mini Game \n -Social Media Integration \n -Photo Booth Feature",
+    "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
     "background_color": "#DFF2BF",
     "image_link": "../../src/assets/logo/headphones.png"
   },

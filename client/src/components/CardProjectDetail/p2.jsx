@@ -1,56 +1,56 @@
 import { ThemeProvider, Typography, Avatar, Box, Fab, List, ListItem, ListItemText } from "@mui/material"
-import {orange} from "@mui/material/colors"
+import { orange } from "@mui/material/colors"
 import theme from '../../theme';
 import InsightsIcon from "@mui/icons-material/Insights";
 
 const CardProjectDetail2
- = ({project}) => {
+    = ({ project }) => {
+        return (
+            <ThemeProvider theme={theme}>
 
-    return (
-    <ThemeProvider theme={theme}>
+                <Box
+                    sx={{
+                        width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
+                        bgcolor: orange[200],
+                        maxWidth: "100%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        paddingLeft: 2,
+                        py: 1,
+                        paddingRight: 2,
+                        borderRadius: 3,
+                    }}
+                >
+                    <Avatar
+                        variant="memberPic"
+                        alt={project.name}
+                        src={project.image_link}
+                        sx={{
+                            width: 60,
+                            height: 60,
+                        }}
+                    />
 
-<Box
-            sx={{ 
-                width: { xs: 400, md: 960, lg: 1280, xl: 1920},
-                bgcolor: orange[200], 
-                maxWidth: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                paddingLeft: 2,
-                py: 1,
-                paddingRight: 2,
-                borderRadius: 3,
-              }}
-      >
-        <Avatar
-            variant="memberPic"
-            alt={project.name}
-            src={project.image_link}
-            sx={{ 
-                width: 60, 
-                height: 60,
-            }}
-            />
+                    <div>
+                        <Typography
+                            variant="cardLightTitle"
+                        >{project.name}
+                        </Typography>
+                        <Typography
+                            variant="cardLightTitleL1"
+                        >Value: ${project.budget}
+                        </Typography>
+                        <Typography
+                            variant="cardLightSubtitle"
+                        >{project.sow_title}
+                        </Typography>
+                        <Typography
+                            sx={{ whiteSpace: 'pre-line' }}
+                            variant="cardLightSubtitle"
+                        >{project.sow_detail}
+                        </Typography>
 
-        <div>
-            <Typography 
-                variant="cardLightTitle"
-            >{project.name}
-            </Typography>
-            <Typography 
-                variant="cardLightTitleL1"
-            >{project.budget}
-            </Typography>
-            <Typography 
-                variant="cardLightSubtitle"       
-            >{project.sow_title}
-            </Typography>
-            <Typography 
-                variant="cardLightSubtitle"       
-            >{project.sow_detail}
-            </Typography>
-
-            {/* <List>
+                        {/* <List>
                 <ListItem
                     sx={{
                         marginY:-2,
@@ -93,22 +93,22 @@ const CardProjectDetail2
                 </ListItem>
             </List> */}
 
-        </div>
-        {/* //TODO onClick={handleFabClick} */}
-        {/* //TODO Delete Later if Not Functional */}
-        <Fab 
-        color="primary"
-        >
-            <InsightsIcon />
-        </Fab>
+                    </div>
+                    {/* //TODO onClick={handleFabClick} */}
+                    {/* //TODO Delete Later if Not Functional */}
+                    <Fab
+                        color="primary"
+                    >
+                        <InsightsIcon />
+                    </Fab>
 
 
 
-      </Box>
+                </Box>
 
-    </ThemeProvider>
-    );
-  
-  };
+            </ThemeProvider>
+        );
 
-  export default CardProjectDetail2;
+    };
+
+export default CardProjectDetail2;
