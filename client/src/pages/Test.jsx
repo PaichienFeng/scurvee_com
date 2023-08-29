@@ -1,40 +1,14 @@
-import { Container, ThemeProvider, Button, Grid } from '@mui/material';
+import { Container, ThemeProvider, Fab, Grid } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-import CardMember1 from '../components/CardMember/';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_PROJECT } from '../utils/queries';
-import { ADD_PROJECTTEAM } from '../utils/mutations';
+import CardMemberBin1 from '../components/CardMemberBin/z1';
+import CardMemberBin2 from '../components/CardMemberBin/z2';
+import CardMemberBin3 from '../components/CardMemberBin/z3';
+import AddIcon from '@mui/icons-material/Add';
 
-const AddProjectTeam = () => {
-  const { projectId } = useParams();
-
-  const { loading, data } = useQuery(QUERY_PROJECT, {
-    variables: { projectId: projectId },
-  });
-  const project = data?.project || {};
-  const navigate = useNavigate();
-
-  const [addProjectTeam, { error }] = useMutation(ADD_PROJECTTEAM);
-
-  const handleCardClick = async (teamMemberId) => {
-    try {
-      const { data } = await addProjectTeam({
-        variables: {
-          projectId: projectId,
-          teamMemberId: teamMemberId,
-        },
-      });
-    } catch (error) {
-      console.error(error);
-    }
-
-    window.location.assign(`/projects/${projectId}`);
-  };
-
+const TeamList = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -49,7 +23,13 @@ const AddProjectTeam = () => {
 
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <CardMember1 project={project} onCardClick={handleCardClick} />
+              <CardMemberBin1 />
+            </Grid>
+            <Grid item xs={12}>
+              <CardMemberBin2 />
+            </Grid>
+            <Grid item xs={12}>
+              <CardMemberBin3 />
             </Grid>
           </Grid>
 
@@ -57,14 +37,13 @@ const AddProjectTeam = () => {
             sx={{
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: 6,
+              justifyContent: 'flex-end',
+              marginTop: 4,
             }}
           >
-            <Button variant="contained">Add</Button>
-            <Link to={`/projects/${projectId}`}>
-              <Button variant="contained">Cancel</Button>
-            </Link>
+            <Fab color="primary">
+              <AddIcon />
+            </Fab>
           </Container>
         </main>
       </Container>
@@ -73,4 +52,4 @@ const AddProjectTeam = () => {
   );
 };
 
-export default AddProjectTeam;
+export default TeamList;

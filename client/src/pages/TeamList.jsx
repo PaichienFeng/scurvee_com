@@ -1,75 +1,55 @@
-import {Container, ThemeProvider, Fab} from "@mui/material"
-import {blue} from "@mui/material/colors"
+import { Container, ThemeProvider, Fab, Grid } from '@mui/material';
+import { blue } from '@mui/material/colors';
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-// import CardMemberBin from '../components/CardMemberBin/index';
 import CardMemberBin1 from '../components/CardMemberBin/z1';
 import CardMemberBin2 from '../components/CardMemberBin/z2';
 import CardMemberBin3 from '../components/CardMemberBin/z3';
-import AddIcon from "@mui/icons-material/Add";
+import AddIcon from '@mui/icons-material/Add';
 
 const TeamList = () => {
-
   return (
-  <ThemeProvider theme={theme}>
-
-    <Container 
-      sx={{ 
-        width: { xs: 400, md: 960, lg: 1280, xl: 1920},
-        bgcolor: blue[50], 
-        height: "90vh",
-        display: "flex",
-        flexDirection: { xs: "column", md: "row"},
-      }}
-    >
-      <main>
-      <TitleHeader />
-
-        <br></br>
-        <br></br>
-        <CardMemberBin1 />
-        <br></br>
-        <CardMemberBin2 />
-        <br></br>
-        <CardMemberBin3 />
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>        
-        <br></br>
-        <br></br>        
-        <br></br>
-        <br></br>     
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>        
-        <br></br>
-        <br></br>        
-        <br></br>                          
-        <Container 
+    <ThemeProvider theme={theme}>
+      <Container
         sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: 'right',  
+          width: '100%',
+          bgcolor: blue[50],
+          minHeight: '90vh',
         }}
-        >
-        {/* //TODO onClick={handleFabClick} */}
-        <Fab 
-        color="primary"
-        >
-            <AddIcon />
-        </Fab>        
-        </Container>
-      </main>
-    </Container>
-    <FooterNavBar />
-  </ThemeProvider>
+      >
+        <main>
+          <TitleHeader />
+
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <CardMemberBin1 />
+            </Grid>
+            <Grid item xs={12}>
+              <CardMemberBin2 />
+            </Grid>
+            <Grid item xs={12}>
+              <CardMemberBin3 />
+            </Grid>
+          </Grid>
+
+          <Container
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              marginTop: 4,
+            }}
+          >
+            <Fab color="primary">
+              <AddIcon />
+            </Fab>
+          </Container>
+        </main>
+      </Container>
+      <FooterNavBar />
+    </ThemeProvider>
   );
-
 };
-
 
 export default TeamList;
