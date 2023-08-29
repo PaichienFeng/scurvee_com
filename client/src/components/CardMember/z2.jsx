@@ -1,52 +1,55 @@
 import { ThemeProvider, Typography, Avatar, Box } from "@mui/material"
-import {brown} from "@mui/material/colors"
+import { brown } from "@mui/material/colors"
 import theme from '../../theme';
 
 const CardMember2
- = () => {
+    = ({ project }) => {
 
-    return (
-    <ThemeProvider theme={theme}>
+        return (
+            <ThemeProvider theme={theme}>
+                {project.teamMembers && project.teamMembers.map((teamMember)=>(
 
-<Box
-            sx={{ 
-                width: { xs: 400, md: 960, lg: 1280, xl: 1920},
-                bgcolor: brown[700], 
-                maxWidth: "100%",
-                display: "flex",
-                justifyContent: "left",
-                paddingLeft: 2,
-                alignItems: "center",
-                py: 1,
-                borderRadius: 3,
-              }}
-      >
-        <Avatar
-            variant="memberPic"
-            alt=""
-            src="../../src/assets/avatar/02.png"
-            sx={{ 
-                width: 60, 
-                height: 60,
-            }}
-            />
+                <Box
+                    key={teamMember._id}
+                    sx={{
+                        width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
+                        bgcolor: teamMember.background_color,
+                        maxWidth: "100%",
+                        display: "flex",
+                        justifyContent: "left",
+                        paddingLeft: 2,
+                        alignItems: "center",
+                        py: 1,
+                        borderRadius: 3,
+                    }}
+                >
+                    <Avatar
+                        variant="memberPic"
+                        alt={teamMember.username}
+                        src={teamMember.image_link}
+                        sx={{
+                            width: 60,
+                            height: 60,
+                        }}
+                    />
 
-        <div>
-            <Typography 
-                variant="cardDarkTitle"
-            >IL Capo
-            </Typography>
-            <Typography 
-                variant="cardDarkSubtitle"       
-            >Project Manager
-            </Typography>     
-        </div>
+                    <div>
+                        <Typography
+                            variant="cardDarkTitle"
+                        >{teamMember.username}
+                        </Typography>
+                        <Typography
+                            variant="cardDarkSubtitle"
+                        >P{teamMember.title}
+                        </Typography>
+                    </div>
 
-      </Box>
+                </Box>
+                ))}
 
-    </ThemeProvider>
-    );
-  
-  };
+            </ThemeProvider>
+        );
 
-  export default CardMember2;
+    };
+
+export default CardMember2;
