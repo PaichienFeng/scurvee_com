@@ -7,7 +7,7 @@ const CardProjectTitle1 = ({ projects }) => {
     return (
         <ThemeProvider theme={theme}>
             {projects.map((project) => (
-                <Link style={{ color: 'black' }}
+                <Link style={{ color: 'black', textDecoration: 'none' }}
                     to={`/projects/${project._id}`}
                     key={project._id}
                 >

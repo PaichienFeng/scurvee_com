@@ -3,6 +3,7 @@ import theme from '../../theme';
 import Home from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import ProjectIcon from '@mui/icons-material/Assignment';
+import { Link } from 'react-router-dom';
 
 const FooterNavBar = () => {
   return (
@@ -21,9 +22,18 @@ const FooterNavBar = () => {
         }}
       >
         <BottomNavigation>
-          <BottomNavigationAction label="Home" icon={<Home style={{ fontSize: 30 }} />} />
-          <BottomNavigationAction label="TeamList" icon={<PersonIcon style={{ fontSize: 30 }} />} />
-          <BottomNavigationAction label="ProjectList" icon={<ProjectIcon style={{ fontSize: 30 }} />} />
+          <Link
+          to={'/'}>
+          <BottomNavigationAction showLabel={true} label="Home" icon={<Home style={{ fontSize: 30 }} />} />
+          </Link>
+          <Link
+          to={'/teammembers'}>
+          <BottomNavigationAction showLabel={true} label="TeamList" icon={<PersonIcon style={{ fontSize: 30 }} />} />
+          </Link>
+          <Link
+          to={'/projects'}>
+          <BottomNavigationAction showLabel={true} label="ProjectList" icon={<ProjectIcon style={{ fontSize: 30 }} />} />
+          </Link>
         </BottomNavigation>
       </Box>
     </ThemeProvider>

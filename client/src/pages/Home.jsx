@@ -2,10 +2,23 @@ import {Container, ThemeProvider, Button, Typography, Box, Divider, Fab} from "@
 import {blue} from "@mui/material/colors"
 import theme from '../theme';
 import Footer from '../components/Footer/index';
+import FooterNavBar from "../components/FooterNavBar";
 import Header from '../components/Header/index';
 import AddIcon from "@mui/icons-material/Add";
+import Auth from '../utils/auth';
+import { Link, Navigate } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_TEAMMEMBER } from "../utils/queries";
 
 const Home = () => {
+  if (!Auth.loggedIn()){
+    return <Navigate to="/login" />;
+  }
+  const teamMemberId = Auth.getProfile().authenticatedPerson._id;
+  const {loading, data} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: teamMemberId}
+  })
+  const teamMember= data?.teamMember||{}
 
   return (
   <ThemeProvider theme={theme}>
@@ -20,7 +33,7 @@ const Home = () => {
       }}
     >
       <main>
-      <Header />
+      <Header teamMember={teamMember} title={teamMember.username}/>
       <Container
         sx={{
             width: "100%",
@@ -84,17 +97,21 @@ const Home = () => {
         <Button 
         variant="contained"
         > Log All </ Button>
-
-{/* //TODO onClick={handleFabClick} */}
+        <Link
+        to={'/teamtask'}>
         <Fab 
         color="primary"
         >
             <AddIcon />
         </Fab>
+        </Link>
         </Container>
       </main>
     </Container>
+    {Auth.getProfile().authenticatedPerson.username === "IL Capo"?
+    <FooterNavBar/>:
     <Footer />
+    }
   </ThemeProvider>
   );
 

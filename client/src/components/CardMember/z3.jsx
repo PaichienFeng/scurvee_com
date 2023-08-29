@@ -3,7 +3,7 @@ import {grey} from "@mui/material/colors"
 import theme from '../../theme';
 
 const CardMember3
- = () => {
+ = ({teamMember}) => {
 
     return (
     <ThemeProvider theme={theme}>
@@ -11,7 +11,7 @@ const CardMember3
 <Box
             sx={{ 
                 width: { xs: 400, md: 960, lg: 1280, xl: 1920},
-                bgcolor: grey[700], 
+                bgcolor: teamMember.background_color, 
                 maxWidth: "100%",
                 display: "flex",
                 justifyContent: "left",
@@ -23,8 +23,8 @@ const CardMember3
       >
         <Avatar
             variant="memberPic"
-            alt=""
-            src="../../src/assets/avatar/04.png"
+            alt={teamMember.username}
+            src={`/${teamMember.image_link}`}
             sx={{ 
                 width: 60, 
                 height: 60,
@@ -34,11 +34,11 @@ const CardMember3
         <div>
             <Typography 
                 variant="cardDarkTitle"
-            >Tim McNerd
+            >{teamMember.username}
             </Typography>
             <Typography 
                 variant="cardDarkSubtitle"       
-            >Back End Specialist
+            >{teamMember.title}
             </Typography>     
         </div>
 

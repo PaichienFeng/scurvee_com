@@ -6,10 +6,18 @@ import TitleHeader from '../components/TitleHeader/index';
 import CardProjectTitle1 from '../components/CardProjectTitle/p1';
 import AddIcon from "@mui/icons-material/Add";
 import { useQuery } from "@apollo/client";
-import { QUERY_PROJECTS } from '../utils/queries'
+import { QUERY_PROJECTS, QUERY_TEAMMEMBER } from '../utils/queries'
 import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
 const ProjectList = () => {
+
+  const teamMemberId = Auth.getProfile().authenticatedPerson._id;
+  const {data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: teamMemberId}
+  })
+  const teamMember= teamMemberData?.teamMember||{}
+
   const { loading, data } = useQuery(QUERY_PROJECTS);
   const projects = data?.projects || [];
   return (
@@ -25,7 +33,7 @@ const ProjectList = () => {
         }}
       >
         <main>
-          <TitleHeader />
+          <TitleHeader teamMember={teamMember} title="PROJECT LIST"/>
 
           <br></br>
           <br></br>

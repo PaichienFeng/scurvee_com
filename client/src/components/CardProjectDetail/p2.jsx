@@ -11,7 +11,7 @@ const CardProjectDetail2
                 <Box
                     sx={{
                         width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
-                        bgcolor: orange[200],
+                        bgcolor: project.background_color,
                         maxWidth: "100%",
                         display: "flex",
                         justifyContent: "space-between",

@@ -7,7 +7,9 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TEAMMEMBER } from "../utils/mutations";
 import Auth from '../utils/auth';
-
+import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_TEAMMEMBER } from "../utils/queries";
 
 const initialForm = {
   username: '',
@@ -20,6 +22,13 @@ const initialForm = {
 }
 
 const AddTeamMember = () => {
+
+  const teamMemberId = Auth.getProfile().authenticatedPerson._id;
+  const {loading, data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: teamMemberId}
+  })
+  const teamMember= teamMemberData?.teamMember||{}
+
   const [formState, setFormState] = useState(initialForm);
   const [addTeamMember, { error, data }] = useMutation(ADD_TEAMMEMBER);
 
@@ -61,7 +70,7 @@ const AddTeamMember = () => {
         }}
       >
         <form onSubmit={handleFormSubmit}>
-          <TitleHeader />
+          <TitleHeader teamMember={teamMember} title="ADD TEAM MEMBER"/>
           <Typography
           >Username:</Typography>
           <TextField
@@ -154,9 +163,12 @@ const AddTeamMember = () => {
               variant="contained"
               type="submit"
             > Add </ Button>
+            <Link
+            to={'/teammembers'}>
             <Button
               variant="contained"
             > Cancel </ Button>
+            </Link>
           </Container>
         </form>
       </Container>

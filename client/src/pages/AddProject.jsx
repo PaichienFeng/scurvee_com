@@ -5,8 +5,11 @@ import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ADD_PROJECT } from "../utils/mutations";
+import Auth from '../utils/auth';
+import { useQuery } from "@apollo/client";
+import { QUERY_TEAMMEMBER } from "../utils/queries";
 
 const initialForm = {
   name: '',
@@ -18,9 +21,15 @@ const initialForm = {
   image_link: '',
 }
 const AddProject = () => {
+
+  const teamMemberId = Auth.getProfile().authenticatedPerson._id;
+  const {loading, data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
+    variables:{teamMemberId: teamMemberId}
+  })
+  const teamMember= teamMemberData?.teamMember||{}
+
   const [formState, setFormState] = useState(initialForm);
   const [addProject, { error, data }] = useMutation(ADD_PROJECT);
-  const navigate = useNavigate();
   const handleChange = (event) => {
     const { name, value } = event.target;
     const newValue = name === "budget" ? parseFloat(value) : value;
@@ -44,7 +53,8 @@ const AddProject = () => {
     };
 
     setFormState(initialForm);
-    navigate('/projects');
+    window.location.assign(`/projects`);
+    
   };
   return (
     <ThemeProvider theme={theme}>
@@ -59,7 +69,9 @@ const AddProject = () => {
         }}
       >
         <form onSubmit={handleFormSubmit}>
-          <TitleHeader />
+          <TitleHeader 
+          teamMember={teamMember}
+          title="ADD PROJECT"/>
           <Typography
           >Project Name:</Typography>
           <TextField

@@ -1,10 +1,28 @@
 import { ThemeProvider, Typography, Box, Avatar } from "@mui/material"
 import {blue} from "@mui/material/colors"
 import theme from '../../theme';
+import { useState, useEffect } from "react";
 // import defaultDate from './defaultDate';
 
-const TitleHeader = () => {
+const TitleHeader = ({teamMember, title}) => {
 
+    const [currentDate, setCurrentDate] = useState(new Date());
+
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            setCurrentDate(new Date());
+        }, 60000);
+        return ()=> clearInterval(interval);
+    }, []);
+
+    const options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      };
+    
+      const formattedDate = currentDate.toLocaleDateString(undefined, options);
   return (
   <ThemeProvider theme={theme}>
       <Box
@@ -21,18 +39,18 @@ const TitleHeader = () => {
         <div>
             <Typography 
                 variant="pageTitle"
-            >Page Title
+            >{title}
             </Typography>
             <Typography 
                 variant="date"       
-            >Sunday, 27 August 2023
+            >{formattedDate}
             </Typography>     
         {/* <defaultDate />    */}
         </div>
         <Avatar
             variant="memberPic"
             alt=""
-            src="../../src/assets/avatar/02.png"
+            src={`/${teamMember.image_link}`}
             sx={{ 
                 width: 60, 
                 height: 60,
