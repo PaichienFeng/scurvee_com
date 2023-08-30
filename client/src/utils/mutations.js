@@ -123,3 +123,11 @@ export const ADD_TEAMTASK = gql`
     }
   }
 `;
+
+export const DELETE_TEAMMEMBER = gql`
+  mutation deleteTeamMember($teamMemberId: ID!) {
+    deleteTeamMember(teamMemberId: $teamMemberId) {
+      _id
+    }
+  }
+`;

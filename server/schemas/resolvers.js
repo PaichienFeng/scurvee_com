@@ -163,6 +163,20 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+
+    deleteTeamMember: async (parent, {teamMemberId}, context) => {
+      if (context.user){
+        const deletedTeamMember = await TeamMember.findByIdAndDelete(teamMemberId);
+
+        await Project.updateMany(
+          {teamMembers: teamMemberId},
+          {$pull: {teamMembers: teamMemberId}}
+        );
+
+        return deletedTeamMember;
+      }
+      throw AuthenticationError
+    }
   },
 };
 

@@ -57,6 +57,7 @@ const typeDefs = `
     addProjectTeam(projectId: ID!, teamMemberId: ID!): Project
     addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, task_date: String! ): Task
     addTeamTask(teamMemberId: ID!, projectId: ID!, task_date: String!, actual_duration: Float!): Task
+    deleteTeamMember(teamMemberId:ID!):TeamMember
   }
 `;
 

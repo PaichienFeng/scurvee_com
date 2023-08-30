@@ -25,7 +25,7 @@ const ProjectDetail = () => {
     variables: { projectId: projectId },
   });
   const project = data?.project || {}
-  console.log(project);
+  // console.log(project);
   return (
     <ThemeProvider theme={theme}>
       <Container
