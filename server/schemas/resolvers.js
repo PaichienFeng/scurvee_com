@@ -29,16 +29,21 @@ const resolvers = {
       throw AuthenticationError;
     },
     today_tasks: async (parent, { teamMemberId, task_date }, context) => {
+      console.log(teamMemberId, task_date);
       if (context.user) {
-
-        const parsedTaskDate = new Date(task_date);
-        return Task.find({
-          teamMember: teamMemberId,
-          task_date: parsedTaskDate
-        })
+        try {
+          const parsedTaskDate = new Date(task_date);
+          const today_tasks= await Task.find({
+            teamMember: teamMemberId,
+            task_date: parsedTaskDate
+          }).populate('project');
+          return today_tasks;
+        } catch (error) {
+          console.error(error);
+        }
       }
       throw AuthenticationError;
-
+      
     }
   },
 
@@ -54,8 +59,7 @@ const resolvers = {
           background_color,
           image_link
         });
-      const token = signToken(teamMember);
-      return { token, teamMember };
+      return {teamMember };
     },
     login: async (parent, { email, password }) => {
       const teamMember = await TeamMember.findOne({ email });
@@ -127,6 +131,14 @@ const resolvers = {
       console.log(args.planned_duration)
       const parsedTaskDate = new Date(args.task_date);
       if (context.user) {
+        const existingTask = await Task.findOne({
+          teamMember: args.teamMemberId,
+          project: args.projectId,
+          task_date: parsedTaskDate
+        });
+        if(existingTask){
+          throw new Error("Error, duplicate task!")
+        };
         const task = await Task.create({
           teamMember: args.teamMemberId,
           project: args.projectId,
@@ -157,7 +169,7 @@ const resolvers = {
         if(!updatedTask){
           throw new Error("Task not found")
         }else{
-          console.log(updatedTask);
+          // console.log(updatedTask);
         }
         return updatedTask;
       }

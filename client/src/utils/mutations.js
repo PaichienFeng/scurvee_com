@@ -32,7 +32,6 @@ export const ADD_TEAMMEMBER = gql`
   mutation addTeamMember($username: String!, $title: String!, $email: String!, $password: String!, $rate: Float!, $background_color: String!, $image_link: String!, ) {
     addTeamMember(username: $username, title: $title, email: $email, password: $password, rate: $rate, background_color: $background_color, image_link: $image_link) 
     {
-      token
       teamMember {
       _id
       username

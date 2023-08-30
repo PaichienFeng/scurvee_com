@@ -42,7 +42,7 @@ const TeamTask = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-  console.log(formState.actualDuration);
+    // console.log(formState.actualDuration);
 
     try {
       const { data: teamTaskData } = await addTeamTask({
@@ -53,12 +53,14 @@ const TeamTask = () => {
           "taskDate": formState.taskDate
         },
       });
-     
+
 
       if (teamTaskData) {
-        if(teamTaskData.addTeamTask !== null){
+        if (teamTaskData.addTeamTask !== null) {
           alert("You have successfully updated the task!");
-        }else{
+          window.location.assign('/');
+
+        } else {
           alert("No task found")
         }
       }
@@ -66,7 +68,6 @@ const TeamTask = () => {
       console.error(error);
     };
 
-    setFormState(initialForm);
   };
   return (
     <ThemeProvider theme={theme}>

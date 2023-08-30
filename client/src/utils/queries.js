@@ -104,15 +104,14 @@ export const QUERY_PROJECT = gql`
 
 
 export const QUERY_TODAY_TASK = gql`
-  query today_tasks ($teamMemberId: ID!, $task_date: DateTime!){
-    today_tasks (teamMemberId: $teamMemberId, task_date: $task_date) {
+  query today_tasks ($teamMemberId: ID!, $taskDate: String!){
+    today_tasks (teamMemberId: $teamMemberId, task_date: $taskDate) {
       _id
-      teamMember
-      project
-      description 
+      project {
+        name
+      }
       planned_duration
-      acutal_duration
-      task_date
+      actual_duration
     }
   }
 `;

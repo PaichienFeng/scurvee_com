@@ -1,4 +1,4 @@
-import { Container, ThemeProvider, Fab, Grid } from '@mui/material';
+import { Container, ThemeProvider, Fab, Grid, Typography } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
@@ -13,18 +13,17 @@ import Auth from '../utils/auth';
 
 const ProjectDetail = () => {
   const teamMemberId = Auth.getProfile().authenticatedPerson._id;
-  const {data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
-    variables:{teamMemberId: teamMemberId}
+  const { data: teamMemberData } = useQuery(QUERY_TEAMMEMBER, {
+    variables: { teamMemberId: teamMemberId }
   })
-  const teamMember= teamMemberData?.teamMember||{}
+  const teamMember = teamMemberData?.teamMember || {}
 
-  const {projectId}= useParams();
+  const { projectId } = useParams();
 
   const { loading, data } = useQuery(QUERY_PROJECT, {
     variables: { projectId: projectId },
   });
   const project = data?.project || {}
-  // console.log(project);
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -36,31 +35,38 @@ const ProjectDetail = () => {
         }}
       >
         <main>
-          <TitleHeader teamMember={teamMember} title="PROJECT DETAIL"/>
+          <TitleHeader teamMember={teamMember} title="PROJECT DETAIL" />
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <CardProjectDetail2 
-              project={project}/>
+              <CardProjectDetail2
+                project={project} />
             </Grid>
+            
+            {project.teamMembers?.length >0 &&
+            <Typography
+              variant="cardLightTitle"
+            >Team Member
+            </Typography>
+            }
             <Grid item xs={12} md={6}>
-              <CardMember2 
-              project={project}/>
+              <CardMember2
+                project={project} />
             </Grid>
           </Grid>
         </main>
         <div
           style={{
             position: 'absolute',
-            bottom: '16px', 
+            bottom: '16px',
             right: '16px',
             paddingRight: 28,
           }}
         >
           <Link
-          to={`/projects/${project._id}/addprojectteam`}>
-          <Fab color="primary">
-            <AddIcon />
-          </Fab>
+            to={`/projects/${project._id}/addprojectteam`}>
+            <Fab color="primary">
+              <AddIcon />
+            </Fab>
           </Link>
         </div>
       </Container>

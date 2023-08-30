@@ -39,6 +39,7 @@ const CardMemberBin1
                             paddingLeft: 2,
                             paddingRight: 2,
                             alignItems: "center",
+                            mb:1,
                             py: 1,
                             borderRadius: 3,
                         }}

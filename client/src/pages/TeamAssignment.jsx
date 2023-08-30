@@ -60,13 +60,21 @@ const TeamAssignment = () => {
       });
 
       if (AssignmentData) {
-        alert('You have successfully added the assignment!');
+        if (AssignmentData.addTeamAssignment !== null) {
+          alert("You have successfully assigned the task!");
+          window.location.assign('/projects');
+
+        } else {
+          alert("No task found")
+        }
       }
     } catch (error) {
       console.error(error);
+      alert("Error, duplicate task!")
     };
 
     setFormState(initialForm);
+    
   };
   return (
     <ThemeProvider theme={theme}>

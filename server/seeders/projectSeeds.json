@@ -5,7 +5,7 @@
     "budget": 125000,
     "sow_title": "iOS Implementation",
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
-    "background_color": "#448dd7",
+    "background_color": "#FFD700",
     "image_link": "../../src/assets/logo/conman.png"
   },
   {
@@ -25,33 +25,6 @@
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
     "background_color": "#DFF2BF",
     "image_link": "../../src/assets/logo/headphones.png"
-  },
-  {
-    "name": "E-commerce Platform",
-    "client": "Fashionista Boutique",
-    "budget": 50000,
-    "sow_title": "E-commerce Platform SOW",
-    "sow_detail": "Building an online store for Fashionista Boutique to showcase and sell their products.",
-    "background_color": "#FFD700",
-    "image_link": "../../src/assets/logo/headphones.png"
-  },
-  {
-    "name": "Product Launch",
-    "client": "InnovateTech",
-    "budget": 20000,
-    "sow_title": "Product Launch SOW",
-    "sow_detail": "Planning and executing a successful product launch event for InnovateTech's latest innovation.",
-    "background_color": "#A9A9A9",
-    "image_link": "../../src/assets/logo/submarine.png"
-  },
-  {
-    "name": "Community Outreach",
-    "client": "Local Charity",
-    "budget": 10000,
-    "sow_title": "Community Outreach SOW",
-    "sow_detail": "Engaging in community initiatives and events to support the local charity's mission.",
-    "background_color": "#90EE90",
-    "image_link": "../../src/assets/logo/conman.png"
   },
   {
     "name": "Data Analytics Dashboard",
