@@ -10,7 +10,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     teamMember: async (parent, { teamMemberId }, context) => {
-      console.log('haha');
+      // console.log('haha');
       if (context.user) {
         return TeamMember.findById(teamMemberId).populate('projects');
       }
@@ -124,13 +124,14 @@ const resolvers = {
       throw AuthenticationError;
     },
     addTeamAssignment: async (parent, args, context) => {
+      console.log(args.planned_duration)
       const parsedTaskDate = new Date(args.task_date);
       if (context.user) {
         const task = await Task.create({
           teamMember: args.teamMemberId,
           project: args.projectId,
           description: args.description,
-          planned_duration: args.plannedDuration,
+          planned_duration: args.planned_duration,
           task_date: parsedTaskDate
         });
 
@@ -138,20 +139,27 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addTeamTask: async (parent, { teamMemberId, projectId, task_date, acutal_duration }, context) => {
+    addTeamTask: async (parent, { teamMemberId, projectId, task_date, actual_duration }, context) => {
       if (context.user) {
         const parsedTaskDate = new Date(task_date);
-        return Task.findOneAndUpdate(
+
+        const updatedTask = Task.findOneAndUpdate(
           {
             teamMember: teamMemberId,
             project: projectId,
             task_date: parsedTaskDate
           },
           {
-            $set: { acutal_duration, }
+            $set: {actual_duration: actual_duration}
           },
           { new: true }
         );
+        if(!updatedTask){
+          throw new Error("Task not found")
+        }else{
+          console.log(updatedTask);
+        }
+        return updatedTask;
       }
       throw AuthenticationError;
     },

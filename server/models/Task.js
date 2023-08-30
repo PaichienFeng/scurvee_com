@@ -17,7 +17,7 @@ const taskSchema = new Schema(
         planned_duration: {
             type: Number,
         },
-        acutal_duration: {
+        actual_duration: {
             type: Number,
         },
         task_date: {

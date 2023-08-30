@@ -1,16 +1,18 @@
-import { Container, ThemeProvider, Button, Typography, TextField, Autocomplete } from "@mui/material"
+import { Container, ThemeProvider, Button, Typography, TextField, Autocomplete, alertTitleClasses } from "@mui/material"
 import { blue } from "@mui/material/colors";
 import theme from '../theme';
 import Footer from '../components/Footer/index';
 import FooterNavBar from "../components/FooterNavBar";
 import Header from '../components/Header/index';
 import Auth from "../utils/auth";
-import { useQuery } from "@apollo/client";
-import { QUERY_TEAMMEMBER } from '../utils/queries'
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_TEAMMEMBER } from '../utils/queries';
+import { ADD_TEAMTASK } from '../utils/mutations';
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const initialForm = {
-  projectId:'',
+  projectId: '',
   actualDuration: 0,
   taskDate: '',
 }
@@ -21,41 +23,51 @@ const TeamTask = () => {
     variables: { teamMemberId: teamMemberId }
   })
   const teamMember = teamMemberData?.teamMember || {}
-
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const [formState, setFormState] = useState(initialForm);
-  const [addTeamAssignment, { error }] = useMutation(ADD_TEAMASSIGNMENT);
+  const [addTeamTask, { error }] = useMutation(ADD_TEAMTASK);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const newValue = name === "plannedDuration" ? parseFloat(value) : value;
+    const newValue = name === "actualDuration" ? parseFloat(value) : value;
     setFormState({
       ...formState,
       [name]: newValue,
     });
   };
+  const handleProjectChange = (event, newValue) => {
+    setSelectedProject(newValue);
+  };
 
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const { data: AssignmentData } = await addTeamAssignment({
-  //       variables: {
-  //         "teamMemberId": teamMemberId,
-  //         "projectId":projectId,
-  //         "description": formState.description,
-  //         "plannedDuration": formState.plannedDuration,
-  //         "taskDate": formState.taskDate
-  //       },
-  //     });
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+  console.log(formState.actualDuration);
 
-  //     if (AssignmentData) {
-  //       alert('You have successfully added the assignment!');
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   };
+    try {
+      const { data: teamTaskData } = await addTeamTask({
+        variables: {
+          "teamMemberId": teamMemberId,
+          "projectId": selectedProject ? selectedProject._id : "",
+          "actualDuration": formState.actualDuration,
+          "taskDate": formState.taskDate
+        },
+      });
+     
 
-  //   setFormState(initialForm);
-  // };
+      if (teamTaskData) {
+        if(teamTaskData.addTeamTask !== null){
+          alert("You have successfully updated the task!");
+        }else{
+          alert("No task found")
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    };
+
+    setFormState(initialForm);
+  };
   return (
     <ThemeProvider theme={theme}>
 
@@ -82,12 +94,22 @@ const TeamTask = () => {
           <br></br>
           <Typography
           >Project Name:</Typography>
-          <Autocomplete
-            options={teamMember.projects}
-            getOptionLabel={(project) => project.name}
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} inputProps={{value: project._id, name: projectId}} label="Select a project" />}
-          ></Autocomplete>
+          {teamMember.projects && (
+            <Autocomplete
+              options={teamMember.projects}
+              getOptionLabel={(project) => project.name}
+              value={selectedProject}
+              onChange={handleProjectChange}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  name="projectId"
+                  label="Select a project"
+                  value={selectedProject ? selectedProject._id : ""}
+                />
+              )}
+            />
+          )}
           <br></br>
           <Typography
           >Duration:</Typography>
