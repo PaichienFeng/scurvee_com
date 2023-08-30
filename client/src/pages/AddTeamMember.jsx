@@ -61,7 +61,7 @@ const AddTeamMember = () => {
           <TitleHeader />
 
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
               <form onSubmit={handleFormSubmit}>
                 <Typography>Username:</Typography>
                 <TextField

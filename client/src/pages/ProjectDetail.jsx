@@ -36,11 +36,11 @@ const ProjectDetail = () => {
               <CardProjectDetail2 
               project={project}/>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12}>
               <CardMember2 
               project={project}/>
             </Grid>
-            {/* <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12}>
               <CardMember3 />
             </Grid> */}
           </Grid>

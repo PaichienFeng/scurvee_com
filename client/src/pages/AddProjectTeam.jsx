@@ -3,7 +3,7 @@ import { blue } from '@mui/material/colors';
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-import CardMember1 from '../components/CardMember/z1';
+import CardMember1 from '../components/CardMember/';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_PROJECT } from '../utils/queries';
@@ -51,7 +51,10 @@ const AddProjectTeam = () => {
             <Grid item xs={12}>
               <CardMember1 project={project} onCardClick={handleCardClick} />
             </Grid>
+
           </Grid>
+
+          
 
           <Container
             sx={{

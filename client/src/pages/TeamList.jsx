@@ -3,7 +3,7 @@ import { blue } from '@mui/material/colors';
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-import CardMemberBin1 from '../components/CardMemberBin/z1';
+import CardMemberBin1 from '../components/CardMemberBin/';
 import CardMemberBin2 from '../components/CardMemberBin/z2';
 import CardMemberBin3 from '../components/CardMemberBin/z3';
 import AddIcon from '@mui/icons-material/Add';
@@ -38,7 +38,7 @@ const TeamList = () => {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'flex-end',
-              marginTop: 4,
+              marginTop: 50,
             }}
           >
             <Fab color="primary">

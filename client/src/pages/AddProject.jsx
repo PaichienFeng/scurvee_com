@@ -61,7 +61,7 @@ const AddProject = () => {
           <TitleHeader />
 
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
               <Typography>Project Name:</Typography>
               <TextField
                 label="Enter Project Name"
@@ -71,7 +71,7 @@ const AddProject = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
               <Typography>Client:</Typography>
               <TextField
                 label="Enter Client"
@@ -81,7 +81,7 @@ const AddProject = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
               <Typography>Budget:</Typography>
               <TextField
                 label="Enter Budget"
@@ -91,7 +91,7 @@ const AddProject = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
               <Typography>Image Link:</Typography>
               <TextField
                 label="Enter Image Link"
@@ -101,7 +101,7 @@ const AddProject = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
               <Typography>SOW Title:</Typography>
               <TextField
                 label="Enter SOW Title"
@@ -111,7 +111,7 @@ const AddProject = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
               <Typography>SOW Detail:</Typography>
               <TextField
                 label="Enter SOW Detail"

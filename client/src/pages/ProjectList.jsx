@@ -1,9 +1,10 @@
-import { Container, ThemeProvider, Fab } from '@mui/material';
+import { Container, ThemeProvider, Fab, Grid } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
 import CardProjectTitle1 from '../components/CardProjectTitle/p1';
+// import CardProjectTitle2 from '../components/CardProjectTitle/p2';
 import AddIcon from '@mui/icons-material/Add';
 import { useQuery } from '@apollo/client';
 import { QUERY_PROJECTS } from '../utils/queries';
@@ -17,11 +18,11 @@ const ProjectList = () => {
     <ThemeProvider theme={theme}>
       <Container
         sx={{
-          width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
+          width: '100%',
           bgcolor: blue[50],
-          minHeight: '90vh',
+          minHeight: '100vh',
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'column' },
+          flexDirection: 'column',
           position: 'relative',
           overflow: 'hidden',
           padding: '0 16px',
@@ -33,19 +34,21 @@ const ProjectList = () => {
           <br />
           <br />
 
-          <CardProjectTitle1
-            projects={projects}
-            sx={{ 
-                margin: '16px',
-             }} 
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <CardProjectTitle1 projects={projects} sx={{ margin: '16px' }} />
+            </Grid>
+            {/* <Grid item xs={12}>
+              <CardProjectTitle2 projects={projects} sx={{ margin: '16px' }} />
+            </Grid> */}
+          </Grid>
         </main>
 
         <div
           style={{
             position: 'absolute',
-            bottom: '30px', 
-            right: '24px', 
+            bottom: '30px',
+            right: '24px',
           }}
         >
           <Link to="/projects/addproject">
