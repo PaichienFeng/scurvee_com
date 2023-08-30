@@ -1,4 +1,4 @@
-import { Container, ThemeProvider, Button, Typography, TextField, Autocomplete } from "@mui/material"
+import { Container, ThemeProvider, Button, Typography, TextField, Autocomplete, alertTitleClasses } from "@mui/material"
 import { blue } from "@mui/material/colors";
 import theme from '../theme';
 import Footer from '../components/Footer/index';
@@ -56,7 +56,11 @@ const TeamTask = () => {
      
 
       if (teamTaskData) {
-        alert("You have successfully added today's data!");
+        if(teamTaskData.addTeamTask !== null){
+          alert("You have successfully updated the task!");
+        }else{
+          alert("No task found")
+        }
       }
     } catch (error) {
       console.error(error);
