@@ -5,7 +5,6 @@ import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
 import CardProjectDetail2 from '../components/CardProjectDetail/p2';
 import CardMember2 from '../components/CardMember/z2';
-import CardMember3 from '../components/CardMember/z3';
 import AddIcon from '@mui/icons-material/Add';
 import { Link, useParams } from 'react-router-dom';
 import { QUERY_PROJECT, QUERY_TEAMMEMBER } from '../utils/queries';
@@ -47,9 +46,6 @@ const ProjectDetail = () => {
               <CardMember2 
               project={project}/>
             </Grid>
-            {/* <Grid item xs={12} md={6}>
-              <CardMember3 />
-            </Grid> */}
           </Grid>
         </main>
         <div
