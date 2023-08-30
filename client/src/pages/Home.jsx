@@ -1,5 +1,5 @@
-import {Container, ThemeProvider, Button, Typography, Box, Divider, Fab} from "@mui/material"
-import {blue} from "@mui/material/colors"
+import { Container, ThemeProvider, Button, Typography, Box, Divider, Fab } from "@mui/material"
+import { blue } from "@mui/material/colors"
 import theme from '../theme';
 import Footer from '../components/Footer/index';
 import FooterNavBar from "../components/FooterNavBar";
@@ -13,7 +13,7 @@ import BarChart from "../components/BarChart";
 import { useState } from "react";
 
 const Home = () => {
-  if (!Auth.loggedIn()){
+  if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
   }
 
@@ -23,19 +23,19 @@ const Home = () => {
   };
 
   const teamMemberId = Auth.getProfile().authenticatedPerson._id;
-  const {loading, data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
-    variables:{teamMemberId: teamMemberId}
+  const { loading, data: teamMemberData } = useQuery(QUERY_TEAMMEMBER, {
+    variables: { teamMemberId: teamMemberId }
   })
-  const teamMember= teamMemberData?.teamMember||[]
-  const currentDate= new Date();
+  const teamMember = teamMemberData?.teamMember || []
+  const currentDate = new Date();
 
   const formattedCurrentDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1)
     .toString()
     .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
 
 
-  const {error, data, loading: taskLoading} = useQuery(QUERY_TODAY_TASK, {
-    variables:{
+  const { error, data, loading: taskLoading } = useQuery(QUERY_TODAY_TASK, {
+    variables: {
       teamMemberId: teamMemberId,
       taskDate: formattedCurrentDate
     }
@@ -47,68 +47,85 @@ const Home = () => {
 
   const today_tasks = data?.today_tasks || []
   console.log(today_tasks);
-  
 
-  const planned_durations = today_tasks.map((task)=>task.planned_duration);
-  const actual_durations = today_tasks.map((task)=>task.actual_duration);
+
+  const planned_durations = today_tasks.map((task) => task.planned_duration);
+  const actual_durations = today_tasks.map((task) => task.actual_duration);
   console.log(planned_durations[1], actual_durations[1])
+
+  const durationData = [];
+
+  for (let i = 0; i < today_tasks.length; i++) {
+    durationData.push({
+      planned: planned_durations[i],
+      actual: actual_durations[i]
+    })
+  }
   const [barChartData, setBarChartData] = useState({
-    labels:['PLANNED', 'ACTUAL'],
-    datasets:[{
-      label: "PROJECT TIME",
-      data: [planned_durations[1], actual_durations[1]],
-      backgroundColor: ['orange'],
-      borderColor:"black"
-    }]
+    labels: ['PLANNED', 'ACTUAL'],
+    datasets: [
+      {
+        label: "Planned Duration",
+        data: durationData.map((task)=> task.planned),
+        backgroundColor:'orange',
+        borderColor: "black"
+      },
+      {
+        label: "Actual Duration",
+        data: durationData.map((task)=> task.actual),
+        backgroundColor: 'blue',
+        borderColor: "black"
+      }
+    ]
   })
 
   return (
-  <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
 
-    <Container 
-      sx={{ 
-        width: { xs: 400, md: 960, lg: 1280, xl: 1920},
-        bgcolor: blue[50], 
-        height: "90vh",
-        display: "flex",
-        flexDirection: { xs: "column", md: "row"},
-      }}
-    >
-      <main>
-      <Header teamMember={teamMember} title={teamMember.username}/>
       <Container
         sx={{
-            width: "100%",
-            bgcolor: blue[50], 
-            height: "65vh",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",            
-        }}>
-        <div> 
-            <Box 
+          width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
+          bgcolor: blue[50],
+          height: "90vh",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+        }}
+      >
+        <main>
+          <Header teamMember={teamMember} title={teamMember.username} />
+          <Container
             sx={{
-                width: "30vw",
-                bgcolor: blue[50], 
-                height: "65vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: 'space-between',
-            }}
-            >
-                 <div style={{width: 300}}> 
-            <BarChart barChartData= {barChartData}/>
-            </div>
-            {/* {[...Array(9)].map((_, index) => (
+              width: "100%",
+              bgcolor: blue[50],
+              height: "65vh",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}>
+            <div>
+              <Box
+                sx={{
+                  width: "30vw",
+                  bgcolor: blue[50],
+                  height: "65vh",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div style={{ width: 300 }}>
+                  <BarChart barChartData={barChartData} />
+                </div>
+                {/* {[...Array(9)].map((_, index) => (
                 <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
             ))} */}
-            </Box>
-         
-            {/* <Typography
+              </Box>
+
+              {/* <Typography
             variant="columnChartTitle"
             >Planned</Typography>             */}
-        </div>    
-        {/* <div> 
+            </div>
+            {/* <div> 
             <Box 
             sx={{
                 width: "30vw",
@@ -128,38 +145,38 @@ const Home = () => {
             >Actual</Typography>            
         </div>  */}
 
-        </Container>   
-        <br></br>
-        <br></br>
-        <br></br>
+          </Container>
+          <br></br>
+          <br></br>
+          <br></br>
 
-        <Container 
-        sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: 'space-between',  
-        }}
-        >
-        <Button 
-        onClick={logout}
-        variant="contained"
-        > Log Out </ Button>
-        <Link
-        to={'/teamtask'}>
-        <Fab 
-        color="primary"
-        >
-            <AddIcon />
-        </Fab>
-        </Link>
-        </Container>
-      </main>
-    </Container>
-    {Auth.getProfile().authenticatedPerson.username === "IL Capo"?
-    <FooterNavBar/>:
-    <Footer />
-    }
-  </ThemeProvider>
+          <Container
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: 'space-between',
+            }}
+          >
+            <Button
+              onClick={logout}
+              variant="contained"
+            > Log Out </ Button>
+            <Link
+              to={'/teamtask'}>
+              <Fab
+                color="primary"
+              >
+                <AddIcon />
+              </Fab>
+            </Link>
+          </Container>
+        </main>
+      </Container>
+      {Auth.getProfile().authenticatedPerson.username === "IL Capo" ?
+        <FooterNavBar /> :
+        <Footer />
+      }
+    </ThemeProvider>
   );
 
 };
