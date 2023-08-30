@@ -48,7 +48,6 @@ const ProjectList = () => {
               justifyContent: 'right',
             }}
           >
-            {/* //TODO onClick={handleFabClick} */}
             <Link to="/projects/addproject">
             <Fab
               color="primary"

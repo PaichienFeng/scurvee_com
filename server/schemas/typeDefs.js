@@ -32,8 +32,8 @@ const typeDefs = `
     teamMember: TeamMember
     project: Project
     description: String
-    plannedDuration: Float
-    acutalDuration: Float
+    planned_duration: Float
+    actual_duration: Float
     taskDate: String  
   }
 
@@ -47,7 +47,7 @@ const typeDefs = `
     teamMember(teamMemberId: ID!): TeamMember
     projects: [Project]
     project(projectId: ID!): Project
-    today_tasks(teamMemberId: ID!, task_date: String!): Task
+    today_tasks(teamMemberId: ID!, task_date: String!): [Task]
   }
 
   type Mutation {
@@ -57,6 +57,7 @@ const typeDefs = `
     addProjectTeam(projectId: ID!, teamMemberId: ID!): Project
     addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, task_date: String! ): Task
     addTeamTask(teamMemberId: ID!, projectId: ID!, task_date: String!, actual_duration: Float!): Task
+    deleteTeamMember(teamMemberId:ID!):TeamMember
   }
 `;
 

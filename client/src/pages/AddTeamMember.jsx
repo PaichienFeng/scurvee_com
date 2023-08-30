@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TEAMMEMBER } from "../utils/mutations";
 import Auth from '../utils/auth';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBER } from "../utils/queries";
 
@@ -50,12 +50,12 @@ const AddTeamMember = () => {
         variables: { ...formState },
       });
 
-      Auth.login(data.addTeamMember.token);
     } catch (e) {
       console.error(e);
     };
 
     setFormState(initialForm);
+    window.location.assign('/teammembers')
   };
   return (
     <ThemeProvider theme={theme}>

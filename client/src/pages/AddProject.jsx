@@ -99,7 +99,7 @@ const AddProject = () => {
           <TextField
             label="Enter Budget"
             name="budget"
-            type="text"
+            type="number"
             value={formState.budget}
             onChange={handleChange}
           ></TextField>

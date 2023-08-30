@@ -21,6 +21,7 @@ const CardProjectTitle1 = ({ projects }) => {
                             justifyContent: "left",
                             paddingLeft: 2,
                             alignItems: "center",
+                            mb:1,
                             py: 1,
                             borderRadius: 3,
                         }}

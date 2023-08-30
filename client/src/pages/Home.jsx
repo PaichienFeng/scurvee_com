@@ -8,17 +8,59 @@ import AddIcon from "@mui/icons-material/Add";
 import Auth from '../utils/auth';
 import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_TEAMMEMBER } from "../utils/queries";
+import { QUERY_TEAMMEMBER, QUERY_TODAY_TASK } from "../utils/queries";
+import BarChart from "../components/BarChart";
+import { useState } from "react";
 
 const Home = () => {
   if (!Auth.loggedIn()){
     return <Navigate to="/login" />;
   }
+
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   const teamMemberId = Auth.getProfile().authenticatedPerson._id;
-  const {loading, data} = useQuery(QUERY_TEAMMEMBER,{
+  const {loading, data:teamMemberData} = useQuery(QUERY_TEAMMEMBER,{
     variables:{teamMemberId: teamMemberId}
   })
-  const teamMember= data?.teamMember||{}
+  const teamMember= teamMemberData?.teamMember||[]
+  const currentDate= new Date();
+
+  const formattedCurrentDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1)
+    .toString()
+    .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
+
+
+  const {error, data, loading: taskLoading} = useQuery(QUERY_TODAY_TASK, {
+    variables:{
+      teamMemberId: teamMemberId,
+      taskDate: formattedCurrentDate
+    }
+  });
+
+  // if (taskLoading||loading){
+  //   return <div>Loading...</div>
+  // }
+
+  const today_tasks = data?.today_tasks || []
+  console.log(today_tasks);
+  
+
+  const planned_durations = today_tasks.map((task)=>task.planned_duration);
+  const actual_durations = today_tasks.map((task)=>task.actual_duration);
+  console.log(planned_durations[1], actual_durations[1])
+  const [barChartData, setBarChartData] = useState({
+    labels:['PLANNED', 'ACTUAL'],
+    datasets:[{
+      label: "PROJECT TIME",
+      data: [planned_durations[1], actual_durations[1]],
+      backgroundColor: ['orange'],
+      borderColor:"black"
+    }]
+  })
 
   return (
   <ThemeProvider theme={theme}>
@@ -54,15 +96,19 @@ const Home = () => {
                 justifyContent: 'space-between',
             }}
             >
-            {[...Array(9)].map((_, index) => (
+                 <div style={{width: 300}}> 
+            <BarChart barChartData= {barChartData}/>
+            </div>
+            {/* {[...Array(9)].map((_, index) => (
                 <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
-            ))}
+            ))} */}
             </Box>
-            <Typography
+         
+            {/* <Typography
             variant="columnChartTitle"
-            >Planned</Typography>            
+            >Planned</Typography>             */}
         </div>    
-        <div> 
+        {/* <div> 
             <Box 
             sx={{
                 width: "30vw",
@@ -80,7 +126,7 @@ const Home = () => {
             <Typography
             variant="columnChartTitle"
             >Actual</Typography>            
-        </div> 
+        </div>  */}
 
         </Container>   
         <br></br>
@@ -95,8 +141,9 @@ const Home = () => {
         }}
         >
         <Button 
+        onClick={logout}
         variant="contained"
-        > Log All </ Button>
+        > Log Out </ Button>
         <Link
         to={'/teamtask'}>
         <Fab 

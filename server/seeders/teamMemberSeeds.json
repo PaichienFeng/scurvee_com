@@ -14,7 +14,7 @@
     "email": "john@example.com",
     "password": "securepass",
     "rate": 50,
-    "background_color": "#d35400", 
+    "background_color": "#2c3e50", 
     "image_link": "../../src/assets/avatar/04.png"
   },
   {
@@ -27,39 +27,13 @@
     "image_link": "../../src/assets/avatar/03.png"
   },
   {
-    "username": "Mike Brown",
-    "title": "QA Tester",
-    "email": "mike@example.com",
-    "password": "testpass",
-    "rate": 40,
-    "background_color": "#2068b5", 
-    "image_link": "../../src/assets/avatar/01.png"
-  },
-  {
     "username": "Sarah Wilson",
     "title": "UI/UX Designer",
     "email": "sarah@example.com",
     "password": "uiuxpass",
     "rate": 50,
     "background_color": "#2b7e36", 
-    "image_link": "../../src/assets/avatar/02.png"
-  },
-  {
-    "username": "Alex Johnson",
-    "title": "Backend Developer",
-    "email": "alex@example.com",
-    "password": "backendpass",
-    "rate": 45,
-    "background_color": "#2c3e50",
-    "image_link": "../../src/assets/avatar/03.png"
-  },
-  {
-    "username": "Ella Wright",
-    "title": "Frontend Developer",
-    "email": "ella@example.com",
-    "password": "frontendpass",
-    "rate": 40,
-    "background_color": "#96408a", 
-    "image_link": "../../src/assets/avatar/02.png"
+    "image_link": "../../src/assets/avatar/05.png"
   }
+
 ]

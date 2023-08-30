@@ -3,10 +3,7 @@ import { blue } from "@mui/material/colors"
 import theme from '../theme';
 import FooterNavBar from '../components/FooterNavBar/index';
 import TitleHeader from '../components/TitleHeader/index';
-// import CardMemberBin from '../components/CardMemberBin/index';
 import CardMemberBin1 from '../components/CardMemberBin/z1';
-import CardMemberBin2 from '../components/CardMemberBin/z2';
-import CardMemberBin3 from '../components/CardMemberBin/z3';
 import AddIcon from "@mui/icons-material/Add";
 import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBERS, QUERY_TEAMMEMBER } from '../utils/queries';
@@ -52,7 +49,6 @@ const TeamList = () => {
               justifyContent: 'right',
             }}
           >
-            {/* //TODO onClick={handleFabClick} */}
             <Link
               to={'/teammembers/addteammember'}>
               <Fab
