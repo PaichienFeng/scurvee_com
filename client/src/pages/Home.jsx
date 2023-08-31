@@ -10,7 +10,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBER, QUERY_TODAY_TASK } from "../utils/queries";
 import BarChart from "../components/BarChart";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Home = () => {
   if (!Auth.loggedIn()) {
@@ -44,39 +44,40 @@ const Home = () => {
   // if (taskLoading||loading){
   //   return <div>Loading...</div>
   // }
-  const [today_tasks, setToday_tasks] = useState(data?.today_tasks || [])
-  const updateTaskDelay = () => {
-    setTimeout(() => {
-      setToday_tasks(data?.today_tasks)
-    }, 500)
-  };
-  updateTaskDelay();
 
+  const today_tasks = data?.today_tasks || []
   console.log(today_tasks);
 
-  const backgroundColors = ['rgba(255, 159, 64, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(75, 192, 192, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 26, 104, 0.5)'];
 
-  useEffect(() => {
-    const datasets = today_tasks?.map((task, index) => ({
-      label: task.project.name,
-      data: [task.planned_duration, task.actual_duration],
-      backgroundColor: backgroundColors[index % backgroundColors.length],
-      borderColor: 'black',
-    }));
+  const planned_durations = today_tasks.map((task) => task.planned_duration);
+  const actual_durations = today_tasks.map((task) => task.actual_duration);
+  console.log(planned_durations[1], actual_durations[1])
 
-    setBarChartData(
-      {
-        labels: ['PLANNED', 'ACTUAL'],
-        datasets,
-      }
-    )
-  }, [today_tasks]);
+  const durationData = [];
 
+  for (let i = 0; i < today_tasks.length; i++) {
+    durationData.push({
+      planned: planned_durations[i],
+      actual: actual_durations[i]
+    })
+  }
   const [barChartData, setBarChartData] = useState({
     labels: ['PLANNED', 'ACTUAL'],
-    datasets: []
-  });
-
+    datasets: [
+      {
+        label: "Planned Duration",
+        data: durationData.map((task)=> task.planned),
+        backgroundColor:'orange',
+        borderColor: "black"
+      },
+      {
+        label: "Actual Duration",
+        data: durationData.map((task)=> task.actual),
+        backgroundColor: 'blue',
+        borderColor: "black"
+      }
+    ]
+  })
 
   return (
     <ThemeProvider theme={theme}>
@@ -112,11 +113,7 @@ const Home = () => {
                   justifyContent: 'space-between',
                 }}
               >
-                <div style={
-                  {
-                    width: 300,
-                    height: 700
-                  }}>
+                <div style={{ width: 300 }}>
                   <BarChart barChartData={barChartData} />
                 </div>
                 {/* {[...Array(9)].map((_, index) => (

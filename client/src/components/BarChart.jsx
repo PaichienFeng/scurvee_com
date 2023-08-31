@@ -5,25 +5,13 @@ import { Chart as ChartJS } from 'chart.js/auto';
 
 function BarChart({ barChartData }) {
     const options = {
-        plugins:{
-            datalabels:{
-                anchor: 'center',
-                align: 'center',
-                color: 'black',
-                font:{
-                    weight: 'bold',
-                },
-                formatter:(value)=> value,
+        plugins: {
+            datalabels: {
+                anchor: 'end',
+                align: 'end',
+                color: 'black', 
             },
         },
-        scales:{
-            x:{
-                stacked: true
-            },
-            y: {
-                stacked: true
-            }
-        }
     };
 
     return <Bar data={barChartData} options={options}/>

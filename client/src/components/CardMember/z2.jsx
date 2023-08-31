@@ -22,7 +22,6 @@ const CardMember2
                         justifyContent: "left",
                         paddingLeft: 2,
                         alignItems: "center",
-                        mb: 1,
                         py: 1,
                         borderRadius: 3,
                     }}
@@ -44,7 +43,7 @@ const CardMember2
                         </Typography>
                         <Typography
                             variant="cardDarkSubtitle"
-                        >{teamMember.title}
+                        >P{teamMember.title}
                         </Typography>
                     </div>
 
