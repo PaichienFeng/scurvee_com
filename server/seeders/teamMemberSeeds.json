@@ -1,0 +1,39 @@
+[
+  {
+    "username": "IL Capo",
+    "title": "Project Manager",
+    "email": "ilcapo@gmail.com",
+    "password": "password12345",
+    "rate": 60,
+    "background_color": "#404545", 
+    "image_link": "../../src/assets/avatar/02.png"
+  },
+  {
+    "username": "John Doe",
+    "title": "Developer",
+    "email": "john@example.com",
+    "password": "securepass",
+    "rate": 50,
+    "background_color": "#2c3e50", 
+    "image_link": "../../src/assets/avatar/04.png"
+  },
+  {
+    "username": "Emily Jones",
+    "title": "Designer",
+    "email": "emily@example.com",
+    "password": "designpass",
+    "rate": 45,
+    "background_color": "#6c7a89", 
+    "image_link": "../../src/assets/avatar/03.png"
+  },
+  {
+    "username": "Sarah Wilson",
+    "title": "UI/UX Designer",
+    "email": "sarah@example.com",
+    "password": "uiuxpass",
+    "rate": 50,
+    "background_color": "#2b7e36", 
+    "image_link": "../../src/assets/avatar/05.png"
+  }
+
+]

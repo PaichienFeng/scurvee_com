@@ -25,9 +25,13 @@ const projectSchema = new Schema({
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 50,
+    maxlength: 200,
   },
-  backgroud_color:{
+  background_color:{
+    type: String,
+    required: true,
+  },
+  image_link:{
     type: String,
     required: true,
   },
@@ -36,7 +40,7 @@ const projectSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  teamMember: [
+  teamMembers: [
     {
       type: Schema.Types.ObjectId,
       ref: 'TeamMember',

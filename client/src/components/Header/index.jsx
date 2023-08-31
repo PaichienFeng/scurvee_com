@@ -1,46 +1,71 @@
-import { Link } from 'react-router-dom';
+import { ThemeProvider, Typography, Box, Avatar } from "@mui/material"
+import {blue} from "@mui/material/colors"
+import theme from '../../theme';
+import { useState, useEffect } from "react";
 
-import Auth from '../../utils/auth';
+// import defaultDate from './defaultDate';
 
-const Header = () => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
+const Header = ({teamMember, title}) => {
+    const [currentDate, setCurrentDate] = useState(new Date());
+
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            setCurrentDate(new Date());
+        }, 60000);
+        return ()=> clearInterval(interval);
+    }, []);
+
+    const options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      };
+    
+      const formattedDate = currentDate.toLocaleDateString(undefined, options);
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+  <ThemeProvider theme={theme}>
+      <Box
+            sx={{ 
+                width: { xs: 400, md: 960, lg: 1280, xl: 1920},
+                bgcolor: "blue[50]", 
+                height: "10vh",
+                display: "flex",
+                color: blue[700],
+                justifyContent: "left",
+                py: 2,
+              }}
+      >
         <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
-          </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
+            <Typography 
+                variant="pageTitle"
+            >{title}
+            </Typography>
+            <Typography 
+                variant="date"       
+            >{formattedDate}
+            </Typography>     
+        {/* <defaultDate />    */}
         </div>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {/* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username  */}
-                {Auth.getProfile().authenticatedPerson.username}'s profile
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
-    </header>
+        <Avatar
+            variant="memberPic"
+            alt=""
+            src={teamMember.image_link}
+            sx={{ 
+                width: 60, 
+                height: 60,
+            }}
+            />
+
+      </Box>
+  </ThemeProvider>
   );
+
 };
+
+
+
+
+
 
 export default Header;

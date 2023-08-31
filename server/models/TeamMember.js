@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const taskSchema = require('./TaskSchema')
 
 const teamMemberSchema = new Schema({
   username: {
@@ -8,6 +7,10 @@ const teamMemberSchema = new Schema({
     required: true,
     unique: true,
     trim: true,
+  },
+  title: {
+    type: String,
+    required: true,
   },
   email: {
     type: String,
@@ -24,7 +27,7 @@ const teamMemberSchema = new Schema({
     type: Number,
     required: true,
   },
-  backgroud_color:{
+  background_color:{
     type: String,
     required: true,
   },
@@ -36,7 +39,6 @@ const teamMemberSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'Project',
-      tasks:[taskSchema]
     },
   ],
 });

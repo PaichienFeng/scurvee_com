@@ -1,47 +1,63 @@
 const typeDefs = `
-  type User {
+
+  scalar DateTime
+
+  type TeamMember {
     _id: ID
     username: String
+    title: String
     email: String
     password: String
-    thoughts: [Thought]!
+    rate: Float
+    background_color: String
+    image_link: String
+    projects: [Project]
   }
 
-  type Thought {
+  type Project {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    name: String
+    client: String
+    budget: Float
+    sow_title: String
+    sow_detail: String
+    background_color: String
+    image_link: String
+    createdAt: String  
+    teamMembers: [TeamMember]
   }
 
-  type Comment {
+  type Task {
     _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    teamMember: TeamMember
+    project: Project
+    description: String
+    planned_duration: Float
+    actual_duration: Float
+    taskDate: String  
   }
 
   type Auth {
     token: ID!
-    user: User
+    teamMember: TeamMember
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
-    me: User
+    teamMembers: [TeamMember]
+    teamMember(teamMemberId: ID!): TeamMember
+    projects: [Project]
+    project(projectId: ID!): Project
+    today_tasks(teamMemberId: ID!, task_date: String!): [Task]
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addTeamMember(username: String!, title: String!, email: String!, password: String!, rate: Float!, background_color: String!, image_link: String!, ): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addProject(name: String!, client: String!, budget: Float!, sow_title: String!, sow_detail: String!, background_color: String!, image_link: String!): Project
+    addProjectTeam(projectId: ID!, teamMemberId: ID!): Project
+    addTeamAssignment(teamMemberId: ID!, projectId: ID!, description: String!, planned_duration: Float!, task_date: String! ): Task
+    addTeamTask(teamMemberId: ID!, projectId: ID!, task_date: String!, actual_duration: Float!): Task
+    deleteTeamMember(teamMemberId:ID!):TeamMember
   }
 `;
 
