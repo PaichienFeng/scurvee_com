@@ -5,7 +5,7 @@
     "budget": 125000,
     "sow_title": "iOS Implementation",
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
-    "background_color": "#FFD700",
+    "background_color": "rgb(255, 215, 0, 0.8)",
     "image_link": "../../src/assets/logo/conman.png"
   },
   {
@@ -14,7 +14,7 @@
     "budget": 150000,
     "sow_title": "Web Development",
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
-    "background_color": "#FCE5CD",
+    "background_color": "rgb(252, 229, 205, 0.8)",
     "image_link": "../../src/assets/logo/submarine.png"
   },
   {
@@ -23,7 +23,7 @@
     "budget": 65000,
     "sow_title": "Web Maintenance",
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
-    "background_color": "#DFF2BF",
+    "background_color": "rgb(223, 242, 191, 0.8)",
     "image_link": "../../src/assets/logo/headphones.png"
   },
   {
@@ -32,7 +32,7 @@
     "budget": 30000,
     "sow_title": "Data Analytics Dashboard SOW",
     "sow_detail": "Developing a data analytics dashboard to visualize and analyze business performance.",
-    "background_color": "#ADD8E6",
+    "background_color": "rgb(173, 216, 230, 0.8)",
     "image_link": "../../src/assets/logo/conman.png"
   }
 ]
