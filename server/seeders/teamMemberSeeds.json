@@ -6,7 +6,7 @@
     "password": "password12345",
     "rate": 60,
     "background_color": "rgb(64, 69, 69, 0.7)",
-    "image_link": "/src/assets/avatar/02.png"
+    "image_link": "/dist/assets/avatar/02.png"
   },
   {
     "username": "John Doe",
@@ -15,7 +15,7 @@
     "password": "securepass",
     "rate": 50,
     "background_color": "rgb(44, 62, 80, 0.7)",
-    "image_link": "/src/assets/avatar/04.png"
+    "image_link": "/dist/assets/avatar/04.png"
   },
   {
     "username": "Emily Jones",
@@ -24,7 +24,7 @@
     "password": "designpass",
     "rate": 45,
     "background_color": "rgb(108, 122, 137, 0.7)",
-    "image_link": "/src/assets/avatar/03.png"
+    "image_link": "/dist/assets/avatar/03.png"
   },
   {
     "username": "Sarah Wilson",
@@ -33,6 +33,6 @@
     "password": "uiuxpass",
     "rate": 50,
     "background_color": "rgb(43, 126, 54, 0.7)",
-    "image_link": "/src/assets/avatar/05.png"
+    "image_link": "/dist/assets/avatar/05.png"
   }
 ]
