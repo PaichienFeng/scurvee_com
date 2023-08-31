@@ -1,0 +1,38 @@
+[
+  {
+    "name": "CRYPTO CON",
+    "client": "Sam Bankman-Fried",
+    "budget": 125000,
+    "sow_title": "iOS Implementation",
+    "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
+    "background_color": "rgb(255, 215, 0, 0.8)",
+    "image_link": "../../src/assets/logo/conman.png"
+  },
+  {
+    "name": "Dud Submarine",
+    "client": "Anthony Albanese",
+    "budget": 150000,
+    "sow_title": "Web Development",
+    "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
+    "background_color": "rgb(252, 229, 205, 0.8)",
+    "image_link": "../../src/assets/logo/submarine.png"
+  },
+  {
+    "name": "Deaf Dude",
+    "client": "Ludwig Van Beethoven",
+    "budget": 65000,
+    "sow_title": "Web Maintenance",
+    "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
+    "background_color": "rgb(223, 242, 191, 0.8)",
+    "image_link": "../../src/assets/logo/headphones.png"
+  },
+  {
+    "name": "Data Analytics Dashboard",
+    "client": "Data Insights Inc.",
+    "budget": 30000,
+    "sow_title": "Data Analytics Dashboard SOW",
+    "sow_detail": "Developing a data analytics dashboard to visualize and analyze business performance.",
+    "background_color": "rgb(173, 216, 230, 0.8)",
+    "image_link": "../../src/assets/logo/conman.png"
+  }
+]

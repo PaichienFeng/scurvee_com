@@ -1,56 +1,70 @@
-import createRoot from 'react-dom/client';
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
+import './index.css'
 
-import App from './App';
+import App from './App.jsx'
 
-const container = document.getElementById('App');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
-root.render(<App />);
+// TODO MUI addition
+import Test from './pages/Test';
+// TODO MUI Close addition
+import AddProject from './pages/AddProject';
+import AddProjectTeam from './pages/AddProjectTeam';
+import AddTeamMember from './pages/AddTeamMember';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import TeamAssignment from './pages/TeamAssignment';
+import TeamTask from './pages/TeamTask'
+import ProjectDetail from './pages/ProjectDetail';
+import ProjectList from './pages/ProjectList';
+import TeamList from './pages/TeamList';
+import Error from './pages/Error';
 
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    error: <Error />,
+    children: [
+      // {
+      //   index: true,
+      //   element: <Test />
+      // },
+      {
+        index: true,
+        element: <Home />
+      }, {        
+        path: '/login',
+        element: <Login />
+      }, {        
+        path: '/teammembers',
+        element: <TeamList />
+      },{
+        path: '/teammembers/addteammember',
+        element: <AddTeamMember />
+      }, {        
+        path: '/projects',
+        element: <ProjectList />
+      },{
+        path: '/projects/addproject',
+        element: <AddProject />
+      }, {        
+        path: '/projects/:projectId',
+        element: <ProjectDetail />
+      },{
+        path: '/projects/:projectId/addprojectteam',
+        element: <AddProjectTeam />
+      }, {
+        path: '/projects/:projectId/teamassignment/:teamMemberId',
+        element: <TeamAssignment />
+      }, {
+        path: '/teamtask',
+        element: <TeamTask />
+      }
+    ]
+  }
+])
 
-
-//TODO: delete below
-// import ReactDOM from 'react-dom/client'
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
-// import './index.css'
-
-// import App from './App.jsx'
-// import Home from './pages/Home';
-// import Signup from './pages/Signup';
-// import Login from './pages/Login';
-// import SingleThought from './pages/SingleThought';
-// import Profile from './pages/Profile';
-// import Error from './pages/Error';
-
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <App />,
-//     error: <Error />,
-//     children: [
-//       {
-//         index: true,
-//         element: <Home />
-//       }, {
-//         path: '/login',
-//         element: <Login />
-//       }, {
-//         path: '/signup',
-//         element: <Signup />
-//       }, {
-//         path: '/me',
-//         element: <Profile />
-//       }, {
-//         path: '/profiles/:profileId',
-//         element: <Profile />
-//       }, {
-//         path: '/thoughts/:thoughtId',
-//         element: <SingleThought />
-//       }
-//     ]
-//   }
-// ])
-
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <RouterProvider router={router} />
-// )
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router} />
+)
