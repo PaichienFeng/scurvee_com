@@ -24,7 +24,7 @@ const CardProjectTitle2
                     <Avatar
                         variant="memberPic"
                         alt={project.name}
-                        src={`/${project.image_link}`}
+                        src={project.image_link}
                         sx={{
                             width: 60,
                             height: 60,
