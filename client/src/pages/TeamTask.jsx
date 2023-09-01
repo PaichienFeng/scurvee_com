@@ -1,4 +1,12 @@
-import { Container, ThemeProvider, Button, Typography, TextField, Autocomplete, alertTitleClasses } from "@mui/material"
+import {
+  Container,
+  ThemeProvider,
+  Button,
+  Typography,
+  TextField,
+  Autocomplete,
+  Grid,
+} from "@mui/material";
 import { blue } from "@mui/material/colors";
 import theme from '../theme';
 import Footer from '../components/Footer/index';
@@ -42,7 +50,6 @@ const TeamTask = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log(formState.actualDuration);
 
     try {
       const { data: teamTaskData } = await addTeamTask({
@@ -53,7 +60,6 @@ const TeamTask = () => {
           "taskDate": formState.taskDate
         },
       });
-
 
       if (teamTaskData) {
         if (teamTaskData.addTeamTask !== null) {
@@ -67,99 +73,112 @@ const TeamTask = () => {
     } catch (error) {
       console.error(error);
     };
-
   };
   return (
     <ThemeProvider theme={theme}>
 
       <Container
         sx={{
-          width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
+          width: "100%",
           bgcolor: blue[50],
-          height: "90vh",
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          minHeight: "95vh",
+          position: "relative",
         }}
       >
-        <form onSubmit={handleFormSubmit}>
-          <Header teamMember={teamMember} title={teamMember.username} />
-          <Typography
-          >Date:</Typography>
-          <TextField
-            name="taskDate"
-            type="date"
-            // value={formState.task_date}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <Typography
-          >Project Name:</Typography>
-          {teamMember.projects && (
-            <Autocomplete
-              options={teamMember.projects}
-              getOptionLabel={(project) => project.name}
-              value={selectedProject}
-              onChange={handleProjectChange}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  name="projectId"
-                  label="Select a project"
-                  value={selectedProject ? selectedProject._id : ""}
+        <Grid
+          container
+          spacing={2}
+
+          sx={{
+            flexDirection: { xs: "column", md: "row" },
+          }}
+        >
+          <Grid item xs={12} md={6}>
+            <form onSubmit={handleFormSubmit}>
+              <Header teamMember={teamMember} title={teamMember.username} />
+              <Typography>Date:</Typography>
+              <TextField
+                name="taskDate"
+                type="date"
+                onChange={handleChange}
+              />
+              <br />
+              <br />
+              <Typography>Project Name:</Typography>
+              {teamMember.projects && (
+                <Autocomplete
+                  options={teamMember.projects}
+                  getOptionLabel={(project) => project.name}
+                  value={selectedProject}
+                  onChange={handleProjectChange}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      name="projectId"
+                      label="Select a project"
+                      value={selectedProject ? selectedProject._id : ""}
+                    />
+                  )}
                 />
               )}
-            />
-          )}
-          <br></br>
-          <Typography
-          >Duration:</Typography>
-          <TextField
-            label="Enter Duration"
-            name="actualDuration"
-            type="number"
-            // value={formState.plannedDuration}
-            onChange={handleChange}
-          ></TextField>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <Container
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: 'space-between',
-            }}
-          >
-            <Button
-              type="submit"
-              variant="contained"
-            > Save </ Button>
-            <Link
-              to={'/'}
-            >
-              <Button
-                variant="contained"
-              > Cancel </ Button>
-            </Link>
-          </Container>
-        </form>
+              <br />
+              <Typography>Duration:</Typography>
+              <TextField
+                label="Enter Duration"
+                name="actualDuration"
+                type="number"
+                onChange={handleChange}
+              />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <Container
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: 'space-between',
+                  position: "absolute", 
+                  bottom: "16px", 
+                  left: 1, 
+                }}
+              >
+                <Button
+                  type="submit"
+                  variant="contained"
+                >
+                  Save
+                </Button>
+                <Link
+                  to={'/'}
+                >
+                  <Button
+                    variant="contained"
+                  >
+                    Cancel
+                  </Button>
+                </Link>
+              </Container>
+            </form>
+          </Grid>
+        </Grid>
       </Container>
       {Auth.getProfile().authenticatedPerson.username === "IL Capo" ?
         <FooterNavBar /> :
@@ -167,8 +186,6 @@ const TeamTask = () => {
       }
     </ThemeProvider>
   );
-
 };
-
 
 export default TeamTask;
