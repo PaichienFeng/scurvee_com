@@ -44,7 +44,7 @@ const ProjectDetail = () => {
 
             {project.teamMembers?.length > 0 && (
               <Box sx={{ mt: 2, mb: 1 }}>
-                <Typography variant="cardLightTitle">Team Member</Typography>
+                <Typography variant="cardLightTitle">Project Team</Typography>
               </Box>
             )}
 

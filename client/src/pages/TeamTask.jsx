@@ -93,7 +93,7 @@ const TeamTask = () => {
             flexDirection: { xs: "column", md: "row" },
           }}
         >
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12}>
             <form onSubmit={handleFormSubmit}>
               <Header teamMember={teamMember} title={teamMember.username} />
               <Typography>Date:</Typography>
