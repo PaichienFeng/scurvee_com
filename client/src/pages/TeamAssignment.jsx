@@ -90,7 +90,7 @@ const TeamAssignment = () => {
           position: "relative",
           width: { xs: "100%", md: 960, lg: 1280, xl: 1920 },
           bgcolor: blue[50],
-          minHeight: "100vh",
+          minHeight: "95vh",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
         }}

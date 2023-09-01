@@ -31,7 +31,7 @@ const ProjectDetail = () => {
         sx={{
           width: '100%',
           bgcolor: blue[50],
-          minHeight: '100vh',
+          minHeight: '95vh',
           position: 'relative',
         }}
       >

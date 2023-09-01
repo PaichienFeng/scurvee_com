@@ -1,5 +1,4 @@
 import { ThemeProvider, Typography, Avatar, Box } from "@mui/material"
-import { brown } from "@mui/material/colors"
 import theme from '../../theme';
 import { Link } from "react-router-dom";
 
