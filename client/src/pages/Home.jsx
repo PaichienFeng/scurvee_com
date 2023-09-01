@@ -1,4 +1,4 @@
-import { Container, ThemeProvider, Button, Typography, Box, Divider, Fab } from "@mui/material"
+import { Container, ThemeProvider, Button, Box, Fab } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import theme from '../theme';
 import Footer from '../components/Footer/index';
@@ -111,7 +111,6 @@ const Home = () => {
               flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
-              // overflow: "hidden",
             }}
           >
             <Box
@@ -124,9 +123,6 @@ const Home = () => {
               <BarChart barChartData={barChartData} />
             </Box>
           </Container>
-          {/* <br />
-          <br />
-          <br /> */}
 
           <Container
             sx={{
