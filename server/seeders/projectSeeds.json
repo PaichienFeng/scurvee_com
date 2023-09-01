@@ -6,7 +6,7 @@
     "sow_title": "iOS Implementation",
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
     "background_color": "rgb(255, 215, 0, 0.8)",
-    "image_link": "/assets/logo/conman.png"
+    "image_link": "/logo/conman.png"
   },
   {
     "name": "Dud Submarine",
@@ -15,7 +15,7 @@
     "sow_title": "Web Development",
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
     "background_color": "rgb(252, 229, 205, 0.8)",
-    "image_link": "/assets/logo/submarine.png"
+    "image_link": "/logo/submarine.png"
   },
   {
     "name": "Deaf Dude",
@@ -24,7 +24,7 @@
     "sow_title": "Web Maintenance",
     "sow_detail": "- Virtual Tours\n- Mini Game\n- Social Media Integration\n- Photo Booth Feature",
     "background_color": "rgb(223, 242, 191, 0.8)",
-    "image_link": "/assets/logo/headphones.png"
+    "image_link": "/logo/headphones.png"
   },
   {
     "name": "Data Analytics Dashboard",
@@ -33,6 +33,6 @@
     "sow_title": "Data Analytics Dashboard SOW",
     "sow_detail": "Developing a data analytics dashboard to visualize and analyze business performance.",
     "background_color": "rgb(173, 216, 230, 0.8)",
-    "image_link": "/assets/logo/conman.png"
+    "image_link": "/logo/conman.png"
   }
 ]
