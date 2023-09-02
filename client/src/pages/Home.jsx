@@ -11,7 +11,8 @@ import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBER, QUERY_TODAY_TASK } from "../utils/queries";
 import BarChart from "../components/BarChart";
 import { useEffect, useState } from "react";
-import formattedCurrentDate from '../utils/dateFormat'
+import formattedCurrentDate from '../utils/formattedCurrentDate'
+import formattedDate from "../utils/formattedDate";
 
 const Home = () => {
   if (!Auth.loggedIn()) {

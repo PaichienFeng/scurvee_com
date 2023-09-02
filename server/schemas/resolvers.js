@@ -38,15 +38,33 @@ const resolvers = {
             task_date: parsedTaskDate
           }).populate('project');
           console.log(today_tasks);
-          
+
           return today_tasks;
         } catch (error) {
           console.error(error);
         }
       }
       throw AuthenticationError;
-      
-    }
+    },
+    weekTask: async (parent, { projectId, startDate, endDate }, context) => {
+      console.log(projectId, startDate, endDate);
+      // if (context.user) {
+        try {
+          const parsedStartDate = new Date(startDate);
+          const parsedEndDate = new Date(endDate);
+          const weekTask= await Task.find({
+            project: projectId,
+            task_date: { $gte: parsedStartDate, $lte:parsedEndDate}
+          }).populate('teamMember');
+          console.log(weekTask);
+
+          return weekTask;
+        } catch (error) {
+          console.error(error);
+        }
+      // }
+      throw AuthenticationError;
+    },
   },
 
   Mutation: {

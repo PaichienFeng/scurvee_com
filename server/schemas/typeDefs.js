@@ -48,6 +48,7 @@ const typeDefs = `
     projects: [Project]
     project(projectId: ID!): Project
     today_tasks(teamMemberId: ID!, task_date: String!): [Task]
+    weekTask(projectId: ID!, startDate: String!, endDate: String!): [Task]
   }
 
   type Mutation {
