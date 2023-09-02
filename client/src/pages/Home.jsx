@@ -11,6 +11,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBER, QUERY_TODAY_TASK } from "../utils/queries";
 import BarChart from "../components/BarChart";
 import { useEffect, useState } from "react";
+import formattedCurrentDate from '../utils/dateFormat'
 
 const Home = () => {
   if (!Auth.loggedIn()) {
@@ -27,17 +28,12 @@ const Home = () => {
     variables: { teamMemberId: teamMemberId }
   })
   const teamMember = teamMemberData?.teamMember || []
-  const currentDate = new Date();
-
-  const formattedCurrentDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1)
-    .toString()
-    .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
 
 
   const { error, data, loading: taskLoading } = useQuery(QUERY_TODAY_TASK, {
     variables: {
       teamMemberId: teamMemberId,
-      taskDate: formattedCurrentDate
+      taskDate: formattedCurrentDate()
     }
   });
 

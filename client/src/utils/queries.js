@@ -112,6 +112,7 @@ export const QUERY_TODAY_TASK = gql`
       }
       planned_duration
       actual_duration
+      task_date
     }
   }
 `;

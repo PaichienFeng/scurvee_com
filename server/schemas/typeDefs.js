@@ -34,7 +34,7 @@ const typeDefs = `
     description: String
     planned_duration: Float
     actual_duration: Float
-    taskDate: String  
+    task_date: String
   }
 
   type Auth {

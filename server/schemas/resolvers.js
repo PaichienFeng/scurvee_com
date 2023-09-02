@@ -37,6 +37,8 @@ const resolvers = {
             teamMember: teamMemberId,
             task_date: parsedTaskDate
           }).populate('project');
+          console.log(today_tasks);
+          
           return today_tasks;
         } catch (error) {
           console.error(error);
