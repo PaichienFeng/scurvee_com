@@ -17,7 +17,7 @@ const FooterNavBar = () => {
           flexDirection: 'row',
           justifyContent: 'space-evenly',
           '@media (min-width: 600px)': {
-            justifyContent: 'space-around',
+          justifyContent: 'space-around',
           },
         }}
       >

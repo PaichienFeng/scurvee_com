@@ -1,4 +1,4 @@
-import { Container, ThemeProvider, Button, Typography, Box, Divider, Fab } from "@mui/material"
+import { Container, ThemeProvider, Button, Box, Fab } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import theme from '../theme';
 import Footer from '../components/Footer/index';
@@ -75,17 +75,26 @@ const Home = () => {
     datasets: []
   });
 
+ 
+  const paddingRight = {
+    xs: theme.spacing(1),
+    sm: theme.spacing(2),
+    md: theme.spacing(3),
+    lg: theme.spacing(4),
+    xl: theme.spacing(5), 
+  };  
 
   return (
     <ThemeProvider theme={theme}>
 
       <Container
         sx={{
-          width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
+          width: { xs: "100%", md: 960, lg: 1280, xl: 1920 },
           bgcolor: blue[50],
           height: "90vh",
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: "column",
+          overflow: "hidden",
         }}
       >
         <main>
@@ -94,93 +103,51 @@ const Home = () => {
             sx={{
               width: "100%",
               bgcolor: blue[50],
+              flexGrow: 1,
               height: "65vh",
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
-            }}>
-            <div>
-              <Box
-                sx={{
-                  width: "30vw",
-                  bgcolor: blue[50],
-                  height: "65vh",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: 'space-between',
-                }}
-              >
-                <div style={
-                  {
-                    width: 300,
-                    height: 700
-                  }}>
-                  <BarChart barChartData={barChartData} />
-                </div>
-                {/* {[...Array(9)].map((_, index) => (
-                <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
-            ))} */}
-              </Box>
-
-              {/* <Typography
-            variant="columnChartTitle"
-            >Planned</Typography>             */}
-            </div>
-            {/* <div> 
-            <Box 
-            sx={{
-                width: "30vw",
-                bgcolor: blue[50], 
-                height: "65vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: 'space-between',                
+              justifyContent: "center",
+              alignItems: "center",
             }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                paddingRight: paddingRight[theme.breakpoints.down("md")],
+              }}
             >
-            {[...Array(9)].map((_, index) => (
-                <Divider key={index} sx={{ backgroundColor: "#CCC" }} />
-            ))}                
+              <BarChart barChartData={barChartData} />
             </Box>
-            <Typography
-            variant="columnChartTitle"
-            >Actual</Typography>            
-        </div>  */}
-
           </Container>
-          <br></br>
-          <br></br>
-          <br></br>
 
           <Container
             sx={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: 'space-between',
+              justifyContent: "space-between",
+              paddingTop: 8,
             }}
           >
-            <Button
-              onClick={logout}
-              variant="contained"
-            > Log Out </ Button>
-            <Link
-              to={'/teamtask'}>
-              <Fab
-                color="primary"
-              >
+            <Button onClick={logout} variant="contained">
+              Log Out
+            </Button>
+            <Link to={"/teamtask"}>
+              <Fab color="primary">
                 <AddIcon />
               </Fab>
             </Link>
           </Container>
         </main>
       </Container>
-      {Auth.getProfile().authenticatedPerson.username === "IL Capo" ?
-        <FooterNavBar /> :
+      {Auth.getProfile().authenticatedPerson.username === "IL Capo" ? (
+        <FooterNavBar />
+      ) : (
         <Footer />
-      }
+      )}
     </ThemeProvider>
   );
-
 };
-
 
 export default Home;

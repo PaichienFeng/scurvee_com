@@ -5,7 +5,7 @@ import './index.css'
 import App from './App.jsx'
 
 // TODO MUI addition
-import Test from './pages/Test';
+// import Test from './pages/Test';
 // TODO MUI Close addition
 import AddProject from './pages/AddProject';
 import AddProjectTeam from './pages/AddProjectTeam';
