@@ -37,7 +37,6 @@ const resolvers = {
             teamMember: teamMemberId,
             task_date: parsedTaskDate
           }).populate('project');
-          console.log(today_tasks);
 
           return today_tasks;
         } catch (error) {
@@ -48,7 +47,7 @@ const resolvers = {
     },
     weekTask: async (parent, { projectId, startDate, endDate }, context) => {
       console.log(projectId, startDate, endDate);
-      // if (context.user) {
+      if (context.user) {
         try {
           const parsedStartDate = new Date(startDate);
           const parsedEndDate = new Date(endDate);
@@ -62,7 +61,7 @@ const resolvers = {
         } catch (error) {
           console.error(error);
         }
-      // }
+      }
       throw AuthenticationError;
     },
   },

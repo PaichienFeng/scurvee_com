@@ -12,7 +12,6 @@ import { QUERY_TEAMMEMBER, QUERY_TODAY_TASK } from "../utils/queries";
 import BarChart from "../components/BarChart";
 import { useEffect, useState } from "react";
 import formattedCurrentDate from '../utils/formattedCurrentDate'
-import formattedDate from "../utils/formattedDate";
 
 const Home = () => {
   if (!Auth.loggedIn()) {
@@ -85,15 +84,14 @@ const Home = () => {
 
   return (
     <ThemeProvider theme={theme}>
-
       <Container
         sx={{
-          width: { xs: "100%", md: 960, lg: 1280, xl: 1920 },
+          width: "100%",
           bgcolor: blue[50],
           height: "90vh",
           display: "flex",
           flexDirection: "column",
-          overflow: "hidden",
+          // overflow: "hidden",
         }}
       >
         <main>

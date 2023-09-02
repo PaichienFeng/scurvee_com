@@ -17,6 +17,7 @@ import TeamTask from './pages/TeamTask'
 import ProjectDetail from './pages/ProjectDetail';
 import ProjectList from './pages/ProjectList';
 import TeamList from './pages/TeamList';
+import ProjectPerformance from './pages/ProjectPerformance';
 import Error from './pages/Error';
 
 
@@ -60,6 +61,9 @@ const router = createBrowserRouter([
       }, {
         path: '/teamtask',
         element: <TeamTask />
+      }, {        
+        path: '/projects/:projectId/projectperformance',
+        element: <ProjectPerformance />
       }
     ]
   }

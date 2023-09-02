@@ -119,7 +119,7 @@ export const QUERY_TODAY_TASK = gql`
 
 
 export const QUERY_WEEKTASK= gql`
-  query today_tasks($projectId: ID!, $startDate: String!, $endDate: String!) {
+  query weekTask($projectId: ID!, $startDate: String!, $endDate: String!) {
   weekTask (projectId: $projectId, startDate: $startDate, endDate: $endDate) {
     teamMember {
       rate
