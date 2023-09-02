@@ -83,7 +83,7 @@ const Home = () => {
     sm: theme.spacing(2),
     md: theme.spacing(3),
     lg: theme.spacing(4),
-    xl: theme.spacing(5),
+    xl: theme.spacing(5), 
   };  
 
   return (
