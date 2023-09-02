@@ -64,13 +64,11 @@ const ProjectPerformance = () => {
         <ThemeProvider theme={theme}>
             <Container
                 sx={{
-                    position: "relative",
-                    width: { xs: "100%", md: 960, lg: 1280, xl: 1920 },
+                    width: '100%',
                     bgcolor: blue[50],
-                    minHeight: "95vh",
-                    display: "flex",
-                    flexDirection: { xs: "column", md: "row" },
-                }}
+                    minHeight: '95vh',
+                    position: 'relative',
+                  }}
             >
                 <main>
                     <TitleHeader teamMember={user} title="PROJECT PERFORMANCE" />
