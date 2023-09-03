@@ -29,7 +29,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     today_tasks: async (parent, { teamMemberId, task_date }, context) => {
-      console.log(teamMemberId, task_date);
+      // console.log(teamMemberId, task_date);
       if (context.user) {
         try {
           const parsedTaskDate = new Date(task_date);
@@ -46,7 +46,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     weekTask: async (parent, { projectId, startDate, endDate }, context) => {
-      console.log(projectId, startDate, endDate);
+      // console.log(projectId, startDate, endDate);
       if (context.user) {
         try {
           const parsedStartDate = new Date(startDate);
@@ -55,7 +55,7 @@ const resolvers = {
             project: projectId,
             task_date: { $gte: parsedStartDate, $lte:parsedEndDate}
           }).populate('teamMember');
-          console.log(weekTask);
+          // console.log(weekTask);
 
           return weekTask;
         } catch (error) {
@@ -147,7 +147,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     addTeamAssignment: async (parent, args, context) => {
-      console.log(args.planned_duration)
+      // console.log(args.planned_duration)
       const parsedTaskDate = new Date(args.task_date);
       if (context.user) {
         const existingTask = await Task.findOne({

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {Container, ThemeProvider, Button, Typography, TextField, Box, Fab} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Container, ThemeProvider, Button, Typography, TextField, Box, Fab } from "@mui/material";
 import { blue } from "@mui/material/colors";
 import theme from "../theme";
 import FooterNavBar from "../components/FooterNavBar/index";
@@ -29,8 +29,7 @@ const ProjectPerformance = () => {
     });
     const project = projectData?.project || {};
 
-    const currentDate = new Date();
-    const startDate = formattedDate(currentDate.setDate(currentDate.getDate() - 6));
+    const startDate = formattedDate(new Date().setDate(new Date().getDate() - 6));
     const endDate = formattedCurrentDate();
 
     const { loading, data } = useQuery(QUERY_WEEKTASK, {
@@ -40,73 +39,101 @@ const ProjectPerformance = () => {
             endDate: endDate,
         }
     });
-    const weekTasks = data?.weekTask || [];
-    console.log(weekTasks);
+    const [weekTasks, setWeekTasks] = useState(data?.weekTask || []);
+
+    useEffect(()=> {
+        if(data) {
+            setWeekTasks(data?.weekTask|| [])
+        }
+    }, [data]);
+
+    // console.log(weekTasks);
 
     const dateObj = {
         dayOne: startDate,
-        dayTwo: formattedDate(currentDate.setDate(currentDate.getDate()-5)),
-        dayThree: formattedDate(currentDate.setDate(currentDate.getDate()-4)),
-        dayFour: formattedDate(currentDate.setDate(currentDate.getDate()-3)),
-        dayFive: formattedDate(currentDate.setDate(currentDate.getDate()-2)),
-        daySix: formattedDate(currentDate.setDate(currentDate.getDate()-1)),
+        dayTwo: formattedDate(new Date().setDate(new Date().getDate() - 5)),
+        dayThree: formattedDate(new Date().setDate(new Date().getDate() - 4)),
+        dayFour: formattedDate(new Date().setDate(new Date().getDate() - 3)),
+        dayFive: formattedDate(new Date().setDate(new Date().getDate() - 2)),
+        daySix: formattedDate(new Date().setDate(new Date().getDate() - 1)),
         daySeven: endDate
     };
-    
-    const plannedRateSums= {
-        dayOne:0,
-        dayTwo:0,
-        dayThree:0,
-        dayFour:0,
-        dayFive:0,
-        daySix:0,
-        daySeven:0
+
+    const dateObjArray = [dateObj.dayOne, dateObj.dayTwo, dateObj.dayThree, dateObj.dayFour, dateObj.dayFive, dateObj.daySix, dateObj.daySeven];
+
+    const plannedRateSums = {
+        dayOne: 0,
+        dayTwo: 0,
+        dayThree: 0,
+        dayFour: 0,
+        dayFive: 0,
+        daySix: 0,
+        daySeven: 0
     };
 
-    const actualRateSums= {
-        dayOne:0,
-        dayTwo:0,
-        dayThree:0,
-        dayFour:0,
-        dayFive:0,
-        daySix:0,
-        daySeven:0
+
+    const actualRateSums = {
+        dayOne: 0,
+        dayTwo: 0,
+        dayThree: 0,
+        dayFour: 0,
+        dayFive: 0,
+        daySix: 0,
+        daySeven: 0
     };
 
-    weekTasks.forEach((task)=>{
-        if(task.task_date===dateObj.dayOne){
-            plannedRateSums.dayOne += task.teamMember.rate * (task.planned_duration||0);
-            actualRateSums.dayOne += task.teamMember.rate * (task.actual_duration||0)
-        }else if(task.task_date===dateObj.dayTwo){
-            plannedRateSums.dayTwo += task.teamMember.rate * (task.planned_duration||0);
-            actualRateSums.dayTwo += task.teamMember.rate * (task.actual_duration||0)
-        }else if(task.task_date===dateObj.dayThree){
-            plannedRateSums.dayThree += task.teamMember.rate * (task.planned_duration||0);
-            actualRateSums.dayThree += task.teamMember.rate * (task.actual_duration||0)
-        }else if(task.task_date===dateObj.dayFour){
-            plannedRateSums.dayFour += task.teamMember.rate * (task.planned_duration||0);
-            actualRateSums.dayFour += task.teamMember.rate * (task.actual_duration||0)
-        }else if(task.task_date===dateObj.dayFive){
-            plannedRateSums.dayFive += task.teamMember.rate * (task.planned_duration||0);
-            actualRateSums.dayFive += task.teamMember.rate * (task.actual_duration||0)
-        }else if(task.task_date===dateObj.daySix){
-            plannedRateSums.daySix += task.teamMember.rate * (task.planned_duration||0);
-            actualRateSums.daySix += task.teamMember.rate * (task.actual_duration||0)
-        }else if(task.task_date===dateObj.daySeven){
-            plannedRateSums.daySeven += task.teamMember.rate * (task.planned_duration||0);
-            actualRateSums.daySeven += task.teamMember.rate * (task.actual_duration||0)
-        }
-    })
 
-    const lineChartData = {
-        labels: [startDate, 'ACTUAL'],
-        datasets: {
-            label: 'PLANNED',
-            data: weekTasks.map((task)=> task.planned_duration),
-            backgroundColor: backgroundColors[index % backgroundColors.length],
-            borderColor: 'black',
-        }
-    };
+    useEffect(() => {
+        weekTasks.forEach((task) => {
+            if (task.task_date === dateObj.dayOne) {
+                plannedRateSums.dayOne += task.teamMember.rate * (task.planned_duration || 0);
+                actualRateSums.dayOne += task.teamMember.rate * (task.actual_duration || 0)
+            } else if (task.task_date === dateObj.dayTwo) {
+                plannedRateSums.dayTwo += task.teamMember.rate * (task.planned_duration || 0);
+                actualRateSums.dayTwo += task.teamMember.rate * (task.actual_duration || 0)
+            } else if (task.task_date === dateObj.dayThree) {
+                plannedRateSums.dayThree += task.teamMember.rate * (task.planned_duration || 0);
+                actualRateSums.dayThree += task.teamMember.rate * (task.actual_duration || 0)
+            } else if (task.task_date === dateObj.dayFour) {
+                plannedRateSums.dayFour += task.teamMember.rate * (task.planned_duration || 0);
+                actualRateSums.dayFour += task.teamMember.rate * (task.actual_duration || 0)
+            } else if (task.task_date === dateObj.dayFive) {
+                plannedRateSums.dayFive += task.teamMember.rate * (task.planned_duration || 0);
+                actualRateSums.dayFive += task.teamMember.rate * (task.actual_duration || 0)
+            } else if (task.task_date === dateObj.daySix) {
+                plannedRateSums.daySix += task.teamMember.rate * (task.planned_duration || 0);
+                actualRateSums.daySix += task.teamMember.rate * (task.actual_duration || 0)
+            } else if (task.task_date === dateObj.daySeven) {
+                plannedRateSums.daySeven += task.teamMember.rate * (task.planned_duration || 0);
+                actualRateSums.daySeven += task.teamMember.rate * (task.actual_duration || 0)
+            };
+        });
+        const plannedRateSumsArray = [plannedRateSums.dayOne, plannedRateSums.dayTwo, plannedRateSums.dayThree, plannedRateSums.dayFour, plannedRateSums.dayFive, plannedRateSums.daySix, plannedRateSums.daySeven];
+        const actualRateSumsArray = [actualRateSums.dayOne, actualRateSums.dayTwo, actualRateSums.dayThree, actualRateSums.dayFour, actualRateSums.dayFive, actualRateSums.daySix, actualRateSums.daySeven];
+        // console.log(actualRateSumsArray);
+        
+        setlineChartData({
+            labels: dateObjArray,
+            datasets: [{
+                label: 'Sum of Planned Rate',
+                data: plannedRateSumsArray,
+                backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                borderColor: 'rgba(255, 159, 64, 0.5)',
+            },
+            {
+                label: 'Sum of Actual Rate',
+                data: actualRateSumsArray,
+                backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                borderColor: 'rgba(153, 102, 255, 0.5)',
+            }]
+        });
+    }, [weekTasks])
+
+    const [lineChartData, setlineChartData] = useState({
+        labels: ['PLANNED', 'ACTUAL'],
+        datasets: []
+    });
+
 
     const paddingRight = {
         xs: theme.spacing(1),

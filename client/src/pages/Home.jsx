@@ -41,12 +41,12 @@ const Home = () => {
   //   return <div>Loading...</div>
   // }
   const [today_tasks, setToday_tasks] = useState(data?.today_tasks || [])
-  const updateTaskDelay = () => {
-    setTimeout(() => {
-      setToday_tasks(data?.today_tasks)
-    }, 500)
-  };
-  updateTaskDelay();
+ useEffect(() => {
+    if(data){
+      setToday_tasks(data?.today_tasks|| []);
+    }
+ }, [data])
+ 
 
   console.log(today_tasks);
 
