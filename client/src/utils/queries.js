@@ -112,6 +112,21 @@ export const QUERY_TODAY_TASK = gql`
       }
       planned_duration
       actual_duration
+      task_date
     }
   }
+`;
+
+
+export const QUERY_WEEKTASK= gql`
+  query weekTask($projectId: ID!, $startDate: String!, $endDate: String!) {
+  weekTask (projectId: $projectId, startDate: $startDate, endDate: $endDate) {
+    teamMember {
+      rate
+    }
+    planned_duration
+    actual_duration
+    task_date
+  }
+}
 `;

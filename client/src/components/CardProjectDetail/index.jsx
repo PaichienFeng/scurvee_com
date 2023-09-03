@@ -1,16 +1,22 @@
 import {
-    ThemeProvider,
-    Typography,
-    Avatar,
-    Box,
-    Fab,
-  } from "@mui/material";
-  import theme from "../../theme";
-  import InsightsIcon from "@mui/icons-material/Insights";
-  
-  const CardProjectDetail = ({ project }) => {
-    return (
-      <ThemeProvider theme={theme}>
+  ThemeProvider,
+  Typography,
+  Avatar,
+  Box,
+  Fab,
+} from "@mui/material";
+import theme from "../../theme";
+import InsightsIcon from "@mui/icons-material/Insights";
+import { Link } from "react-router-dom";
+
+const CardProjectDetail = ({ project }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Link
+        style={{ color: 'black', textDecoration: 'none' }}
+        to={`/projects/${project._id}/projectperformance`}
+        key={project._id}
+      >
         <Box
           sx={{
             width: { xs: 400, md: 960, lg: 1280, xl: 1920 },
@@ -42,11 +48,11 @@ import {
                 marginRight: 2,
               }}
             />
-            <Fab color="primary">
+            {/* <Fab color="primary">
               <InsightsIcon />
-            </Fab>
+            </Fab> */}
           </Box>
-  
+
           <div>
             <Typography variant="cardLightTitle">{project.name}</Typography>
             <Typography variant="cardLightTitleL1">
@@ -60,9 +66,9 @@ import {
             </Typography>
           </div>
         </Box>
-      </ThemeProvider>
-    );
-  };
-  
-  export default CardProjectDetail;
-  
+      </Link>
+    </ThemeProvider>
+  );
+};
+
+export default CardProjectDetail;
