@@ -18,7 +18,7 @@ const initialForm = {
   password: '',
   rate: 0,
   background_color: '',
-  image_link: ''
+  image_link: null
 }
 
 const AddTeamMember = () => {
@@ -139,14 +139,13 @@ const AddTeamMember = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Typography>Image Link:</Typography>
-              <TextField
-                fullWidth
-                label="Enter Avatar Link"
-                name="image_link"
-                type="text"
-                value={formState.image_link}
-                onChange={handleChange}
+              <Typography>Team Member Image:</Typography>
+              <FileBase64
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) =>
+                setFormState({ ...formState, image_link: base64 })
+              }
               />
             </Grid>
           </Grid>
