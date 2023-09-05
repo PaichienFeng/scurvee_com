@@ -18,7 +18,6 @@ const projectSchema = new Schema({
   sow_title:{
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   sow_detail:{
