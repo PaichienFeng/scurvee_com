@@ -10,6 +10,7 @@ import { ADD_PROJECT } from "../utils/mutations";
 import Auth from '../utils/auth';
 import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBER } from "../utils/queries";
+import FileBase64 from 'react-file-base64';
 
 const initialForm = {
   name: '',
@@ -18,13 +19,13 @@ const initialForm = {
   sow_title: '',
   sow_detail: '',
   background_color: '',
-  image_link: '',
+  image_link: null,
 };
 
 const AddProject = () => {
 
   const teamMemberId = Auth.getProfile().authenticatedPerson._id;
-  const { loading, data:teamMemberData } = useQuery(QUERY_TEAMMEMBER, {
+  const { loading, data: teamMemberData } = useQuery(QUERY_TEAMMEMBER, {
     variables: { teamMemberId: teamMemberId },
   });
   const teamMember = teamMemberData?.teamMember || {};
@@ -52,6 +53,7 @@ const AddProject = () => {
 
     } catch (e) {
       console.error(e);
+      alert('Failed to add project');
     };
 
     setFormState(initialForm);
@@ -70,7 +72,7 @@ const AddProject = () => {
         }}
       >
         <form onSubmit={handleFormSubmit}>
-          <TitleHeader 
+          <TitleHeader
             teamMember={teamMember}
             title="ADD PROJECT"
           />
@@ -109,14 +111,13 @@ const AddProject = () => {
               />
             </Grid>
             <Grid item xs={12} >
-              <Typography>Image Link:</Typography>
-              <TextField
-                fullWidth
-                label="Enter Image Link"
-                name="image_link"
-                type="text"
-                value={formState.image_link}
-                onChange={handleChange}
+              <Typography>Project Image:</Typography>
+              <FileBase64
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) =>
+                setFormState({ ...formState, image_link: base64 })
+              }
               />
             </Grid>
             <Grid item xs={12}>

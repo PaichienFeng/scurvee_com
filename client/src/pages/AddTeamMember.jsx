@@ -10,6 +10,8 @@ import Auth from '../utils/auth';
 import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBER } from "../utils/queries";
+import FileBase64 from 'react-file-base64';
+
 
 const initialForm = {
   username: '',
@@ -18,7 +20,7 @@ const initialForm = {
   password: '',
   rate: 0,
   background_color: '',
-  image_link: ''
+  image_link: null
 }
 
 const AddTeamMember = () => {
@@ -52,6 +54,7 @@ const AddTeamMember = () => {
 
     } catch (e) {
       console.error(e);
+      alert("Failed to add team member")
     };
 
     setFormState(initialForm);
@@ -138,14 +141,13 @@ const AddTeamMember = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Typography>Image Link:</Typography>
-              <TextField
-                fullWidth
-                label="Enter Avatar Link"
-                name="image_link"
-                type="text"
-                value={formState.image_link}
-                onChange={handleChange}
+              <Typography>Team Member Image:</Typography>
+              <FileBase64
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) =>
+                setFormState({ ...formState, image_link: base64 })
+              }
               />
             </Grid>
           </Grid>
