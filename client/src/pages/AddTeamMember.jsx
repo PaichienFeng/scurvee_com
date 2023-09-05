@@ -10,6 +10,8 @@ import Auth from '../utils/auth';
 import { Link, Navigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_TEAMMEMBER } from "../utils/queries";
+import FileBase64 from 'react-file-base64';
+
 
 const initialForm = {
   username: '',

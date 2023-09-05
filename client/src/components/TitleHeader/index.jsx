@@ -50,7 +50,7 @@ const TitleHeader = ({teamMember, title}) => {
         <Avatar
             variant="memberPic"
             alt=""
-            src={`/${teamMember.image_link}`}
+            src={teamMember.image_link}
             sx={{ 
                 width: 60, 
                 height: 60,

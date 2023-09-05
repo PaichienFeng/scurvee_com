@@ -37,9 +37,7 @@ const Home = () => {
     }
   });
 
-  // if (taskLoading||loading){
-  //   return <div>Loading...</div>
-  // }
+
   const [today_tasks, setToday_tasks] = useState(data?.today_tasks || [])
  useEffect(() => {
     if(data){

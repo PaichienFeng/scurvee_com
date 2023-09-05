@@ -3,6 +3,7 @@ const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+require('dotenv').config();
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -30,6 +31,16 @@ const startApolloServer = async () => {
 
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
+
+    app.get('/assets/avatar/:imageName', (req, res)=>{
+      const imageName = req.params.imageName;
+      res.sendFile(path.join(__dirname, `../client/dist/assets/avatar/${imageName}`))
+    });
+
+    app.get('/assets/logo/:imageName', (req, res)=>{
+      const imageName = req.params.imageName;
+      res.sendFile(path.join(__dirname, `../client/dist/assets/logo/${imageName}`))
     });
   }
 

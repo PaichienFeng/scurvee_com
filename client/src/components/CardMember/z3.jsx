@@ -23,7 +23,7 @@ const CardMember3
         <Avatar
             variant="memberPic"
             alt={teamMember.username}
-            src={`/${teamMember.image_link}`}
+            src={teamMember.image_link}
             sx={{ 
                 width: 60, 
                 height: 60,
