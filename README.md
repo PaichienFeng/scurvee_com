@@ -2,7 +2,16 @@
 
 GitHub: https://github.com/PaichienFeng/scurvee_com
 
-Heroku URL: https://scurvee-com-66ca99bee111.herokuapp.com/projects
+Heroku URL: https://scurvee-com-66ca99bee111.herokuapp.com/
+
+Login data:
+manager ->
+Email: ilcapo@gmail.com
+Password: password12345
+
+team member ->
+Email: john@example.com
+Password: securepass
 
 ## Table of Contents:
 ### - [Description](#description)
