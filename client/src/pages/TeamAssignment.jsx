@@ -68,13 +68,11 @@ const TeamAssignment = () => {
       });
 
       if (AssignmentData) {
-        if (AssignmentData.addTeamAssignment !== null) {
           alert("You have successfully assigned the task!");
           window.location.assign("/projects");
         } else {
           alert("No task found");
         }
-      }
     } catch (error) {
       console.error(error);
       alert("Error, duplicate task!");

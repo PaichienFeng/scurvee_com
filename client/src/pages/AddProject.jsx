@@ -52,6 +52,7 @@ const AddProject = () => {
 
     } catch (e) {
       console.error(e);
+      alert('Failed to add project');
     };
 
     setFormState(initialForm);

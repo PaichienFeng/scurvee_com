@@ -52,6 +52,7 @@ const AddTeamMember = () => {
 
     } catch (e) {
       console.error(e);
+      alert("Failed to add team member")
     };
 
     setFormState(initialForm);

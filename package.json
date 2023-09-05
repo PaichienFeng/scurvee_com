@@ -25,6 +25,7 @@
     "chart.js": "^4.4.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "dotenv": "^16.3.1",
-    "react-chartjs-2": "^5.2.0"
+    "react-chartjs-2": "^5.2.0",
+    "react-file-base64": "^1.0.3"
   }
 }
